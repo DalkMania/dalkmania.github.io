@@ -1,22 +1,32 @@
 import React from "react"
-import { Link } from "gatsby"
+import { graphql } from "gatsby"
+import SEO from '../components/seo'
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+const IndexPage = ({ data }) => {
+  const page = data.mdx
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
+  return (
+    <>
+    <SEO title={'Home'} description={page.frontmatter.introparagraph} slug={''} />
+    <div className="text-center pt-12">
+      <h1 className="text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">{page.frontmatter.title}</h1>
+      <blockquote>{page.frontmatter.introparagraph}</blockquote>
     </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+    </>
+  )
+}
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query IndexQuery {
+    mdx(fields: { slug: { eq: "/home/" } }) {
+      id
+      body
+      frontmatter {
+        title
+        introparagraph
+      }
+    }
+  }
+`

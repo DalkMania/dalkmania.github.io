@@ -1,0 +1,36 @@
+---
+title:  "WP Simple Lazy Loading"
+section: "WordPress Plugins"
+skills: ['PHP', 'WordPress', 'JavaScript']
+introparagraph: "A Simple Lazy Loading Functionality Plugin for WordPress, built with lozad.js."
+coverimage: {
+    src: "../../assets/images/wp-lazy-loading-cover-image.jpg"
+}
+githuburl: "https://github.com/DalkMania/wp-lazy-loading"
+demourl: ""
+---
+
+Lazy loading is a design pattern commonly used in computer programming to defer initialization of an object until the point at which it is needed. It can contribute to efficiency in the program's operation if properly and appropriately used. 
+
+This plugin I developed to implement this pattern in a WordPress site.
+
+### Installing
+
+1. Upload this repo (or git clone) to your plugins folder and activate it.
+
+### Usage
+
+Just activate the plugin and enjoy the Lazy Loading of all content and thumbnail type images.
+
+If you want to make the loading a little bit prettier, add something like this to your stylesheet:
+
+```
+.lazy-load {
+    transition: opacity .15s;
+    opacity: 0;
+}
+
+.lazy-load.is-loaded {
+    opacity: 1;
+}
+```
