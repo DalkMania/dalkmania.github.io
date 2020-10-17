@@ -11,15 +11,15 @@ export const portfolioItemLinks = (frontmatter) => {
         demourl 
     } = frontmatter
 
-    let github = <GitHubLogo className="link-none fill-current" />
-    let demo = <DemoIcon className="link-none fill-current" />
+    let github = <GitHubLogo className="link-none fill-current h-8 w-8" />
+    let demo = <DemoIcon className="link-none fill-current h-8 w-8" />
     
     if(githuburl !== '') {
-        github = <Link className="text-black hover:text-regal-blue active:text-regal-blue" to={githuburl}><GitHubLogo className="fill-current" /></Link>
+        github = <Link className="text-black hover:text-regal-blue active:text-regal-blue" to={githuburl}><GitHubLogo className="fill-current h-8 w-8" /></Link>
     }
 
     if(demourl !== '') {
-        demo = <Link className="text-black hover:text-regal-blue active:text-regal-blue" to={demourl}><DemoIcon className="fill-current" /></Link>
+        demo = <Link className="text-black hover:text-regal-blue active:text-regal-blue" to={demourl}><DemoIcon className="fill-current h-8 w-8" /></Link>
     }
 
     return [
