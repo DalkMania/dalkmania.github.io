@@ -63,6 +63,70 @@ h1.site-title {
     top: 7px;
   }
 
+  @media screen and (max-width: 849px) {
+
+    .nav-toggle:checked ~ .main-navigation {
+      background: #FFF;
+      z-index: 10;
+      position: fixed;
+      left:0;
+      top: 0;
+      transform: scale(1,1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      width:100%;
+      text-align: center;
+      justify-content: center;
+      font-size: 3rem;
+      line-height: 4rem;
+    }
+    
+    .nav-toggle:checked ~ .main-navigation ul {
+        list-style-type:none;
+        margin:0;
+    }
+    
+    .nav-toggle:checked ~ .main-navigation li {
+          display:block;
+          margin:2rem 0;
+    }
+    
+    .nav-toggle:checked ~ .main-navigation li:first-child {
+            margin:2rem 0;
+    }
+    
+    .nav-toggle:checked ~ .main-navigation li:last-child {
+            margin:2rem 0;
+    }
+
+    .nav-toggle:checked ~ label span {
+        display: block;
+        background: #fff;
+        height: 2px;
+        width: 2em;
+        border-radius: 2px;
+        position: relative;
+        z-index: 11;
+      }
+  
+      .nav-toggle:checked ~ label span::before {
+        transform: rotate(45deg);
+        background: #222;
+        bottom: 7px;
+      }
+  
+      .nav-toggle:checked ~ label span::after {
+        transform: rotate(135deg);
+        background: #222;
+        top: -7px;
+      }
+  
+    
+  
+  }
+
   #content {
     flex-grow : 1;
   }

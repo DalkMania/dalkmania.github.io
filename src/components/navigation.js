@@ -20,7 +20,7 @@ const Navigation = () => (
       aria-labelledby="nav-toggle"
       className="nav-toggle hidden"
     ></input>
-    <ul className="hidden md:flex md:items-center md:flex-1 md:justify-end text-black">
+    <ul className="main-navigation hidden md:flex md:items-center md:flex-1 md:justify-end text-black">
       {links.map(({ key, href, label }) => (
         <li
           key={key}
@@ -34,7 +34,7 @@ const Navigation = () => (
     </ul>
     <label
       htmlFor="nav-toggle"
-      className="nav-toggle-label absolute mr-3 right-0 sm:block md:hidden"
+      className="nav-toggle-label absolute mr-3 right-0 block md:hidden"
     >
       <span></span>
     </label>
