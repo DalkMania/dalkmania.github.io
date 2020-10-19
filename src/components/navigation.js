@@ -1,4 +1,4 @@
-import React, { Fragment } from "react"
+import React from "react"
 import { Link } from "gatsby"
 
 const links = [
@@ -12,8 +12,12 @@ const links = [
   return link
 })
 
+const toggleMenu = () => {
+  document.getElementById("nav-toggle").checked = false;
+}
+
 const Navigation = () => (
-  <Fragment>
+  <>
     <input
       type="checkbox"
       id="nav-toggle"
@@ -26,7 +30,7 @@ const Navigation = () => (
           key={key}
           className="text-right uppercase ml-6 hover:text-regal-blue active:text-regal-blue"
         >
-          <Link activeClassName="text-regal-blue" to={href}>
+          <Link activeClassName="text-regal-blue" to={href} onClick={toggleMenu}>
             {label}
           </Link>
         </li>
@@ -38,7 +42,7 @@ const Navigation = () => (
     >
       <span></span>
     </label>
-  </Fragment>
+  </>
 )
 
 export default Navigation
