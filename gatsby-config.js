@@ -33,6 +33,21 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Merriweather`,
+            variants: [`300`, `900`]
+          },
+          {
+            family: `Raleway`,
+            subsets: [`latin`]
+          },
+        ],
+      },
+    },
+    {
       resolve: "gatsby-plugin-react-svg",
       options: {
         rule: {
