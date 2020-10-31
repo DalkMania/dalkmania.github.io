@@ -220,6 +220,10 @@ h1.site-title {
     margin:2rem;
   }
 
+  #content .page-content a {
+    color:#6189c6;
+  }
+
 .gatsby-image-outer-wrapper { width: 100%; }
 .gatsby-image-wrapper img { margin-top: 0; }
 

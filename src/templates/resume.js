@@ -26,8 +26,9 @@ const Resume = ({ data }) => {
         {page.frontmatter.introparagraph}
         </h3>
       </div>
-
-      <MDXRenderer>{page.body}</MDXRenderer>
+      <div className="page-content">
+        <MDXRenderer>{page.body}</MDXRenderer>
+      </div>
 
       <div className="experience pt-5 pb-0">
         <h3 className="experience-title">Experience</h3>
