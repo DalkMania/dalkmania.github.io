@@ -33,18 +33,20 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-webfonts`,
       options: {
-        fonts: [
-          {
-            family: `Merriweather`,
-            variants: [`300`, `900`]
-          },
-          {
-            family: `Raleway`,
-            subsets: [`latin`]
-          },
-        ],
+        fonts: {
+          google: [
+            {
+              family: `Merriweather`,
+              variants: [`300`, `900`]
+            },
+            {
+              family: `Raleway`,
+              subsets: [`latin`]
+            },
+          ]
+        }
       },
     },
     {
