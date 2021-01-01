@@ -21,7 +21,9 @@ const EducationItem = ({ item }) => {
         />
       </div>
 
-      <div className="px-4 pt-0 pb-5 sm:px-6"><MDXRenderer>{body}</MDXRenderer></div>
+      <div className="px-4 pt-0 pb-5 sm:px-6">
+        <MDXRenderer>{body}</MDXRenderer>
+      </div>
     </li>
   )
 }

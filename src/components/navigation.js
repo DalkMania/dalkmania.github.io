@@ -13,7 +13,7 @@ const links = [
 })
 
 const toggleMenu = () => {
-  document.getElementById("nav-toggle").checked = false;
+  document.getElementById("nav-toggle").checked = false
 }
 
 const Navigation = () => (
@@ -30,7 +30,11 @@ const Navigation = () => (
           key={key}
           className="text-right uppercase ml-6 hover:text-regal-blue active:text-regal-blue"
         >
-          <Link activeClassName="text-regal-blue" to={href} onClick={toggleMenu}>
+          <Link
+            activeClassName="text-regal-blue"
+            to={href}
+            onClick={toggleMenu}
+          >
             {label}
           </Link>
         </li>

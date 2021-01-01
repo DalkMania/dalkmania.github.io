@@ -66,13 +66,14 @@ const turnPagesIntoPages = async ({ graphql, actions }) => {
 
   // 3. Loop over each pizza and create a page for that pizza
   data.pages.nodes.forEach(page => {
-    if (page.fields.slug === "/home/" || page.fields.slug === "/portfolio/") {}
+    if (page.fields.slug === "/home/" || page.fields.slug === "/portfolio/") {
+    }
     if (page.fields.slug === "/resume/") {
       actions.createPage({
         path: "/resume",
         component: ResumeTemplate,
         context: {
-          slug: page.fields.slug
+          slug: page.fields.slug,
         },
       })
     } else {

@@ -39,14 +39,14 @@ module.exports = {
           google: [
             {
               family: `Merriweather`,
-              variants: [`300`, `900`]
+              variants: [`300`, `900`],
             },
             {
               family: `Raleway`,
-              subsets: [`latin`]
+              subsets: [`latin`],
             },
-          ]
-        }
+          ],
+        },
       },
     },
     {
@@ -107,9 +107,9 @@ module.exports = {
           opengraph: false,
           twitter: false,
           yandex: false,
-          windows: false
-        }
-      }
+          windows: false,
+        },
+      },
     },
   ],
 }

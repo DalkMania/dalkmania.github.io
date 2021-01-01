@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import ExperienceItem from "../components/experience-item"
 import EducationItem from "../components/education-item"
-import SEO from '../components/seo'
+import SEO from "../components/seo"
 
 const Resume = ({ data }) => {
   const page = data.mdx
@@ -19,11 +19,17 @@ const Resume = ({ data }) => {
 
   return (
     <>
-      <SEO title={page.frontmatter.title} description={page.frontmatter.introparagraph} slug={'resume'} />
+      <SEO
+        title={page.frontmatter.title}
+        description={page.frontmatter.introparagraph}
+        slug={"resume"}
+      />
       <div className="text-center py-12">
-        <p className="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">{page.frontmatter.title}</p>
+        <p className="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">
+          {page.frontmatter.title}
+        </p>
         <h3 className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
-        {page.frontmatter.introparagraph}
+          {page.frontmatter.introparagraph}
         </h3>
       </div>
       <div className="page-content">

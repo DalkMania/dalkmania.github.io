@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
-import { portfolioItemLinks } from '../helpers/portfolioItemLinks'
+import { portfolioItemLinks } from "../helpers/portfolioItemLinks"
 
 const PortfolioItem = ({ item }) => {
   const { frontmatter, id, fields } = item
@@ -33,10 +33,10 @@ const PortfolioItem = ({ item }) => {
               Learn More
             </Link>
             <span className="text-gray-300 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300 h-10 w-10">
-            {links[0]}
+              {links[0]}
             </span>
             <span className="text-gray-300 inline-flex items-center leading-none text-sm h-6 w-6">
-            {links[1]}
+              {links[1]}
             </span>
           </div>
         </div>

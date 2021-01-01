@@ -5,22 +5,21 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
+import React from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
 import { useSiteInformation } from "../hooks/SiteInformation"
-import SchemaOrg from './SchemaOrg'
+import SchemaOrg from "./SchemaOrg"
 
 const SEO = ({ description, lang, meta, keywords, title, slug }) => {
-    const data = useSiteInformation()
-    
+  const data = useSiteInformation()
 
   const metaDescription = description || data.description
-  const url = data.canonicalUrl + '/' + slug
+  const url = data.canonicalUrl + "/" + slug
 
   return (
     <>
-    {}
+      {}
       <Helmet
         htmlAttributes={{
           lang,
@@ -71,7 +70,6 @@ const SEO = ({ description, lang, meta, keywords, title, slug }) => {
           )
           .concat(meta)}
       />
-      
     </>
   )
 }
