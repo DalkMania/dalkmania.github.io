@@ -9,7 +9,7 @@ const ExperienceItem = ({ item }) => {
     <li key={id} className="bg-white shadow overflow-hidden sm:rounded-lg my-8">
       <div className="experience-item px-4 py-5 sm:px-6 flex justify-between">
         <div className="experience-information">
-          <h4 className="experience-company">{frontmatter.company}</h4>
+          <h4 className="experience-company font-bold">{frontmatter.company}</h4>
           <h4 className="experience-name">{frontmatter.title}</h4>
           <p>
             {frontmatter.years} | {frontmatter.location}

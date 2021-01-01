@@ -9,7 +9,7 @@ const EducationItem = ({ item }) => {
     <li key={id} className="bg-white shadow overflow-hidden sm:rounded-lg my-8">
       <div className="education-item flex justify-between px-4 py-5 sm:px-6">
         <div className="education-information">
-          <h4 className="school-name">{frontmatter.school}</h4>
+          <h4 className="school-name font-extrabold">{frontmatter.school}</h4>
           <h4 className="program-name">{frontmatter.title}</h4>
           <p>
             {frontmatter.years} | {frontmatter.location}

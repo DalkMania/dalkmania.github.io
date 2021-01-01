@@ -16,9 +16,9 @@ const PortfolioIndex = ({ pageContext }) => {
   return (
     <>
     <SEO title={pageTitles[0]} description={pageTitles[1]} slug={'portfolio'} />
-      <div class="text-center py-12">
-        <p class="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">{pageTitles[0]}</p>
-        <h3 class="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
+      <div className="text-center py-12">
+        <p className="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">{pageTitles[0]}</p>
+        <h3 className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
           {pageTitles[1]}
         </h3>
       </div>

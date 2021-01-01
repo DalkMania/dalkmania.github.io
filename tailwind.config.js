@@ -3,10 +3,14 @@ module.exports = {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
-  purge: false,
+  purge: [
+    './src/**/*.js',
+    './src/**/*.mdx',
+    './src/**/*.svg'
+  ],
   theme: {
     fontFamily: {
-      display: ["Merriweather Black", "sans-serif"],
+      display: ["Merriweather", "sans-serif"],
       body: ["Raleway", "sans-serif"],
     },
     extend: {

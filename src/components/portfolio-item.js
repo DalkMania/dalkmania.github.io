@@ -19,7 +19,7 @@ const PortfolioItem = ({ item }) => {
           <h4 className="tracking-widest text-xs font-medium text-gray-500 mb-1">
             {frontmatter.section}
           </h4>
-          <h4 className="title-font text-lg font-medium text-gray-900 mb-3">
+          <h4 className="title-font text-lg font-bold text-gray-900 mb-3">
             {frontmatter.title}
           </h4>
           <p className="leading-relaxed mb-3 flex-1">
