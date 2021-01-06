@@ -1,0 +1,45 @@
+---
+title:  "Gatsby Plugin for Osano"
+section: "Gatsby Plugins"
+skills: ['React', 'Gatsby', 'Plugin']
+introparagraph: "Easily add Osano script tag to your Gatsby site."
+coverimage: {
+    src: "../../assets/images/gatsby-plugin-osano-cover-image.jpg"
+}
+githuburl: "https://github.com/DalkMania/gatsby-plugin-osano"
+demourl: ""
+---
+
+Osano is an easy-to-use data privacy platform that instantly helps your website become compliant with laws such as GDPR and CCPA.
+
+### Install
+
+Using NPM
+
+```
+npm install --save gatsby-plugin-osano
+```
+
+Using Yarn
+
+```
+yarn add gatsby-plugin-osano
+```
+
+### How to use
+
+```javascript
+// In your gatsby-config.js
+plugins: [
+  {
+    resolve: `gatsby-plugin-osano`,
+    options: {
+      customerId: 'YOUR_OSANO_CUSTOMER_ID',
+      ccid: 'YOUR_OSANO_CUSTOMER_CCID',
+      includeInDevelopment: false,
+    },
+  },
+];
+```
+
+If you want to ensure that osano is loaded first of the script tags. Please put code above last in the plugins array.
