@@ -1,0 +1,57 @@
+---
+title:  "Gatsby Plugin for SnapEngage"
+section: "Gatsby Plugins"
+skills: ['React', 'Gatsby', 'Plugin']
+introparagraph: "Easily add SnapEngage script tag to your Gatsby site."
+coverimage: {
+    src: "../../assets/images/gatsby-plugin-snap-engage-cover-image.jpg"
+}
+githuburl: "https://github.com/DalkMania/gatsby-plugin-snap-engage"
+demourl: ""
+---
+
+### Install
+
+Using NPM
+
+```
+npm install --save gatsby-plugin-snap-engage
+```
+
+Using Yarn
+
+```
+yarn add gatsby-plugin-snap-engage
+```
+
+### How to use
+
+```javascript
+// In your gatsby-config.js
+
+// Simple setup
+plugins: [
+  {
+      resolve: `gatsby-plugin-snap-engage`,
+      options: {
+        id: 'YOUR_SNAP_ENGAGE_SCRIPT_ID',
+        includeInDevelopment: false,
+      },
+    },
+];
+
+// Multilingual setup
+plugins: [
+  {
+      resolve: `gatsby-plugin-snap-engage`,
+      options: {
+        defaultLocale: 'en',
+        locales: {
+          'en': 'YOUR_SNAP_ENGAGE_SCRIPT_ID_FOR_LOCALE',
+          'fr': 'YOUR_SNAP_ENGAGE_SCRIPT_ID_FOR_LOCALE'
+        },
+        includeInDevelopment: false,
+      },
+    },
+];
+```
