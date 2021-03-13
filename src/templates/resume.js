@@ -51,72 +51,71 @@ const Resume = ({ data }) => {
 
 export default Resume
 
-export const pageQuery = graphql`
-  query ResumeQuery {
-    mdx(fields: { slug: { eq: "/resume/" } }) {
+export const pageQuery = graphql`query ResumeQuery {
+  mdx(fields: {slug: {eq: "/resume/"}}) {
+    id
+    body
+    frontmatter {
+      title
+      introparagraph
+    }
+  }
+  education: allMdx(
+    filter: {fields: {sourceInstanceName: {eq: "education"}}}
+    limit: 1000
+  ) {
+    nodes {
       id
       body
       frontmatter {
         title
-        introparagraph
-      }
-    }
-    education: allMdx(
-      filter: { fields: { sourceInstanceName: { eq: "education" } } }
-      limit: 1000
-    ) {
-      nodes {
-        id
-        body
-        frontmatter {
-          title
-          school
-          location
-          years
-          image {
-            src {
-              id
-              childImageSharp {
-                fluid(maxWidth: 100, maxHeight: 100) {
-                  src
-                  sizes
-                  srcSet
-                  aspectRatio
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    experience: allMdx(
-      filter: { fields: { sourceInstanceName: { eq: "experience" } } }
-      limit: 1000
-      sort: { fields: fileAbsolutePath, order: ASC }
-    ) {
-      nodes {
-        id
-        body
-        frontmatter {
-          title
-          company
-          location
-          years
-          image {
-            src {
-              id
-              childImageSharp {
-                fluid(maxWidth: 100, maxHeight: 100) {
-                  src
-                  sizes
-                  srcSet
-                  aspectRatio
-                }
-              }
+        school
+        location
+        years
+        image {
+          src {
+            id
+            childImageSharp {
+              gatsbyImageData(
+                width: 100
+                height: 100
+                placeholder: BLURRED
+                layout: CONSTRAINED
+              )
             }
           }
         }
       }
     }
   }
+  experience: allMdx(
+    filter: {fields: {sourceInstanceName: {eq: "experience"}}}
+    limit: 1000
+    sort: {fields: fileAbsolutePath, order: ASC}
+  ) {
+    nodes {
+      id
+      body
+      frontmatter {
+        title
+        company
+        location
+        years
+        image {
+          src {
+            id
+            childImageSharp {
+              gatsbyImageData(
+                width: 100
+                height: 100
+                placeholder: BLURRED
+                layout: CONSTRAINED
+              )
+            }
+          }
+        }
+      }
+    }
+  }
+}
 `

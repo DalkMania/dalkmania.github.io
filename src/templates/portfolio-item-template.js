@@ -33,32 +33,31 @@ const PortfolioItemTemplate = ({ data, pageContext }) => {
 
 export default PortfolioItemTemplate
 
-export const pageQuery = graphql`
-  query PortfolioItemQuery($slug: String) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      id
-      body
-      frontmatter {
-        title
-        introparagraph
-        section
-        skills
-        githuburl
-        demourl
-        coverimage {
-          src {
-            id
-            childImageSharp {
-              fluid(maxWidth: 570, maxHeight: 250) {
-                src
-                sizes
-                srcSet
-                aspectRatio
-              }
-            }
+export const pageQuery = graphql`query PortfolioItemQuery($slug: String) {
+  mdx(fields: {slug: {eq: $slug}}) {
+    id
+    body
+    frontmatter {
+      title
+      introparagraph
+      section
+      skills
+      githuburl
+      demourl
+      coverimage {
+        src {
+          id
+          childImageSharp {
+            gatsbyImageData(
+              width: 570
+              height: 250
+              placeholder: BLURRED
+              layout: CONSTRAINED
+            )
           }
         }
       }
     }
   }
+}
 `
