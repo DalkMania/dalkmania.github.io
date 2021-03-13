@@ -94,42 +94,43 @@ const turnPortfolioIntoPages = async ({ graphql, actions }) => {
   const PortfolioItemTemplate = path.resolve(
     `./src/templates/portfolio-item-template.js`
   )
-  const { data } = await graphql(`{
-  portfolio: allMdx(
-    filter: {fields: {sourceInstanceName: {eq: "portfolio"}}}
-    limit: 1000
-    sort: {fields: fileAbsolutePath, order: DESC}
-  ) {
-    nodes {
-      id
-      frontmatter {
-        title
-        introparagraph
-        section
-        skills
-        githuburl
-        demourl
-        coverimage {
-          src {
-            id
-            childImageSharp {
-              gatsbyImageData(
-                width: 570
-                height: 250
-                placeholder: BLURRED
-                layout: CONSTRAINED
-              )
+  const { data } = await graphql(`
+    {
+      portfolio: allMdx(
+        filter: { fields: { sourceInstanceName: { eq: "portfolio" } } }
+        limit: 1000
+        sort: { fields: fileAbsolutePath, order: DESC }
+      ) {
+        nodes {
+          id
+          frontmatter {
+            title
+            introparagraph
+            section
+            skills
+            githuburl
+            demourl
+            coverimage {
+              src {
+                id
+                childImageSharp {
+                  gatsbyImageData(
+                    width: 570
+                    height: 250
+                    placeholder: BLURRED
+                    layout: CONSTRAINED
+                  )
+                }
+              }
             }
+          }
+          fields {
+            slug
           }
         }
       }
-      fields {
-        slug
-      }
     }
-  }
-}
-`)
+  `)
 
   let sections = []
   let skills = []

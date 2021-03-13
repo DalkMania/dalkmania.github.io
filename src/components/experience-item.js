@@ -1,5 +1,5 @@
 import React from "react"
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 const ExperienceItem = ({ item }) => {
@@ -19,13 +19,14 @@ const ExperienceItem = ({ item }) => {
         </div>
         <GatsbyImage
           image={frontmatter.image.src.childImageSharp.gatsbyImageData}
-          className="experience-image h-24 w-24 no-border" />
+          className="experience-image h-24 w-24 no-border"
+        />
       </div>
       <div className="px-4 pt-0 pb-5 sm:px-6">
         <MDXRenderer>{body}</MDXRenderer>
       </div>
     </li>
-  );
+  )
 }
 
 export default ExperienceItem

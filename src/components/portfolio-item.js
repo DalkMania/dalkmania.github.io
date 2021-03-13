@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image";
+import { GatsbyImage } from "gatsby-plugin-image"
 import { portfolioItemLinks } from "../helpers/portfolioItemLinks"
 
 const PortfolioItem = ({ item }) => {
@@ -13,7 +13,8 @@ const PortfolioItem = ({ item }) => {
       <div className="item-information flex flex-col h-full border-2 border-gray-200 rounded-lg overflow-hidden">
         <GatsbyImage
           image={frontmatter.coverimage.src.childImageSharp.gatsbyImageData}
-          className="lg:h-48 md:h-36 w-full object-cover object-center no-border" />
+          className="lg:h-48 md:h-36 w-full object-cover object-center no-border"
+        />
         <div className="p-6 flex flex-col flex-1">
           <h4 className="tracking-widest text-xs font-medium text-gray-500 mb-1">
             {frontmatter.section}
@@ -41,7 +42,7 @@ const PortfolioItem = ({ item }) => {
         </div>
       </div>
     </li>
-  );
+  )
 }
 
 export default PortfolioItem
