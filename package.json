@@ -29,6 +29,7 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.3.6",
     "gh-pages": "^3.2.3",
     "prettier": "2.4.1",
     "tailwindcss": "^2.2.16"
