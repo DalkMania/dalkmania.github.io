@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/dalkmania.github.io",
   siteMetadata: {
     title: "Niklas Dahlqvist's Portfolio",
     description: "Just Another Portfolio",
