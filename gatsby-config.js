@@ -104,5 +104,17 @@ module.exports = {
         anonymize: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Niklas Dahlqvist's Portfolio`,
+        short_name: `Niklas Dahlqvist's Portfolio`,
+        start_url: `/`,
+        background_color: `#90d0ec`,
+        theme_color: `#ff6d70`,
+        display: `minimal-ui`,
+        icon: `static/favicon.png`, // The image at this location is 512x512.
+      },
+    },
   ],
 }
