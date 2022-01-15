@@ -3,7 +3,7 @@ module.exports = {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
   },
-  purge: ["./src/**/*.js", "./src/**/*.mdx", "./src/**/*.svg"],
+  content: ["./src/**/*.js", "./src/**/*.mdx", "./src/**/*.svg"],
   theme: {
     fontFamily: {
       display: ["Merriweather", "sans-serif"],
