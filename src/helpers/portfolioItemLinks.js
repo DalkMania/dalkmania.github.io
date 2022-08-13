@@ -12,23 +12,23 @@ export const portfolioItemLinks = frontmatter => {
 
   if (githuburl !== "") {
     github = (
-      <Link
+      <a
         className="text-black hover:text-regal-blue active:text-regal-blue"
-        to={githuburl}
+        href={githuburl}
       >
         <GitHubLogo className="fill-current h-8 w-8" />
-      </Link>
+      </a>
     )
   }
 
   if (demourl !== "") {
     demo = (
-      <Link
+      <a
         className="text-black hover:text-regal-blue active:text-regal-blue"
-        to={demourl}
+        href={demourl}
       >
         <DemoIcon className="fill-current h-8 w-8" />
-      </Link>
+      </a>
     )
   }
 

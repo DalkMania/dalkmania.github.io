@@ -7,13 +7,14 @@ const DropdownFilter = props => {
   const { items, name, baseSlug } = props
   const [isFilterOpen, setisFilterOpen] = useState(false)
 
-  const FilterItems = items.map(item => {
+  const FilterItems = items.map((item, index) => {
     return (
       <Link
         activeClassName="bg-gray-100 text-gray-900"
         className="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900"
         role="menuitem"
         to={baseSlug + "/" + slugify(item)}
+        key={index}
       >
         {item}
       </Link>

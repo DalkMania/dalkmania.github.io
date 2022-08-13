@@ -20,6 +20,7 @@ const ExperienceItem = ({ item }) => {
         <GatsbyImage
           image={frontmatter.image.src.childImageSharp.gatsbyImageData}
           className="experience-image h-24 w-24 no-border"
+          alt="Company Logo"
         />
       </div>
       <div className="px-4 pt-0 pb-5 sm:px-6">

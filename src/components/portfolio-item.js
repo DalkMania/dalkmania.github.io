@@ -14,6 +14,7 @@ const PortfolioItem = ({ item }) => {
         <GatsbyImage
           image={frontmatter.coverimage.src.childImageSharp.gatsbyImageData}
           className="lg:h-48 md:h-36 w-full object-cover object-center no-border"
+          alt="Project Image"
         />
         <div className="p-6 flex flex-col flex-1">
           <h4 className="tracking-widest text-xs font-medium text-gray-500 mb-1">

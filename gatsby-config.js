@@ -17,6 +17,7 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
     `gatsby-remark-images`,
     {

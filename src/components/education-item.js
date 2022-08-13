@@ -18,6 +18,7 @@ const EducationItem = ({ item }) => {
         <GatsbyImage
           image={frontmatter.image.src.childImageSharp.gatsbyImageData}
           className="education-image h-24 w-24 no-border"
+          alt="School Logo"
         />
       </div>
 
