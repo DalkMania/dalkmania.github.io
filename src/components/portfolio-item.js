@@ -12,7 +12,10 @@ const PortfolioItem = ({ item }) => {
     <li key={id} className="portfolio-item p-4 md:w-1/2 lg:w-1/3">
       <div className="item-information flex flex-col h-full border-2 border-gray-200 rounded-lg overflow-hidden">
         <GatsbyImage
-          image={frontmatter.coverimage.src.childImageSharp.gatsbyImageData}
+          image={
+            frontmatter.coverimage?.src?.childImageSharp?.gatsbyImageData ??
+            null
+          }
           className="lg:h-48 md:h-36 w-full object-cover object-center no-border"
           alt="Project Image"
         />
