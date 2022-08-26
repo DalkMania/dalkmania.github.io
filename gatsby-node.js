@@ -38,6 +38,11 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value,
     })
+    createNodeField({
+      name: `fileAbsolutePath`,
+      node,
+      value: fileNode.absolutePath,
+    })
   }
 }
 
@@ -59,6 +64,9 @@ const turnPagesIntoPages = async ({ graphql, actions }) => {
           fields {
             slug
           }
+          internal {
+            contentFilePath
+          }
         }
       }
     }
@@ -66,12 +74,10 @@ const turnPagesIntoPages = async ({ graphql, actions }) => {
 
   // 3. Loop over each pizza and create a page for that pizza
   data.pages.nodes.forEach(page => {
-    if (page.fields.slug === "/home/" || page.fields.slug === "/portfolio/") {
-    }
     if (page.fields.slug === "/resume/") {
       actions.createPage({
         path: "/resume",
-        component: ResumeTemplate,
+        component: `${ResumeTemplate}?__contentFilePath=${page.internal.contentFilePath}`,
         context: {
           slug: page.fields.slug,
         },
@@ -79,7 +85,7 @@ const turnPagesIntoPages = async ({ graphql, actions }) => {
     } else {
       actions.createPage({
         path: page.fields.slug,
-        component: pagesTemplate,
+        component: `${pagesTemplate}?__contentFilePath=${page.internal.contentFilePath}`,
         context: {
           slug: page.fields.slug,
         },
@@ -99,7 +105,7 @@ const turnPortfolioIntoPages = async ({ graphql, actions }) => {
       portfolio: allMdx(
         filter: { fields: { sourceInstanceName: { eq: "portfolio" } } }
         limit: 1000
-        sort: { fields: fileAbsolutePath, order: DESC }
+        sort: { fields: fields___fileAbsolutePath, order: DESC }
       ) {
         nodes {
           id
@@ -127,6 +133,9 @@ const turnPortfolioIntoPages = async ({ graphql, actions }) => {
           fields {
             slug
           }
+          internal {
+            contentFilePath
+          }
         }
       }
     }
@@ -145,7 +154,7 @@ const turnPortfolioIntoPages = async ({ graphql, actions }) => {
 
     createPage({
       path: item.fields.slug,
-      component: PortfolioItemTemplate,
+      component: `${PortfolioItemTemplate}?__contentFilePath=${item.internal.contentFilePath}`, //,
       context: {
         slug: item.fields.slug,
         sections,

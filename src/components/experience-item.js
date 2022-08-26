@@ -2,8 +2,8 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-const ExperienceItem = ({ item }) => {
-  const { frontmatter, body, id } = item
+const ExperienceItem = ({ item, children }) => {
+  const { frontmatter, id } = item
 
   return (
     <li key={id} className="bg-white shadow overflow-hidden sm:rounded-lg my-8">
@@ -23,9 +23,7 @@ const ExperienceItem = ({ item }) => {
           alt="Company Logo"
         />
       </div>
-      <div className="px-4 pt-0 pb-5 sm:px-6">
-        <MDXRenderer>{body}</MDXRenderer>
-      </div>
+      <div className="px-4 pt-0 pb-5 sm:px-6">{children}</div>
     </li>
   )
 }

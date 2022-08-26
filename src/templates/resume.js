@@ -1,41 +1,33 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
 import ExperienceItem from "../components/experience-item"
 import EducationItem from "../components/education-item"
 import SEO from "../components/seo"
 
-const Resume = ({ data }) => {
-  const page = data.mdx
-  const education = data.education.nodes
-  const experience = data.experience.nodes
-
-  const EducationItems = education.reverse().map(node => {
+const Resume = ({ data: { mdx, education, experience }, children }) => {
+  const EducationItems = education.nodes.reverse().map(node => {
     return <EducationItem key={node.id} item={node} />
   })
-  const ExperienceItems = experience.map(node => {
+  const ExperienceItems = experience.nodes.map(node => {
     return <ExperienceItem key={node.id} item={node} />
   })
 
   return (
     <>
       <SEO
-        title={page.frontmatter.title}
-        description={page.frontmatter.introparagraph}
+        title={mdx.frontmatter.title}
+        description={mdx.frontmatter.introparagraph}
         slug={"resume"}
       />
       <div className="text-center py-12">
         <p className="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">
-          {page.frontmatter.title}
+          {mdx.frontmatter.title}
         </p>
         <h3 className="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
-          {page.frontmatter.introparagraph}
+          {mdx.frontmatter.introparagraph}
         </h3>
       </div>
-      <div className="page-content">
-        <MDXRenderer>{page.body}</MDXRenderer>
-      </div>
-
+      <div className="page-content">{children}</div>
       <div className="experience pt-5 pb-0">
         <h3 className="experience-title font-extrabold">Experience</h3>
         <ul className="experience-items">{ExperienceItems}</ul>
@@ -52,10 +44,9 @@ const Resume = ({ data }) => {
 export default Resume
 
 export const pageQuery = graphql`
-  query ResumeQuery {
-    mdx(fields: { slug: { eq: "/resume/" } }) {
+  query ($slug: String) {
+    mdx(fields: { slug: { eq: $slug } }) {
       id
-      body
       frontmatter {
         title
         introparagraph
@@ -67,7 +58,6 @@ export const pageQuery = graphql`
     ) {
       nodes {
         id
-        body
         frontmatter {
           title
           school
@@ -92,11 +82,10 @@ export const pageQuery = graphql`
     experience: allMdx(
       filter: { fields: { sourceInstanceName: { eq: "experience" } } }
       limit: 1000
-      sort: { fields: fileAbsolutePath, order: ASC }
+      sort: { fields: parent___internal___contentFilePath, order: ASC }
     ) {
       nodes {
         id
-        body
         frontmatter {
           title
           company

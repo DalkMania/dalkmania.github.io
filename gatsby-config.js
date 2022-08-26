@@ -19,19 +19,20 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-image`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 1440,
+        mdxOptions: {
+          remarkPlugins: [
+            {
+              resolve: `gatsby-remark-images`,
+              options: {
+                maxWidth: 1440,
+              },
             },
-          },
-        ],
+          ],
+        },
       },
     },
     {
