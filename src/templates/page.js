@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import SEO from "../components/seo"
 
 const Page = ({ data: { mdx }, children, pageContext: { slug } }) => {
-  console.log(children)
   return (
     <>
       <SEO
