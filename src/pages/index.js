@@ -26,7 +26,7 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexQuery {
-    mdx(fields: { slug: { eq: "/home/" } }) {
+    mdx(fields: { slug: { eq: "/" } }) {
       id
       body
       frontmatter {

@@ -76,7 +76,7 @@ const turnPagesIntoPages = async ({ graphql, actions }) => {
   data.pages.nodes.forEach(page => {
     if (page.fields.slug === "/resume/") {
       actions.createPage({
-        path: "/resume",
+        path: "/resume/",
         component: `${ResumeTemplate}?__contentFilePath=${page.internal.contentFilePath}`,
         context: {
           slug: page.fields.slug,
