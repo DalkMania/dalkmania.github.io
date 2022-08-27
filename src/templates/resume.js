@@ -14,11 +14,6 @@ const Resume = ({ data: { mdx, education, experience }, children }) => {
 
   return (
     <>
-      <SEO
-        title={mdx.frontmatter.title}
-        description={mdx.frontmatter.introparagraph}
-        slug={"resume"}
-      />
       <div className="text-center py-12">
         <p className="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">
           {mdx.frontmatter.title}
@@ -38,6 +33,16 @@ const Resume = ({ data: { mdx, education, experience }, children }) => {
         <ul className="education-items">{EducationItems}</ul>
       </div>
     </>
+  )
+}
+
+export const Head = ({ data: { mdx } }) => {
+  return (
+    <SEO
+      title={mdx.frontmatter.title}
+      description={mdx.frontmatter.introparagraph}
+      slug={"resume"}
+    />
   )
 }
 

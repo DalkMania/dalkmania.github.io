@@ -15,11 +15,6 @@ const PortfolioIndex = ({ pageContext }) => {
 
   return (
     <>
-      <SEO
-        title={pageTitles[0]}
-        description={pageTitles[1]}
-        slug={"portfolio"}
-      />
       <div className="text-center py-12">
         <p className="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">
           {pageTitles[0]}
@@ -49,6 +44,18 @@ const PortfolioIndex = ({ pageContext }) => {
         />
       )}
     </>
+  )
+}
+
+export const Head = ({ pageContext }) => {
+  const { page } = pageContext
+  const pageTitles = makeTitle(pageContext)
+  return (
+    <SEO
+      title={pageTitles[0]}
+      description={pageTitles[1]}
+      slug={`portfolio/${page}`}
+    />
   )
 }
 

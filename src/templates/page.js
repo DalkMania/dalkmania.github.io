@@ -2,14 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import SEO from "../components/seo"
 
-const Page = ({ data: { mdx }, children, pageContext: { slug } }) => {
+const Page = ({ data: { mdx }, children }) => {
   return (
     <>
-      <SEO
-        title={mdx.frontmatter.title}
-        description={mdx.frontmatter.introparagraph}
-        slug={slug}
-      />
       <div className="text-center py-12">
         <p className="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">
           {mdx.frontmatter.title}
@@ -20,6 +15,16 @@ const Page = ({ data: { mdx }, children, pageContext: { slug } }) => {
       </div>
       <div className="page-content">{children}</div>
     </>
+  )
+}
+
+export const Head = ({ data: { mdx }, pageContext: { slug } }) => {
+  return (
+    <SEO
+      title={mdx.frontmatter.title}
+      description={mdx.frontmatter.introparagraph}
+      slug={slug}
+    />
   )
 }
 

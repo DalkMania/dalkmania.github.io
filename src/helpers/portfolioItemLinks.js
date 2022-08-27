@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 
 import GitHubLogo from "../assets/svg/github-square.svg"
 import DemoIcon from "../assets/svg/external-link-square-alt.svg"

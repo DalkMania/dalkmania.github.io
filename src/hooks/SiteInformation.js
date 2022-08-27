@@ -8,6 +8,7 @@ export const useSiteInformation = () => {
           siteMetadata {
             title
             description
+            canonicalUrl
             social {
               fbLink
               githubLink
