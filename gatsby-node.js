@@ -56,11 +56,6 @@ const turnPagesIntoPages = async ({ graphql, actions }) => {
         limit: 1000
       ) {
         nodes {
-          id
-          frontmatter {
-            title
-            introparagraph
-          }
           fields {
             slug
           }
@@ -108,7 +103,6 @@ const turnPortfolioIntoPages = async ({ graphql, actions }) => {
         sort: { fields: fields___fileAbsolutePath, order: DESC }
       ) {
         nodes {
-          id
           frontmatter {
             title
             introparagraph
