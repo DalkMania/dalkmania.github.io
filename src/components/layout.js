@@ -1,5 +1,4 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { useSiteInformation } from "../hooks/SiteInformation"
 import Header from "../components/header"
 import SiteInfo from "../components/site-info"
@@ -18,10 +17,6 @@ const Layout = ({ children }) => {
       <Footer />
     </div>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout

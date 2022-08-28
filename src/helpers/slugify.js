@@ -1,4 +1,4 @@
-export const slugify = text => {
+exports.slugify = text => {
   return text
     .toString()
     .trim()

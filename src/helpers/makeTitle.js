@@ -1,6 +1,6 @@
 export const makeTitle = pageContext => {
-  const { page, section, skill } = pageContext
-  const title = page >= 2 ? `Porfolio Page ${page}` : "Portfolio"
+  const { currentPage, section, skill } = pageContext
+  const title = currentPage >= 2 ? `Porfolio Page ${currentPage}` : "Portfolio"
   let description
 
   if (section !== undefined) {

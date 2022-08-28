@@ -6,8 +6,8 @@ import Pagination from "../components/pagination"
 import SEO from "../components/seo"
 import { makeTitle } from "../helpers/makeTitle"
 
-const PortfolioIndex = ({ data, pageContext }) => {
-  const { currentPage, numPages, skills, sections } = pageContext
+const PortfolioSkillIndex = ({ data, pageContext }) => {
+  const { currentPage, numPages, skills, sections, skill } = pageContext
   const pageTitles = makeTitle(pageContext)
 
   const PortfolioItems = data.allMdx.nodes.map(node => {
@@ -58,12 +58,15 @@ export const Head = ({ pageContext }) => {
   )
 }
 
-export default PortfolioIndex
+export default PortfolioSkillIndex
 
-export const portfolioListQuery = graphql`
-  query portfolioListQuery($skip: Int!, $limit: Int!) {
+export const portfolioSkillQuery = graphql`
+  query portfolioSkillQuery($skip: Int!, $limit: Int!, $skill: [String]!) {
     allMdx(
-      filter: { fields: { sourceInstanceName: { eq: "portfolio" } } }
+      filter: {
+        fields: { sourceInstanceName: { eq: "portfolio" } }
+        frontmatter: { skills: { in: $skill } }
+      }
       sort: { fields: fields___fileAbsolutePath, order: DESC }
       limit: $limit
       skip: $skip
