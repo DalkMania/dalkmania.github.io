@@ -4,8 +4,11 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { portfolioItemLinks } from "../helpers/portfolioItemLinks"
 
 const PortfolioItem = ({ item }) => {
-  const { frontmatter, id, fields } = item
-  const { slug } = fields
+  const {
+    frontmatter,
+    id,
+    fields: { slug },
+  } = item
   const links = portfolioItemLinks(frontmatter)
 
   return (
