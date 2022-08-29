@@ -7,7 +7,7 @@ import SEO from "../components/seo"
 import { makeTitle } from "../helpers/makeTitle"
 
 const PortfolioSkillIndex = ({ data, pageContext }) => {
-  const { currentPage, numPages, skills, sections, skill } = pageContext
+  const { currentPage, numPages, skills, sections, baseSlug } = pageContext
   const pageTitles = makeTitle(pageContext)
 
   const PortfolioItems = data.allMdx.nodes.map(node => {
@@ -36,11 +36,7 @@ const PortfolioSkillIndex = ({ data, pageContext }) => {
         {PortfolioItems}
       </ul>
       {numPages > 1 && (
-        <Pagination
-          baseSlug={"/portfolio"}
-          page={currentPage}
-          pages={numPages}
-        />
+        <Pagination baseSlug={baseSlug} page={currentPage} pages={numPages} />
       )}
     </>
   )
