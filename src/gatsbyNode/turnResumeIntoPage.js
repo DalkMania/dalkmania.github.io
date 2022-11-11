@@ -1,7 +1,7 @@
 exports.turnResumeIntoPage = async ({ graphql, actions }) => {
   const ResumeTemplate = require.resolve(`../templates/resume.js`)
   const result = await graphql(`
-    query {
+    {
       pages: allMdx(
         filter: {
           fields: {

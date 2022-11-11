@@ -1,7 +1,7 @@
 exports.turnPagesIntoPages = async ({ graphql, actions }) => {
   const pagesTemplate = require.resolve(`../templates/page.js`)
   const result = await graphql(`
-    query {
+    {
       pages: allMdx(
         filter: {
           fields: {

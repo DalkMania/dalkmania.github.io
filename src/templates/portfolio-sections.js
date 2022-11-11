@@ -63,7 +63,7 @@ export const PortfolioSectionQuery = graphql`
         fields: { sourceInstanceName: { eq: "portfolio" } }
         frontmatter: { section: { eq: $section } }
       }
-      sort: { fields: fields___fileAbsolutePath, order: DESC }
+      sort: { fields: { fileAbsolutePath: DESC } }
       limit: $limit
       skip: $skip
     ) {

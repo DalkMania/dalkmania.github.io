@@ -87,7 +87,7 @@ export const pageQuery = graphql`
     experience: allMdx(
       filter: { fields: { sourceInstanceName: { eq: "experience" } } }
       limit: 1000
-      sort: { fields: fields___fileAbsolutePath, order: ASC }
+      sort: { fields: { fileAbsolutePath: ASC } }
     ) {
       nodes {
         id

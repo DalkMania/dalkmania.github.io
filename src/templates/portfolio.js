@@ -64,7 +64,7 @@ export const portfolioListQuery = graphql`
   query portfolioListQuery($skip: Int!, $limit: Int!) {
     allMdx(
       filter: { fields: { sourceInstanceName: { eq: "portfolio" } } }
-      sort: { fields: fields___fileAbsolutePath, order: DESC }
+      sort: { fields: { fileAbsolutePath: DESC } }
       limit: $limit
       skip: $skip
     ) {

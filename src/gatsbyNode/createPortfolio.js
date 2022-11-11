@@ -18,7 +18,7 @@ exports.createPortfolio = async ({ graphql, actions }) => {
     {
       portfolio: allMdx(
         filter: { fields: { sourceInstanceName: { eq: "portfolio" } } }
-        sort: { fields: fields___fileAbsolutePath, order: DESC }
+        sort: { fields: { fileAbsolutePath: DESC } }
       ) {
         nodes {
           id

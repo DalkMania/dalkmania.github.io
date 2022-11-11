@@ -63,7 +63,7 @@ export const portfolioSkillQuery = graphql`
         fields: { sourceInstanceName: { eq: "portfolio" } }
         frontmatter: { skills: { in: $skill } }
       }
-      sort: { fields: fields___fileAbsolutePath, order: DESC }
+      sort: { fields: { fileAbsolutePath: DESC } }
       limit: $limit
       skip: $skip
     ) {
