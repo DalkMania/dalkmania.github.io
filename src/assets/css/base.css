@@ -294,3 +294,13 @@ pre code {
   padding: 0;
   word-wrap: normal;
 }
+
+.page-content ul {
+  margin-top:6px;
+  margin-left:16px;
+}
+
+.page-content ul li {
+  list-style: disc;
+  padding: 5px;
+}
