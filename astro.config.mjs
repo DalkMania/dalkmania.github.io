@@ -6,7 +6,7 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://superb-donut-036b0f.netlify.app",
+    site: "https://www.niklasdahlqvist.com",
     trailingSlash: "always",
     markdown: {
         shikiConfig: {
