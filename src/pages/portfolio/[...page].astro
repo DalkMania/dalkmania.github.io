@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHeader from "../../components/PageHeader.astro";
+import DropdownFilter from "../../components/DropdownFilter.jsx";
+import PortfolioItem from "../../components/PortfolioItem.astro";
+import Pagination from "../../components/Pagination.astro";
+
+export async function getStaticPaths({ paginate }: any) {
+    const portfolioItems = await Astro.glob("../../content/portfolio/*.mdx");
+    return paginate(portfolioItems.reverse(), { pageSize: 12 });
+}
+const { page } = Astro.props;
+const pageTitle = page.currentPage > 1 ? `Portfolio Page ${page.currentPage}` : `Portfolio`;
+const portfolioItems = await Astro.glob("../../content/portfolio/*.mdx");
+const allSections = [...new Set(portfolioItems.map((item) => item.frontmatter.section).sort())];
+const allSkills = [
+    ...new Set(
+        portfolioItems
+            .map((item) => item.frontmatter.skills)
+            .flat()
+            .sort()
+    )
+];
+---
+
+<Layout title={pageTitle} description={`Here is a bunch of stuff I have created.`}>
+    <PageHeader title={pageTitle} intro={`Here is a bunch of stuff I have created.`} />
+    <div class="portfolio-filters flex justify-between">
+        <DropdownFilter items={allSections} baseSlug="portfolio" name={`Portfolio Sections`} client:visible />
+        <DropdownFilter items={allSkills} baseSlug="portfolio" name={`Portfolio Skills`} client:visible />
+    </div>
+
+    <ul class="portfolio-grid container pt-12 pb-8 mx-auto flex flex-wrap -m-4">
+        {
+            page.data.map(
+                (item: {
+                    frontmatter: {
+                        title: string;
+                        section: string;
+                        introparagraph: string;
+                        coverimage: string;
+                        demourl: string | undefined;
+                        githuburl: string | undefined;
+                    };
+                }) => (
+                    <PortfolioItem
+                        title={item.frontmatter.title}
+                        section={item.frontmatter.section}
+                        introparagraph={item.frontmatter.introparagraph}
+                        coverimage={item.frontmatter.coverimage}
+                        demoUrl={item.frontmatter.demourl}
+                        gitUrl={item.frontmatter.githuburl}
+                    />
+                )
+            )
+        }
+    </ul>
+    <nav class="bg-white px-4 py-3 flex items-center sm:px-6 pagination">
+        <ul class="relative z-0 inline-flex items-center w-full justify-center">
+            <Pagination
+                url="/portfolio"
+                index={true}
+                start={2}
+                total={Math.ceil(page.total / page.size)}
+                current={page.currentPage}
+            >
+                {
+                    (page: any) => (
+                        <a
+                            class={`-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 pagination-link ${
+                                page.current ? "is-current" : ""
+                            }`}
+                            href={page.href}
+                        >
+                            {page.number}
+                        </a>
+                    )
+                }
+            </Pagination>
+        </ul>
+    </nav>
+</Layout>

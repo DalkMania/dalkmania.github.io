@@ -1,0 +1,23 @@
+---
+import { Image } from "@astrojs/image/components";
+export interface Props {
+    title: string;
+    company: string;
+    location: string;
+    years: string;
+    image: string;
+}
+const { title, company, location, years, image } = Astro.props;
+---
+
+<li class="bg-white shadow overflow-hidden sm:rounded-lg my-8">
+    <div class="experience-item px-4 py-5 sm:px-6 flex justify-between">
+        <div class="experience-information">
+            <h4 class="experience-company font-bold">{company}</h4>
+            <h4 class="experience-name">{title}</h4>
+            <p>{years} | {location}</p>
+        </div>
+        <Image src={image} alt={title} width={100} height={100} />
+    </div>
+    <div class="px-4 pt-0 pb-5 sm:px-6"><slot /></div>
+</li>

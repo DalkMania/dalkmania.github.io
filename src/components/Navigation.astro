@@ -1,0 +1,27 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+const links = [
+    { href: "/", label: "Home" },
+    { href: "/about/", label: "About" },
+    { href: "/portfolio/", label: "Portfolio" },
+    { href: "/resume/", label: "Resume" },
+    { href: "/contact/", label: "Contact" }
+];
+---
+
+<input type="checkbox" id="nav-toggle" aria-labelledby="nav-toggle" class="nav-toggle hidden" />
+<ul class="main-navigation hidden md:flex md:items-center md:flex-1 md:justify-end text-black">
+    {
+        links.map(({ href, label }) => (
+            <li class={"text-right uppercase ml-6 hover:text-regal-blue active:text-regal-blue"}>
+                <a class={`/${currentPath}` === href ? "text-regal-blue" : ""} href={href}>
+                    {label}
+                </a>
+            </li>
+        ))
+    }
+</ul>
+<label for="nav-toggle" class="nav-toggle-label fixed right-3 block md:hidden z-20">
+    <span></span>
+</label>

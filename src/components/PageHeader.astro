@@ -1,0 +1,29 @@
+---
+export interface Props {
+    title: string;
+    intro: string;
+    fancyTitle?: boolean;
+}
+
+const { title, intro, fancyTitle = false } = Astro.props;
+---
+
+<div class="text-center py-12">
+    {
+        fancyTitle ? (
+            <>
+                <h1 class="text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
+                    {title}
+                </h1>
+                <blockquote>{intro}</blockquote>
+            </>
+        ) : (
+            <>
+                <p class="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">{title}</p>
+                <h3 class="mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
+                    {intro}
+                </h3>
+            </>
+        )
+    }
+</div>

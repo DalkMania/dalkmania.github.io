@@ -1,0 +1,17 @@
+---
+import { Icon } from "astro-icon";
+---
+
+<footer id="colophon" class="bg-gray-900 border-t border-gray-700" role="contentinfo">
+    <div class="container mx-auto flex items-center justify-between text-white p-3 relative">
+        <p class="copyright flex-1 leading-loose">
+            © {new Date().getFullYear()}
+            <a href="/" aria-label={`Link to Homepage`}>Niklas Dahlqvist</a>
+        </p>
+        <p class="w-24 leading-loose flex items-center">
+            <a aria-label={`Built with Astro`} class="w-8 h-8" href="https://www.astro.build" target="_blank">
+                <Icon name="simple-icons:astro" />
+            </a>
+        </p>
+    </div>
+</footer>
