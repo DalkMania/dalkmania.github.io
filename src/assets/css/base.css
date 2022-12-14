@@ -103,6 +103,10 @@ h1.site-title {
     margin: 2rem 0;
   }
 
+  .nav-toggle:checked ~ label {
+    position: fixed;
+  }
+
   .nav-toggle:checked ~ label span {
     display: block;
     background: #fff;
