@@ -1,0 +1,79 @@
+---
+import { Icon } from "astro-icon"
+
+export interface Props {
+  githuburl?: string
+  demourl?: string
+}
+
+const { githuburl, demourl } = Astro.props
+---
+
+{
+  githuburl && demourl && (
+    <ul class="flex justify-start py-4">
+      <li class="mr-2">
+        <a
+          href={githuburl}
+          class="text-black hover:text-regal-blue active:text-regal-blue"
+          target="_blank"
+          aria-label={`Link to the projects GitHub Repository`}
+        >
+          <Icon pack="fa" name="github-square" class={"fill-current h-8 w-8"} />
+        </a>
+      </li>
+      <li>
+        <a
+          href={demourl}
+          class="text-black hover:text-regal-blue active:text-regal-blue"
+          target="_blank"
+          aria-label={`Link to the project Demo`}
+        >
+          <Icon
+            pack="fa"
+            name="external-link-square"
+            class={"fill-current h-8 w-8"}
+          />
+        </a>
+      </li>
+    </ul>
+  )
+}
+
+{
+  githuburl && !demourl && (
+    <ul class="flex justify-start py-4">
+      <li>
+        <a
+          href={githuburl}
+          class="text-black hover:text-regal-blue active:text-regal-blue"
+          target="_blank"
+          aria-label={`Link to the projects GitHub Repository`}
+        >
+          <Icon pack="fa" name="github-square" class={"fill-current h-8 w-8"} />
+        </a>
+      </li>
+    </ul>
+  )
+}
+
+{
+  !githuburl && demourl && (
+    <ul class="flex justify-start py-4">
+      <li>
+        <a
+          href={demourl}
+          class="text-black hover:text-regal-blue active:text-regal-blue"
+          target="_blank"
+          aria-label={`Link to the project Demo`}
+        >
+          <Icon
+            pack="fa"
+            name="external-link-square"
+            class={"fill-current h-8 w-8"}
+          />
+        </a>
+      </li>
+    </ul>
+  )
+}

@@ -1,19 +1,22 @@
 ---
-import { slugify } from "../../../helpers/slugify";
+import { slugify } from "../../../helpers/slugify"
 
 export async function getStaticPaths() {
-    const portfolioItems = await Astro.glob("../../../content/portfolio/*.mdx");
-    return portfolioItems.map((item) => {
-        return {
-            params: { section: slugify(item.frontmatter.section), slug: slugify(item.frontmatter.title) },
-            props: { item }
-        };
-    });
+  const portfolioItems = await Astro.glob("../../../content/portfolio/*.mdx")
+  return portfolioItems.map(item => {
+    return {
+      params: {
+        section: slugify(item.frontmatter.section),
+        slug: slugify(item.frontmatter.title),
+      },
+      props: { item },
+    }
+  })
 }
 
 const {
-    item: { Content }
-} = Astro.props;
+  item: { Content },
+} = Astro.props
 ---
 
 <Content />

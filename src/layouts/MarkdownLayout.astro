@@ -1,16 +1,21 @@
 ---
-import Layout from "./Layout.astro";
-import PageHeader from "../components/PageHeader.astro";
+import Layout from "./Layout.astro"
+import PageHeader from "../components/PageHeader.astro"
+import ProjectInfo from "../components/ProjectInfo.astro"
 
 export interface Props {
-    title: string;
-    introparagraph?: string;
+  title: string
+  introparagraph?: string
+  githuburl?: string
+  demourl?: string
 }
 
-const { title, introparagraph } = Astro.props.frontmatter || Astro.props;
+const { title, introparagraph, githuburl, demourl } =
+  Astro.props.frontmatter || Astro.props
 ---
 
 <Layout title={title} description={introparagraph}>
-    <PageHeader title={title} intro={introparagraph} />
-    <slot />
+  <PageHeader title={title} intro={introparagraph} />
+  <ProjectInfo githuburl={githuburl} demourl={demourl} />
+  <slot />
 </Layout>
