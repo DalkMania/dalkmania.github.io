@@ -1,44 +1,58 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon"
 
 export interface Props {
-    demoUrl?: string;
-    gitUrl?: string;
+  demoUrl?: string
+  gitUrl?: string
 }
-const { demoUrl, gitUrl } = Astro.props;
+const { demoUrl, gitUrl } = Astro.props
 ---
 
 <span
-    class="text-gray-300 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300 h-10 w-10"
+  class="text-gray-300 mr-3 inline-flex items-center ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-300 h-10 w-10"
 >
-    {
-        gitUrl ? (
-            <a
-                href={gitUrl}
-                class="text-black hover:text-regal-blue active:text-regal-blue"
-                target="_blank"
-                aria-label={`Link to the projects GitHub Repository`}
-            >
-                <Icon pack="fa" name="github-square" class={"fill-current h-8 w-8"} />
-            </a>
-        ) : (
-            <Icon pack="fa" name="github-square" class={"link-none fill-current h-8 w-8"} />
-        )
-    }
+  {
+    gitUrl ? (
+      <a
+        href={gitUrl}
+        class="text-black hover:text-regal-blue active:text-regal-blue"
+        target="_blank"
+        aria-label={`Link to the projects GitHub Repository`}
+      >
+        <Icon pack="fa" name="github-square" class={"fill-current h-8 w-8"} />
+      </a>
+    ) : (
+      <Icon
+        pack="fa"
+        name="github-square"
+        class={"link-none fill-current h-8 w-8"}
+      />
+    )
+  }
 </span>
-<span class="text-gray-300 inline-flex items-center leading-none text-sm h-8 w-8">
-    {
-        demoUrl ? (
-            <a
-                href={demoUrl}
-                class="text-black hover:text-regal-blue active:text-regal-blue"
-                target="_blank"
-                aria-label={`Link to the project Demo`}
-            >
-                <Icon pack="fa" name="external-link-square" class={"fill-current h-8 w-8"} />
-            </a>
-        ) : (
-            <Icon pack="fa" name="external-link-square" class={"link-none fill-current h-8 w-8"} />
-        )
-    }
+<span
+  class="text-gray-300 inline-flex items-center leading-none text-sm h-8 w-8"
+>
+  {
+    demoUrl ? (
+      <a
+        href={demoUrl}
+        class="text-black hover:text-regal-blue active:text-regal-blue"
+        target="_blank"
+        aria-label={`Link to the project Demo`}
+      >
+        <Icon
+          pack="fa"
+          name="external-link-square"
+          class={"fill-current h-8 w-8"}
+        />
+      </a>
+    ) : (
+      <Icon
+        pack="fa"
+        name="external-link-square"
+        class={"link-none fill-current h-8 w-8"}
+      />
+    )
+  }
 </span>
