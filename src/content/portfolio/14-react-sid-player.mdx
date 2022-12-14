@@ -9,9 +9,17 @@ githuburl: "https://github.com/DalkMania/react-sid-player"
 demourl: "https://dalkmania.github.io/react-sid-player"
 ---
 
+import { Image } from "@astrojs/image/components"
+
 <figure class="figure figure--center">
-    ![React SID Player](/assets/images/react-sid-player-screenshot.jpg "React SID Player")
-    <figcaption class="figure__caption">App screenshot</figcaption>
+  <Image
+    src="/assets/images/react-sid-player-screenshot.jpg"
+    alt="React SID Player"
+    width={1270}
+    format={"webp"}
+    aspectRatio={1607 / 839}
+  />
+  <figcaption class="figure__caption">App screenshot</figcaption>
 </figure>
 
 SID (short for Sound Interface Device) is the name of the sound chip used in the VC 10, C64 and C128. The chip's distinctive sound is easily recognized and was clearly ahead the competition. The chip combines analogue and digital circuitry, that cannot be emulated with 100% fidelity even today. Emulated sounds do come very close to the original and a layperson is not likely to notice the difference. The SID sound is well known among retro gamers.

@@ -9,11 +9,19 @@ githuburl: "https://github.com/DalkMania/react-hangman"
 demourl: "https://hangman-dalkmania.netlify.app"
 ---
 
+import { Image } from "@astrojs/image/components"
+
 A simple React HangMan game made with Create-React-App. This was a learning exercise for me to get into and play around with React and React Hooks.
 
 <figure class="figure figure--center">
-    ![The Game](/assets/images/react-hangman.png "The Game")
-    <figcaption class="figure__caption">A simple React Hangman game.</figcaption>
+  <Image
+    src="/assets/images/react-hangman.png"
+    alt="The Game"
+    width={1270}
+    format={"webp"}
+    aspectRatio={720 / 341}
+  />
+  <figcaption class="figure__caption">A simple React Hangman game.</figcaption>
 </figure>
 
 It is based on a tutorial from the [Traversy Media YouTube channel](https://www.youtube.com/c/TraversyMedia).
@@ -22,10 +30,10 @@ But I extended it a bit, by adding a [random word generator](https://www.npmjs.c
 
 ## Installation
 
--   Go to [OwlBot](https://owlbot.info/) and sign up for an API key.
--   `git clone git@github.com:DalkMania/react-hangman.git`
--   `cd react-hangman`
--   `npm install or yarn`
--   Put your OwlBot API key in the `.env.example` file and rename it to `.env`
--   `npm run start or yarn start`
--   Visit http://localhost:3000/
+- Go to [OwlBot](https://owlbot.info/) and sign up for an API key.
+- `git clone git@github.com:DalkMania/react-hangman.git`
+- `cd react-hangman`
+- `npm install or yarn`
+- Put your OwlBot API key in the `.env.example` file and rename it to `.env`
+- `npm run start or yarn start`
+- Visit http://localhost:3000/

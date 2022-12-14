@@ -9,9 +9,19 @@ githuburl: "https://github.com/DalkMania/chuck-norris-pwa"
 demourl: "https://dalkmania.github.io/chuck-norris-pwa/"
 ---
 
+import { Image } from "@astrojs/image/components"
+
 <figure class="figure figure--center">
-    ![Chuck Norris PWA](/assets/images/chuck-norris-pwa-1.jpg "Chuck Norris PWA")
-    <figcaption class="figure__caption">App Homepage with a random Chuck Norris joke.</figcaption>
+  <Image
+    src="/assets/images/chuck-norris-pwa-1.jpg"
+    alt="Chuck Norris PWA"
+    width={1270}
+    format={"webp"}
+    aspectRatio={2 / 1}
+  />
+  <figcaption class="figure__caption">
+    App Homepage with a random Chuck Norris joke.
+  </figcaption>
 </figure>
 
 This is an experiment I created to learn and get familiar with Angular and how to use it with differtent APIs. It's built with a funny API that I found called Chuck Norris Joke API together with the Movie Database API.
@@ -19,13 +29,28 @@ This is an experiment I created to learn and get familiar with Angular and how t
 It's also my first PWA with a service worker, which makes the app available offline.
 
 <figure class="figure figure--center">
-    ![Chuck Norris PWA Image 2](/assets/images/chuck-norris-pwa-2.jpg "Chuck Norris PWA Image 2")
-    <figcaption class="figure__caption">Popular Chuck Norris movies according to the Movie Database API.</figcaption>
+  <Image
+    src="/assets/images/chuck-norris-pwa-2.jpg"
+    alt="Chuck Norris PWA Image 2"
+    width={1270}
+    format={"webp"}
+    aspectRatio={2 / 1}
+  />
+  <figcaption class="figure__caption">
+    Popular Chuck Norris movies according to the Movie Database API.
+  </figcaption>
 </figure>
 
 <figure class="figure figure--center">
-    ![Chuck Norris PWA Image 3](/assets/images/chuck-norris-pwa-3.jpg "Chuck Norris PWA Image 3")
-    <figcaption class="figure__caption">
-        Just some movie information screen with cover art, movie title, year and synopsis.
-    </figcaption>
+  <Image
+    src="/assets/images/chuck-norris-pwa-3.jpg"
+    alt="Chuck Norris PWA Image 3"
+    width={1270}
+    format={"webp"}
+    aspectRatio={2 / 1}
+  />
+  <figcaption class="figure__caption">
+    Just some movie information screen with cover art, movie title, year and
+    synopsis.
+  </figcaption>
 </figure>

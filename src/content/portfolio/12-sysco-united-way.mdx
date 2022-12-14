@@ -9,9 +9,17 @@ githuburl: ""
 demourl: "http://syscounitedway.com"
 ---
 
+import { Image } from "@astrojs/image/components"
+
 <figure class="figure figure--center no-border">
-    ![Sysco & United Way Campaign Site](/assets/images/sysco-united-way-website.jpg "Sysco & United Way Campaign Site")
-    <figcaption class="figure__caption">Screenshot</figcaption>
+  <Image
+    src="/assets/images/sysco-united-way-website.jpg"
+    alt="Sysco & United Way Campaign Site"
+    width={1270}
+    format={"webp"}
+    aspectRatio={1160 / 763}
+  />
+  <figcaption class="figure__caption">Screenshot</figcaption>
 </figure>
 
 This is one of the many campaign websites, I developed together with the marketing team at CAKE.

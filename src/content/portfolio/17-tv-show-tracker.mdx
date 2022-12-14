@@ -9,21 +9,45 @@ githuburl: "https://github.com/DalkMania/show-tracker"
 demourl: "https://dalkmania.github.io/show-tracker"
 ---
 
+import { Image } from "@astrojs/image/components"
+
 <figure class="figure figure--center">
-    ![TV Show Tracker Search Image](/assets/images/show-tracker-1.jpg "TV Show Tracker Search Image")
-    <figcaption class="figure__caption">First you need to find the TV shows you want to track.</figcaption>
+  <Image
+    src="/assets/images/show-tracker-1.jpg"
+    alt="TV Show Tracker Search Image"
+    width={1270}
+    format={"webp"}
+    aspectRatio={2 / 1}
+  />
+  <figcaption class="figure__caption">
+    First you need to find the TV shows you want to track.
+  </figcaption>
 </figure>
 
 This project is a simple TV Show Tracker built with React, Redux, and Firebase. It keeps track of TV shows and when they air and puts in a calendar for you. It uses Google authentication and stores your collection in Firebase.
 
 <figure class="figure figure--center">
-    ![TV Show Tracker Collection Image](/assets/images/show-tracker-2.jpg "TV Show Tracker Collection Image")
-    <figcaption class="figure__caption">Sample TV Show Collection</figcaption>
+  <Image
+    src="/assets/images/show-tracker-2.jpg"
+    alt="TV Show Tracker Collection Image"
+    width={1270}
+    format={"webp"}
+    aspectRatio={2 / 1}
+  />
+  <figcaption class="figure__caption">Sample TV Show Collection</figcaption>
 </figure>
 
 You can add or remove shows that you are tracking.
 
 <figure class="figure figure--center">
-    ![TV Show Tracker Calendar Image](/assets/images/show-tracker-3.jpg "TV Show Tracker Calendar Image")
-    <figcaption class="figure__caption">Hmm, I wonder why most of my shows air on Thursdays?</figcaption>
+  <Image
+    src="/assets/images/show-tracker-3.jpg"
+    alt="TV Show Tracker Calendar Image"
+    width={1270}
+    format={"webp"}
+    aspectRatio={2 / 1}
+  />
+  <figcaption class="figure__caption">
+    Hmm, I wonder why most of my shows air on Thursdays?
+  </figcaption>
 </figure>
