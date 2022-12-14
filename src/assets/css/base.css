@@ -239,7 +239,8 @@ img {
 }
 
 figure.no-border img,
-.no-border picture img {
+.no-border picture img,
+img.no-border  {
   border: none;
 }
 
