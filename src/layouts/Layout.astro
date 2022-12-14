@@ -1,42 +1,45 @@
 ---
-import "@fontsource/merriweather";
-import "@fontsource/raleway";
-import Header from "../components/Header.astro";
-import SiteInfo from "../components/SiteInfo.astro";
-import Footer from "../components/Footer.astro";
-import { GoogleAnalytics } from "astro-google-analytics";
-import { SEO } from "astro-seo";
-import "../assets/css/base.css";
+import "@fontsource/merriweather"
+import "@fontsource/raleway"
+import Header from "../components/Header.astro"
+import SiteInfo from "../components/SiteInfo.astro"
+import Footer from "../components/Footer.astro"
+import { GoogleAnalytics } from "astro-google-analytics"
+import { SEO } from "astro-seo"
+import "../assets/css/base.css"
 
 export interface Props {
-    title: string;
-    description: string;
+  title: string
+  description: string
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
-        <meta name="generator" content={Astro.generator} />
-        <title>{title} | Niklas Dahlqvist's Portfolio</title>
-        <SEO title={title} description={description} />
-        <GoogleAnalytics id="UA-18219974-8" />
-    </head>
-    <body>
-        <div id="wrapper" class="site">
-            <Header />
-            <main id="content" class="hfeed site-main" role="main">
-                <div class="container mx-auto p-3 relative">
-                    <slot />
-                </div>
-            </main>
-            <SiteInfo title={"Niklas Dahlqvist's Portfolio"} description={"Just Another Portfolio"} />
-            <Footer />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title} | Niklas Dahlqvist's Portfolio</title>
+    <SEO title={title} description={description} />
+    <GoogleAnalytics id="G-L1JLG7M0LF" />
+  </head>
+  <body>
+    <div id="wrapper" class="site">
+      <Header />
+      <main id="content" class="hfeed site-main" role="main">
+        <div class="container mx-auto p-3 relative">
+          <slot />
         </div>
-    </body>
+      </main>
+      <SiteInfo
+        title={"Niklas Dahlqvist's Portfolio"}
+        description={"Just Another Portfolio"}
+      />
+      <Footer />
+    </div>
+  </body>
 </html>
