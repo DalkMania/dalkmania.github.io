@@ -1,48 +1,51 @@
 ---
-import { Image } from "@astrojs/image/components";
-import { slugify } from "../helpers/slugify";
-import PortfolioItemLinks from "./PortfolioItemLinks.astro";
+import { Image } from "@astrojs/image/components"
+import { slugify } from "../helpers/slugify"
+import PortfolioItemLinks from "./PortfolioItemLinks.astro"
 
 export interface Props {
-    title: string;
-    section: string;
-    introparagraph: string;
-    coverimage: string;
-    demoUrl?: string;
-    gitUrl?: string;
+  title: string
+  section: string
+  introparagraph: string
+  coverimage: string
+  demoUrl?: string
+  gitUrl?: string
 }
-const { title, section, introparagraph, coverimage, demoUrl, gitUrl } = Astro.props;
-const slug = `/portfolio/${slugify(section)}/${slugify(title)}/`;
+const { title, section, introparagraph, coverimage, demoUrl, gitUrl } =
+  Astro.props
+const slug = `/portfolio/${slugify(section)}/${slugify(title)}/`
 ---
 
 <li class="portfolio-item p-4 md:w-1/2 lg:w-1/3">
-    <div class="item-information flex flex-col h-full border-2 border-gray-200 rounded-lg overflow-hidden">
-        <Image
-            src={coverimage}
-            alt={title}
-            width={570}
-            height={250}
-            class="lg:h-48 md:h-36 w-full object-cover object-center no-border"
-            alt="Project Image"
-        />
-        <div class="p-6 flex flex-col flex-1">
-            <h4 class="tracking-widest text-xs font-medium text-gray-500 mb-1">
-                {section}
-            </h4>
-            <h4 class="title-font text-lg font-bold text-gray-900 mb-3">
-                {title}
-            </h4>
-            <p class="leading-relaxed mb-3 flex-1">
-                {introparagraph}
-            </p>
-            <div class="flex items-center flex-wrap">
-                <a
-                    href={slug}
-                    class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
-                    aria-label={`Read More about the ${title}`}>Learn More</a
-                >
-                <PortfolioItemLinks demoUrl={demoUrl} gitUrl={gitUrl} />
-            </div>
-        </div>
+  <div
+    class="item-information flex flex-col h-full border-2 border-gray-200 rounded-lg overflow-hidden"
+  >
+    <Image
+      src={coverimage}
+      alt={title}
+      width={570}
+      height={250}
+      class="lg:h-48 md:h-36 w-full object-cover object-center no-border"
+      alt="Project Image"
+    />
+    <div class="p-6 flex flex-col flex-1">
+      <h4 class="tracking-widest text-xs font-medium text-gray-500 mb-1">
+        {section}
+      </h4>
+      <h4 class="title-font text-lg font-bold text-gray-900 mb-3">
+        {title}
+      </h4>
+      <p class="leading-relaxed mb-3 flex-1">
+        {introparagraph}
+      </p>
+      <div class="flex items-center flex-wrap">
+        <a
+          href={slug}
+          class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0"
+          aria-label={`Read More about the ${title}`}>More Project Details</a
+        >
+        <PortfolioItemLinks demoUrl={demoUrl} gitUrl={gitUrl} />
+      </div>
     </div>
+  </div>
 </li>
