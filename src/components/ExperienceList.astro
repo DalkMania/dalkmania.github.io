@@ -1,21 +1,21 @@
 ---
-import ExperienceItem from "./ExperienceItem.astro";
-const experienceItems = await Astro.glob("../content/experience/*.mdx");
+import ExperienceItem from "./ExperienceItem.astro"
+const experienceItems = await Astro.glob("../content/experience/*.mdx")
 ---
 
-<div class="experience pt-5 pb-0">
-    <h3 class="experience-title font-extrabold">Experience</h3>
-    <ul class="experience-items">
-        {
-            experienceItems.map((item) => (
-                <ExperienceItem
-                    title={item.frontmatter.title}
-                    company={item.frontmatter.company}
-                    location={item.frontmatter.location}
-                    years={item.frontmatter.years}
-                    image={item.frontmatter.image}
-                />
-            ))
-        }
-    </ul>
+<div class="experience pt-5 pb-0 not-prose">
+  <h3 class="font-display experience-title font-extrabold">Experience</h3>
+  <ul class="experience-items">
+    {
+      experienceItems.map(item => (
+        <ExperienceItem
+          title={item.frontmatter.title}
+          company={item.frontmatter.company}
+          location={item.frontmatter.location}
+          years={item.frontmatter.years}
+          image={item.frontmatter.image}
+        />
+      ))
+    }
+  </ul>
 </div>

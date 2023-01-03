@@ -1,17 +1,44 @@
 ---
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon"
+import SiteInfo from "./SiteInfo.astro"
 ---
 
-<footer id="colophon" class="bg-gray-900 border-t border-gray-700" role="contentinfo">
-    <div class="container mx-auto flex items-center justify-between text-white p-3 relative">
-        <p class="copyright flex-1 leading-loose">
-            © {new Date().getFullYear()}
-            <a href="/" aria-label={`Link to Homepage`}>Niklas Dahlqvist</a>
-        </p>
-        <p class="w-24 leading-loose flex items-center">
-            <a aria-label={`Built with Astro`} class="w-8 h-8" href="https://www.astro.build" target="_blank">
-                <Icon name="simple-icons:astro" />
-            </a>
-        </p>
-    </div>
+<footer id="colophon" class="bg-gray-900" role="contentinfo">
+  <SiteInfo
+    title={"Niklas Dahlqvist's Portfolio"}
+    description={"Just Another Portfolio"}
+  />
+  <div
+    class="container mx-auto flex items-center justify-between text-white p-3 relative"
+  >
+    <p class="copyright flex-1 leading-loose">
+      © {new Date().getFullYear()}
+      <a href="/" aria-label={`Link to Homepage`}>Niklas Dahlqvist</a>
+    </p>
+    <p class="w-24 leading-loose flex items-center">
+      <a
+        aria-label={`Built with Astro`}
+        class="w-8 h-8"
+        href="https://www.astro.build"
+        target="_blank"
+      >
+        <Icon name="simple-icons:astro" />
+      </a>
+    </p>
+  </div>
 </footer>
+
+<style>
+  .social-icons li.facebook a:hover svg {
+    color: #3b5998;
+  }
+  .social-icons li.twitter a:hover svg {
+    color: #55acee;
+  }
+  .social-icons li.linkedin a:hover svg {
+    color: #0077b5;
+  }
+  .social-icons li.github a:hover svg {
+    color: #4183c4;
+  }
+</style>

@@ -13,13 +13,13 @@ demourl: ""
 
 Using NPM
 
-```
+```shell
 npm install --save gatsby-plugin-snap-engage
 ```
 
 Using Yarn
 
-```
+```shell
 yarn add gatsby-plugin-snap-engage
 ```
 
@@ -30,27 +30,27 @@ yarn add gatsby-plugin-snap-engage
 
 // Simple setup
 plugins: [
-    {
-        resolve: `gatsby-plugin-snap-engage`,
-        options: {
-            id: "YOUR_SNAP_ENGAGE_SCRIPT_ID",
-            includeInDevelopment: false
-        }
-    }
-];
+  {
+    resolve: `gatsby-plugin-snap-engage`,
+    options: {
+      id: "YOUR_SNAP_ENGAGE_SCRIPT_ID",
+      includeInDevelopment: false,
+    },
+  },
+]
 
 // Multilingual setup
 plugins: [
-    {
-        resolve: `gatsby-plugin-snap-engage`,
-        options: {
-            defaultLocale: "en",
-            locales: {
-                en: "YOUR_SNAP_ENGAGE_SCRIPT_ID_FOR_LOCALE",
-                fr: "YOUR_SNAP_ENGAGE_SCRIPT_ID_FOR_LOCALE"
-            },
-            includeInDevelopment: false
-        }
-    }
-];
+  {
+    resolve: `gatsby-plugin-snap-engage`,
+    options: {
+      defaultLocale: "en",
+      locales: {
+        en: "YOUR_SNAP_ENGAGE_SCRIPT_ID_FOR_LOCALE",
+        fr: "YOUR_SNAP_ENGAGE_SCRIPT_ID_FOR_LOCALE",
+      },
+      includeInDevelopment: false,
+    },
+  },
+]
 ```

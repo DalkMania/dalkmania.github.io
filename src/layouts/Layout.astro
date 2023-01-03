@@ -28,17 +28,15 @@ const { title, description } = Astro.props
     <GoogleAnalytics id="G-L1JLG7M0LF" />
   </head>
   <body>
-    <div id="wrapper" class="site">
+    <div id="wrapper" class="site min-h-screen font-body flex flex-col">
       <Header />
-      <main id="content" class="hfeed site-main" role="main">
-        <div class="container mx-auto p-3 relative">
+      <main id="content" class="hfeed site-main flex-1" role="main">
+        <div
+          class="container mx-auto p-3 relative prose max-w-screen-xl prose-headings:font-display pb-12 prose-a:no-underline"
+        >
           <slot />
         </div>
       </main>
-      <SiteInfo
-        title={"Niklas Dahlqvist's Portfolio"}
-        description={"Just Another Portfolio"}
-      />
       <Footer />
     </div>
   </body>

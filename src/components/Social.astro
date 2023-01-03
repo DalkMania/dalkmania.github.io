@@ -1,5 +1,9 @@
 ---
-const { platform, username } = Astro.props;
+const { platform, username } = Astro.props
 ---
 
-<a aria-label={`Link to ${platform}`} href={`https://www.${platform}.com/${username}`}><slot /></a>
+<a
+  aria-label={`Link to ${platform}`}
+  href={`https://www.${platform}.com/${username}`}
+  ><slot />
+</a>

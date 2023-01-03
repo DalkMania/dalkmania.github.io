@@ -11,7 +11,7 @@ const { githuburl, demourl } = Astro.props
 
 {
   githuburl && demourl && (
-    <ul class="flex justify-start py-4">
+    <ul class="flex justify-start py-4 not-prose list-none m-0">
       <li class="mr-2">
         <a
           href={githuburl}
@@ -42,7 +42,7 @@ const { githuburl, demourl } = Astro.props
 
 {
   githuburl && !demourl && (
-    <ul class="flex justify-start py-4">
+    <ul class="flex justify-start py-4 not-prose list-none m-0">
       <li>
         <a
           href={githuburl}
@@ -59,7 +59,7 @@ const { githuburl, demourl } = Astro.props
 
 {
   !githuburl && demourl && (
-    <ul class="flex justify-start py-4">
+    <ul class="flex justify-start py-4 not-prose list-none m-0">
       <li>
         <a
           href={demourl}

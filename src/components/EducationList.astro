@@ -1,21 +1,21 @@
 ---
-import EducationItem from "./EducationItem.astro";
-const educationItems = await Astro.glob("../content/education/*.mdx");
+import EducationItem from "./EducationItem.astro"
+const educationItems = await Astro.glob("../content/education/*.mdx")
 ---
 
-<div class="education pt-5 pb-0">
-    <h3 class="education-title font-extrabold">Education</h3>
-    <ul class="education-items">
-        {
-            educationItems.map((item) => (
-                <EducationItem
-                    title={item.frontmatter.title}
-                    school={item.frontmatter.school}
-                    location={item.frontmatter.location}
-                    years={item.frontmatter.years}
-                    image={item.frontmatter.image}
-                />
-            ))
-        }
-    </ul>
+<div class="education pt-5 pb-0 not-prose">
+  <h3 class="font-display education-title font-extrabold">Education</h3>
+  <ul class="education-items">
+    {
+      educationItems.map(item => (
+        <EducationItem
+          title={item.frontmatter.title}
+          school={item.frontmatter.school}
+          location={item.frontmatter.location}
+          years={item.frontmatter.years}
+          image={item.frontmatter.image}
+        />
+      ))
+    }
+  </ul>
 </div>

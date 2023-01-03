@@ -10,14 +10,8 @@ const links = [
 ]
 ---
 
-<input
-  type="checkbox"
-  id="nav-toggle"
-  aria-labelledby="nav-toggle"
-  class="nav-toggle hidden"
-/>
 <ul
-  class="main-navigation hidden md:flex md:items-center md:flex-1 md:justify-end text-black"
+  class="main-navigation hidden lg:flex lg:items-center lg:flex-1 lg:justify-end text-black"
 >
   {
     links.map(({ href, label }) => (
@@ -36,6 +30,77 @@ const links = [
     ))
   }
 </ul>
-<label for="nav-toggle" class="nav-toggle-label right-3 block md:hidden z-20">
-  <span></span>
-</label>
+<div class="space-y-2 hover:cursor-pointer lg:hidden hamburger-menu">
+  <span class="block w-5 h-0.5 bg-gray-600"></span>
+  <span class="block w-8 h-0.5 bg-gray-600"></span>
+  <span class="block w-8 h-0.5 bg-gray-600"></span>
+</div>
+<div class="space-y-2 hover:cursor-pointer hidden hamburger-menu-close z-50">
+  <svg
+    class="h-6 w-6"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M6 18L18 6M6 6l12 12"></path>
+  </svg>
+</div>
+
+<style>
+  .main-navigation.open {
+    background: #fff;
+    z-index: 10;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transform: scale(1, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+  .main-navigation.open ul {
+    list-style-type: none;
+    margin: 0;
+  }
+  .main-navigation.open li {
+    display: block;
+    margin: 2rem 0;
+  }
+  .main-navigation.open li:first-child {
+    margin: 2rem 0;
+  }
+
+  .main-navigation.open li:last-child {
+    margin: 2rem 0;
+  }
+</style>
+
+<script>
+  const menu = document.querySelector(".main-navigation")
+  const hamburger = document.querySelector(".hamburger-menu")
+  const hamburgerClose = document.querySelector(".hamburger-menu-close")
+
+  hamburger &&
+    hamburger.addEventListener("click", () => {
+      menu && menu.classList.toggle("open")
+      hamburgerClose && hamburgerClose.classList.toggle("hidden")
+    })
+
+  hamburgerClose &&
+    hamburgerClose.addEventListener("click", () => {
+      menu && menu.classList.toggle("open")
+      hamburgerClose && hamburgerClose.classList.toggle("hidden")
+    })
+</script>
