@@ -1,64 +1,83 @@
 ---
-import Layout from "../../../layouts/Layout.astro";
-import PageHeader from "../../../components/PageHeader.astro";
-import PortfolioItem from "../../../components/PortfolioItem.astro";
-import DropdownFilter from "../../../components/DropdownFilter.jsx";
-import { slugify } from "../../../helpers/slugify";
+import Layout from "../../../layouts/Layout.astro"
+import PageHeader from "../../../components/PageHeader.astro"
+import PortfolioItem from "../../../components/PortfolioItem.astro"
+import DropdownFilter from "../../../components/DropdownFilter.jsx"
+import { slugify } from "../../../helpers/slugify"
 
 export async function getStaticPaths() {
-    const portfolioItems = await Astro.glob("../../../content/portfolio/*.mdx");
-    const allSections = [...new Set(portfolioItems.map((item) => item.frontmatter.section))];
+  const portfolioItems = await Astro.glob("../../../content/portfolio/*.mdx")
+  const allSections = [
+    ...new Set(portfolioItems.map(item => item.frontmatter.section)),
+  ]
 
-    return allSections.map((section) => {
-        const filteredItems = portfolioItems.filter((item) => item.frontmatter.section === section);
-        return {
-            params: { section: slugify(section) },
-            props: { items: filteredItems, sectionTitle: section }
-        };
-    });
-}
-const { items, sectionTitle } = Astro.props;
-const portfolioItems = await Astro.glob("../../../content/portfolio/*.mdx");
-const allSections = [...new Set(portfolioItems.map((item) => item.frontmatter.section).sort())];
-const allSkills = [
-    ...new Set(
-        portfolioItems
-            .map((item) => item.frontmatter.skills)
-            .flat()
-            .sort()
+  return allSections.map(section => {
+    const filteredItems = portfolioItems.filter(
+      item => item.frontmatter.section === section
     )
-];
+    return {
+      params: { section: slugify(section) },
+      props: { items: filteredItems, sectionTitle: section },
+    }
+  })
+}
+const { items, sectionTitle } = Astro.props
+const portfolioItems = await Astro.glob("../../../content/portfolio/*.mdx")
+const allSections = [
+  ...new Set(portfolioItems.map(item => item.frontmatter.section).sort()),
+]
+const allSkills = [
+  ...new Set(
+    portfolioItems
+      .map(item => item.frontmatter.skills)
+      .flat()
+      .sort()
+  ),
+]
 ---
 
 <Layout title="Portfolio" description={`Projects filed under ${sectionTitle}`}>
-    <PageHeader title={`Portfolio`} intro={`Projects filed under ${sectionTitle}`} />
-    <div class="portfolio-filters flex justify-between">
-        <DropdownFilter items={allSections} name={`Portfolio Sections`} client:visible />
-        <DropdownFilter items={allSkills} name={`Portfolio Skills`} client:visible />
-    </div>
-    <ul class="portfolio-grid container pt-12 pb-8 mx-auto flex flex-wrap -m-4">
-        {
-            items.reverse().map(
-                (item: {
-                    frontmatter: {
-                        title: string;
-                        section: string;
-                        introparagraph: string;
-                        coverimage: string;
-                        demourl: string | undefined;
-                        githuburl: string | undefined;
-                    };
-                }) => (
-                    <PortfolioItem
-                        title={item.frontmatter.title}
-                        section={item.frontmatter.section}
-                        introparagraph={item.frontmatter.introparagraph}
-                        coverimage={item.frontmatter.coverimage}
-                        demoUrl={item.frontmatter.demourl}
-                        gitUrl={item.frontmatter.githuburl}
-                    />
-                )
-            )
-        }
-    </ul>
+  <PageHeader
+    title={`Portfolio`}
+    intro={`Projects filed under ${sectionTitle}`}
+  />
+  <div class="portfolio-filters flex justify-between">
+    <DropdownFilter
+      items={allSections}
+      name={`Portfolio Sections`}
+      client:visible
+    />
+    <DropdownFilter
+      items={allSkills}
+      name={`Portfolio Skills`}
+      client:visible
+    />
+  </div>
+  <ul
+    class="portfolio-grid container pt-12 pb-8 mx-auto flex flex-wrap -m-4 not-prose list-none p-0"
+  >
+    {
+      items.reverse().map(
+        (item: {
+          frontmatter: {
+            title: string
+            section: string
+            introparagraph: string
+            coverimage: string
+            demourl: string | undefined
+            githuburl: string | undefined
+          }
+        }) => (
+          <PortfolioItem
+            title={item.frontmatter.title}
+            section={item.frontmatter.section}
+            introparagraph={item.frontmatter.introparagraph}
+            coverimage={item.frontmatter.coverimage}
+            demoUrl={item.frontmatter.demourl}
+            gitUrl={item.frontmatter.githuburl}
+          />
+        )
+      )
+    }
+  </ul>
 </Layout>

@@ -14,3 +14,14 @@
 .social-icons li.github a:hover svg {
   color: #4183c4;
 }
+
+#content blockquote {
+  line-height: 2.5rem;
+  @apply font-display;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+  text-align: center;
+  margin: 2rem;
+  border:none;
+  padding: 0;
+}
