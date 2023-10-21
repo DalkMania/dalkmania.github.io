@@ -4,35 +4,36 @@ title: "TV Show Tracker"
 section: "Demos & Experiments"
 skills: ["HTML5", "CSS3", "JavaScript", "React", "Redux", "Firebase", "API"]
 introparagraph: "A TV Show Tracker built for a JavaScript course I took, which was an excellent opportunity to play around with React, Redux, and Firebase."
-coverimage: "/assets/images/tv-show-tracker-cover-image.jpg"
+coverimage: "../../assets/images/tv-show-tracker-cover-image.jpg"
 githuburl: "https://github.com/DalkMania/show-tracker"
 demourl: "https://dalkmania.github.io/show-tracker"
 ---
 
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets";
+import FirstImage from "../../assets/images/show-tracker-1.jpg";
+import SecondImage from "../../assets/images/show-tracker-2.jpg";
+import ThirdImage from "../../assets/images/show-tracker-3.jpg";
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/show-tracker-1.jpg"
+    src={FirstImage}
     alt="TV Show Tracker Search Image"
-    width={1270}
+    width={FirstImage.width}
     format={"webp"}
-    aspectRatio={2 / 1}
+    aspectRatio={FirstImage.width / FirstImage.height}
   />
-  <figcaption class="figure__caption">
-    First you need to find the TV shows you want to track.
-  </figcaption>
+  <figcaption class="figure__caption">First you need to find the TV shows you want to track.</figcaption>
 </figure>
 
 This project is a simple TV Show Tracker built with React, Redux, and Firebase. It keeps track of TV shows and when they air and puts in a calendar for you. It uses Google authentication and stores your collection in Firebase.
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/show-tracker-2.jpg"
+    src={SecondImage}
     alt="TV Show Tracker Collection Image"
-    width={1270}
+    width={SecondImage.width}
     format={"webp"}
-    aspectRatio={2 / 1}
+    aspectRatio={SecondImage.width / SecondImage.height}
   />
   <figcaption class="figure__caption">Sample TV Show Collection</figcaption>
 </figure>
@@ -41,13 +42,11 @@ You can add or remove shows that you are tracking.
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/show-tracker-3.jpg"
+    src={ThirdImage}
     alt="TV Show Tracker Calendar Image"
-    width={1270}
+    width={ThirdImage.width}
     format={"webp"}
-    aspectRatio={2 / 1}
+    aspectRatio={ThirdImage.width / ThirdImage.height}
   />
-  <figcaption class="figure__caption">
-    Hmm, I wonder why most of my shows air on Thursdays?
-  </figcaption>
+  <figcaption class="figure__caption">Hmm, I wonder why most of my shows air on Thursdays?</figcaption>
 </figure>

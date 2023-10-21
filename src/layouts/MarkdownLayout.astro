@@ -1,14 +1,15 @@
 ---
+import type { MarkdownLayoutProps } from 'astro';
 import Layout from "./Layout.astro"
 import PageHeader from "../components/PageHeader.astro"
 import ProjectInfo from "../components/ProjectInfo.astro"
 
-export interface Props {
+type Props = MarkdownLayoutProps<{
   title: string
-  introparagraph?: string
+  introparagraph: string
   githuburl?: string
   demourl?: string
-}
+}>;
 
 const { title, introparagraph, githuburl, demourl } =
   Astro.props.frontmatter || Astro.props

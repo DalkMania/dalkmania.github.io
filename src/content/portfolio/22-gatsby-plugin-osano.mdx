@@ -4,7 +4,7 @@ title: "Gatsby Plugin for Osano"
 section: "Gatsby Plugins"
 skills: ["React", "Gatsby", "JavaScript"]
 introparagraph: "Easily add Osano script tag to your Gatsby site."
-coverimage: "/assets/images/gatsby-plugin-osano-cover-image.jpg"
+coverimage: "../../assets/images/gatsby-plugin-osano-cover-image.jpg"
 githuburl: "https://github.com/DalkMania/gatsby-plugin-osano"
 demourl: ""
 ---
@@ -30,14 +30,14 @@ yarn add gatsby-plugin-osano
 ```javascript
 // In your gatsby-config.js
 plugins: [
-    {
-        resolve: `gatsby-plugin-osano`,
-        options: {
-            customerId: "YOUR_OSANO_CUSTOMER_ID",
-            ccid: "YOUR_OSANO_CUSTOMER_CCID",
-            includeInDevelopment: false
-        }
-    }
+  {
+    resolve: `gatsby-plugin-osano`,
+    options: {
+      customerId: "YOUR_OSANO_CUSTOMER_ID",
+      ccid: "YOUR_OSANO_CUSTOMER_CCID",
+      includeInDevelopment: false,
+    },
+  },
 ];
 ```
 

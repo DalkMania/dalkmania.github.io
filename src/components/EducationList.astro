@@ -1,6 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
 import EducationItem from "./EducationItem.astro"
-const educationItems = await Astro.glob("../content/education/*.mdx")
+const educationItems = await getCollection('education');
 ---
 
 <div class="education pt-5 pb-0 not-prose">
@@ -9,11 +10,11 @@ const educationItems = await Astro.glob("../content/education/*.mdx")
     {
       educationItems.map(item => (
         <EducationItem
-          title={item.frontmatter.title}
-          school={item.frontmatter.school}
-          location={item.frontmatter.location}
-          years={item.frontmatter.years}
-          image={item.frontmatter.image}
+          title={item.data.title}
+          school={item.data.school}
+          location={item.data.location}
+          years={item.data.years}
+          image={item.data.image}
         />
       ))
     }

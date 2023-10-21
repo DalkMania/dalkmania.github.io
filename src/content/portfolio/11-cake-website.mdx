@@ -4,20 +4,22 @@ title: "CAKE Websites"
 section: "Web Development"
 skills: []
 introparagraph: "CAKE is a Point-of-Sale system. While I was working there, I recreated the website at the direction of the marketing team."
-coverimage: "/assets/images/cake-logo.jpg"
+coverimage: "../../assets/images/cake-logo.jpg"
 githuburl: ""
 demourl: ""
 ---
 
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets";
+import FirstImage from "../../assets/images/cake-screenshot-1.jpg";
+import SecondImage from "../../assets/images/cake-landing-page.jpg";
 
 <figure class="figure figure--center no-border">
   <Image
-    src="/assets/images/cake-screenshot-1.jpg"
+    src={FirstImage}
     alt="TryCAKE.com (No longer active)"
-    width={1160}
+    width={FirstImage.width}
     format={"webp"}
-    aspectRatio={1160 / 763}
+    aspectRatio={FirstImage.width / FirstImage.height}
   />
   <figcaption class="figure__caption">Homepage Layout</figcaption>
 </figure>
@@ -28,11 +30,11 @@ I worked closly with the marketing team, various product stakeholders, and the s
 
 <figure class="figure figure--center no-border">
   <Image
-    src="/assets/images/cake-landing-page.jpg"
+    src={SecondImage}
     alt="CAKE Landing Page Example"
-    width={964}
+    width={SecondImage.width}
     format={"webp"}
-    aspectRatio={964 / 622}
+    aspectRatio={SecondImage.width / SecondImage.height}
   />
   <figcaption class="figure__caption">Landing Page Layout</figcaption>
 </figure>

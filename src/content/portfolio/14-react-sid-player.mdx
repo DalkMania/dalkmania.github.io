@@ -4,20 +4,21 @@ title: "React SID Player"
 section: "Demos & Experiments"
 skills: ["HTML5", "CSS3", "JavaScript", "React", "React Hooks"]
 introparagraph: "A simple HTML5 C64 SID Player built with ReactJS, and CSS3. With the help of Create-React-App. This was a learning exercise for me to get into and play around with React and React Hooks."
-coverimage: "/assets/images/react-sid-player-cover-image.jpg"
+coverimage: "../../assets/images/react-sid-player-cover-image.jpg"
 githuburl: "https://github.com/DalkMania/react-sid-player"
 demourl: "https://dalkmania.github.io/react-sid-player"
 ---
 
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets";
+import FirstImage from "../../assets/images/react-sid-player-screenshot.jpg";
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/react-sid-player-screenshot.jpg"
+    src={FirstImage}
     alt="React SID Player"
-    width={1270}
+    width={FirstImage.width}
     format={"webp"}
-    aspectRatio={1607 / 839}
+    aspectRatio={FirstImage.width / FirstImage.height}
   />
   <figcaption class="figure__caption">App screenshot</figcaption>
 </figure>

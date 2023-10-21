@@ -4,20 +4,22 @@ title: "Rock Paper Scissors Lizard Spock"
 section: "Demos & Experiments"
 skills: ["HTML5", "CSS3", "React", "JavaScript", "Game"]
 introparagraph: "An extended version of Rock Paper Scissors inspired from the sitcom - The Big Bang Theory. "
-coverimage: "/assets/images/rock-paper-scissors-lizard-spock-cover-image.jpg"
+coverimage: "../../assets/images/rock-paper-scissors-lizard-spock-cover-image.jpg"
 githuburl: "https://github.com/DalkMania/react-rock-paper-scissors-lizard-spock"
 demourl: "https://dalkmania-rock-paper-scissors.netlify.app/"
 ---
 
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets";
+import FirstImage from "../../assets/images/rock-paper-scissors-lizard-spock-1.jpg";
+import SecondImage from "../../assets/images/rock-paper-scissors-lizard-spock-2.jpg";
+import ThirdImage from "../../assets/images/rock-paper-scissors-lizard-spock-3.jpg";
 
 It's simple.
 
 <blockquote>
-  Scissors cuts paper, paper covers rock, rock crushes lizard, lizard poisons
-  Spock, Spock smashes scissors, scissors decapitates lizard, lizard eats paper,
-  paper disproves Spock, Spock vaporizes rock, and as it always has, rock
-  crushes scissors.
+  Scissors cuts paper, paper covers rock, rock crushes lizard, lizard poisons Spock, Spock smashes scissors, scissors
+  decapitates lizard, lizard eats paper, paper disproves Spock, Spock vaporizes rock, and as it always has, rock crushes
+  scissors.
 </blockquote>
 
 This is a solution to the Rock, paper, scissors, lizard, spock challenge on [Frontend Mentor!](https://www.frontendmentor.io/challenges/rock-paper-scissors-game-pTgwgvgH)
@@ -35,33 +37,36 @@ Users should be able to:
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/rock-paper-scissors-lizard-spock-1.jpg"
+    src={FirstImage}
     alt="Selection Screen"
-    width={1270}
+    width={FirstImage.width}
+    height={FirstImage.height}
     format={"webp"}
-    aspectRatio={1270 / 597}
+    aspectRatio={FirstImage.width / FirstImage.height}
   />
   <figcaption class="figure__caption">Make your choice</figcaption>
 </figure>
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/rock-paper-scissors-lizard-spock-2.jpg"
+    src={SecondImage}
     alt="Game Screen"
-    width={1270}
+    width={SecondImage.width}
+    height={SecondImage.height}
     format={"webp"}
-    aspectRatio={1270 / 597}
+    aspectRatio={SecondImage.width / SecondImage.height}
   />
   <figcaption class="figure__caption">See if you win?</figcaption>
 </figure>
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/rock-paper-scissors-lizard-spock-3.jpg"
+    src={ThirdImage}
     alt="Rules Popup"
-    width={1270}
+    width={ThirdImage.width}
+    height={ThirdImage.height}
     format={"webp"}
-    aspectRatio={1270 / 597}
+    aspectRatio={ThirdImage.width / ThirdImage.height}
   />
   <figcaption class="figure__caption">What are the rules?</figcaption>
 </figure>

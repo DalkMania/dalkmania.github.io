@@ -25,3 +25,7 @@
   border:none;
   padding: 0;
 }
+
+.figure--center img {
+  margin: 0 auto;
+}

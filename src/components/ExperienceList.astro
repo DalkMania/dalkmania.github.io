@@ -1,6 +1,7 @@
 ---
+import { getCollection } from 'astro:content';
 import ExperienceItem from "./ExperienceItem.astro"
-const experienceItems = await Astro.glob("../content/experience/*.mdx")
+const experienceItems = await getCollection('experience')
 ---
 
 <div class="experience pt-5 pb-0 not-prose">
@@ -9,11 +10,11 @@ const experienceItems = await Astro.glob("../content/experience/*.mdx")
     {
       experienceItems.map(item => (
         <ExperienceItem
-          title={item.frontmatter.title}
-          company={item.frontmatter.company}
-          location={item.frontmatter.location}
-          years={item.frontmatter.years}
-          image={item.frontmatter.image}
+          title={item.data.title}
+          company={item.data.company}
+          location={item.data.location}
+          years={item.data.years}
+          image={item.data.image}
         />
       ))
     }

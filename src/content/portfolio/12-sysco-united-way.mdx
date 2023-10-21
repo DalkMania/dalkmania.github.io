@@ -4,20 +4,21 @@ title: "Sysco & United Way"
 section: "Web Development"
 skills: []
 introparagraph: "At CAKE I developed numerous websites for various campaigns. This is one of them."
-coverimage: "/assets/images/sysco-united-way-cover-image.jpg"
+coverimage: "../../assets/images/sysco-united-way-cover-image.jpg"
 githuburl: ""
 demourl: "http://syscounitedway.com"
 ---
 
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets";
+import FirstImage from "../../assets/images/sysco-united-way-website.jpg";
 
 <figure class="figure figure--center no-border">
   <Image
-    src="/assets/images/sysco-united-way-website.jpg"
+    src={FirstImage}
     alt="Sysco & United Way Campaign Site"
-    width={1270}
+    width={FirstImage.width}
     format={"webp"}
-    aspectRatio={1160 / 763}
+    aspectRatio={FirstImage.width / FirstImage.height}
   />
   <figcaption class="figure__caption">Screenshot</figcaption>
 </figure>

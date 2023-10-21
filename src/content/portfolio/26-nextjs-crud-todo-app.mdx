@@ -2,24 +2,16 @@
 layout: ../../layouts/MarkdownLayout.astro
 title: "NextJS CRUD Todo App"
 section: "Demos & Experiments"
-skills:
-  [
-    "HTML5",
-    "CSS3",
-    "React",
-    "NextJs",
-    "JavaScript",
-    "CRUD",
-    "Prisma",
-    "Supabase",
-  ]
+skills: ["HTML5", "CSS3", "React", "NextJs", "JavaScript", "CRUD", "Prisma", "Supabase"]
 introparagraph: "A simple todo app. Built with NextJs, Supabase and Prisma. "
-coverimage: "/assets/images/nextjs-crud-todo-cover-image.jpg"
+coverimage: "../../assets/images/nextjs-crud-todo-cover-image.jpg"
 githuburl: "https://github.com/DalkMania/nextjs-crud-todo-app"
 demourl: "https://dalkmania-nextjs-crud.netlify.app/"
 ---
 
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets";
+import LightImage from "../../assets/images/todo-app-light.jpg";
+import DarkImage from "../../assets/images/todo-app-dark.jpg";
 
 This is an application based on the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. I extended the challenge by adding some extra fields and functionality. Such as authorization, login with google. I did this, to be able to have multiple users.
 
@@ -27,22 +19,23 @@ This is an application based on the [Todo app challenge on Frontend Mentor](http
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/todo-app-dark.jpg"
+    src={DarkImage}
     alt="Dark Mode"
-    width={1270}
+    height={DarkImage.height}
     format={"webp"}
-    aspectRatio={720 / 341}
+    aspectRatio={DarkImage.width / DarkImage.height}
   />
   <figcaption class="figure__caption">Todo App Dark Mode.</figcaption>
 </figure>
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/todo-app-light.jpg"
+    src={LightImage}
     alt="Light Mode"
-    width={1270}
+    width={LightImage.width}
+    height={LightImage.height}
     format={"webp"}
-    aspectRatio={720 / 341}
+    aspectRatio={LightImage.width / LightImage.height}
   />
   <figcaption class="figure__caption">Todo App Light Mode.</figcaption>
 </figure>

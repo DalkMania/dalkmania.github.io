@@ -1,39 +1,31 @@
 ---
+import { getCollection } from 'astro:content';
+import DropdownFilter from '../../components/DropdownFilter.astro';
 import Layout from "../../layouts/Layout.astro"
 import PageHeader from "../../components/PageHeader.astro"
 import PortfolioItem from "../../components/PortfolioItem.astro"
-import DropdownFilter from "../../components/DropdownFilter.jsx"
 import { slugify } from "../../helpers/slugify"
 
 export async function getStaticPaths() {
-  const portfolioItems = await Astro.glob("../../content/portfolio/*.mdx")
+  const portfolioEntries = await getCollection('portfolio');
   const allSkills = [
-    ...new Set(portfolioItems.map(item => item.frontmatter.skills).flat()),
+    ...new Set(portfolioEntries.map(item => item.data.skills).flat()),
+  ]
+  const allSections = [
+    ...new Set(portfolioEntries.map(item => item.data.section)),
   ]
 
   return allSkills.map(skill => {
-    const filteredItems = portfolioItems.filter(item =>
-      item.frontmatter.skills.includes(skill)
+    const filteredItems = portfolioEntries.filter(item =>
+      item.data.skills.includes(skill)
     )
     return {
       params: { skill: slugify(skill) },
-      props: { items: filteredItems, skillTitle: skill },
+      props: { items: filteredItems, skillTitle: skill, allSkills, allSections },
     }
   })
 }
-const { items, skillTitle } = Astro.props
-const portfolioItems = await Astro.glob("../../content/portfolio/*.mdx")
-const allSections = [
-  ...new Set(portfolioItems.map(item => item.frontmatter.section).sort()),
-]
-const allSkills = [
-  ...new Set(
-    portfolioItems
-      .map(item => item.frontmatter.skills)
-      .flat()
-      .sort()
-  ),
-]
+const { items, skillTitle, allSkills, allSections } = Astro.props
 ---
 
 <Layout title="Portfolio" description={`Projects filed under ${skillTitle}`}>
@@ -42,41 +34,24 @@ const allSkills = [
     intro={`Projects filed under ${skillTitle}`}
   />
   <div class="portfolio-filters flex justify-between">
-    <DropdownFilter
-      items={allSections}
-      name={`Portfolio Sections`}
-      client:visible
-    />
-    <DropdownFilter
-      items={allSkills}
-      name={`Portfolio Skills`}
-      client:visible
-    />
+    <DropdownFilter title={`Portfolio Sections`} items={[...allSections]} />
+    <DropdownFilter title={`Portfolio Skills`} items={[...allSkills]} currentItem={skillTitle}/>
   </div>
   <ul
     class="portfolio-grid container pt-12 pb-8 mx-auto flex flex-wrap -m-4 not-prose list-none p-0"
   >
     {
       items.reverse().map(
-        (item: {
-          frontmatter: {
-            title: string
-            section: string
-            introparagraph: string
-            coverimage: string
-            demourl: string | undefined
-            githuburl: string | undefined
-          }
-        }) => (
+      (item: any) => (
           <PortfolioItem
-            title={item.frontmatter.title}
-            section={item.frontmatter.section}
-            introparagraph={item.frontmatter.introparagraph}
-            coverimage={item.frontmatter.coverimage}
-            demoUrl={item.frontmatter.demourl}
-            gitUrl={item.frontmatter.githuburl}
+            title={item.data.title}
+            section={item.data.section}
+            introparagraph={item.data.introparagraph}
+            coverimage={item.data.coverimage}
+            demoUrl={item.data.demourl}
+            gitUrl={item.data.githuburl}
           />
-        )
+        ) 
       )
     }
   </ul>

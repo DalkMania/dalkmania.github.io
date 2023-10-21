@@ -4,22 +4,23 @@ title: "Mancini Law Offices"
 section: "Web Development"
 skills: []
 introparagraph: "Immigration Attorneys serving Northern California, the San Francisco Bay Area and the nation. They are located in the beautiful wine country of Sonoma County."
-coverimage: "/assets/images/mancini-law-offices-cover-image.jpg"
+coverimage: "../../assets/images/mancini-law-offices-cover-image.jpg"
 githuburl: ""
 demourl: "http://mancinilawoffices.com/"
 ---
 
-import { Image } from "@astrojs/image/components"
+import { Image } from "astro:assets";
+import FirstImage from "../../assets/images/mancini-law-offices-1.jpg";
 
 Mancini Law Offices is experienced in helping individuals and families obtain visas, work permits, green cards, and US citizenship. The firm needed a new website, and I was contacted to do the job.
 
 <figure class="figure figure--center">
   <Image
-    src="/assets/images/mancini-law-offices-1.jpg"
+    src={FirstImage}
     alt="Mancini Law Offices Homepage"
-    width={1270}
+    width={FirstImage.width}
     format={"webp"}
-    aspectRatio={2 / 1}
+    aspectRatio={FirstImage.width / FirstImage.height}
   />
   <figcaption class="figure__caption">Website Screenshot</figcaption>
 </figure>
