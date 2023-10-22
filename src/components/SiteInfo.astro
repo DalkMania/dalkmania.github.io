@@ -1,23 +1,23 @@
 ---
-import SocialLinks from "./SocialLinks.astro";
+import SocialLinks from "./SocialLinks.astro"
 export interface Props {
-    title: string;
-    description: string;
+  title: string
+  description: string
 }
 
-const { title, description } = Astro.props;
+const { title, description } = Astro.props
 ---
 
 <section class="site-info bg-gray-100 p-6 relative border-t border-gray-300">
-    <div class="container mx-auto flex items-center flex-col justify-center">
-        <ul class="text-center pb-6">
-            <li class="font-display font-thin text-xl leading-loose site-name pb-3">
-                {title}
-            </li>
-            <li class="uppercase font-thin text-sm leading-loose pt-3">
-                {description}
-            </li>
-        </ul>
-        <SocialLinks />
-    </div>
+  <div class="container mx-auto flex items-center flex-col justify-center">
+    <ul class="text-center pb-6">
+      <li class="font-display font-thin text-xl leading-loose site-name pb-3">
+        {title}
+      </li>
+      <li class="uppercase font-thin text-sm leading-loose pt-3">
+        {description}
+      </li>
+    </ul>
+    <SocialLinks />
+  </div>
 </section>

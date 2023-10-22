@@ -1,7 +1,7 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content"
 import ExperienceItem from "./ExperienceItem.astro"
-const experienceItems = await getCollection('experience')
+const experienceItems = await getCollection("experience")
 ---
 
 <div class="experience pt-5 pb-0 not-prose">
@@ -14,7 +14,7 @@ const experienceItems = await getCollection('experience')
           company={item.data.company}
           location={item.data.location}
           years={item.data.years}
-          image={item.data.image}
+          image={item.data.image.src}
         />
       ))
     }
