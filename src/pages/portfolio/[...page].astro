@@ -1,25 +1,23 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content"
 import Layout from "../../layouts/Layout.astro"
 import PageHeader from "../../components/PageHeader.astro"
 import PortfolioItem from "../../components/PortfolioItem.astro"
 import Pagination from "../../components/Pagination.astro"
-import DropdownFilter from '../../components/DropdownFilter.astro';
-
-
+import DropdownFilter from "../../components/DropdownFilter.astro"
 
 export async function getStaticPaths({ paginate }: any) {
-  const portfolioEntries = await getCollection('portfolio');
-    return paginate(portfolioEntries.reverse(), { pageSize: 12 })
+  const portfolioEntries = await getCollection("portfolio")
+  return paginate(portfolioEntries.reverse(), { pageSize: 12 })
 }
 
-const portfolioEntries = await getCollection('portfolio');
+const portfolioEntries = await getCollection("portfolio")
 const allSkills = [
-    ...new Set(portfolioEntries.map(item => item.data.skills).flat()),
-  ]
-  const allSections = [
-    ...new Set(portfolioEntries.map(item => item.data.section)),
-  ]
+  ...new Set(portfolioEntries.map(item => item.data.skills).flat()),
+].sort()
+const allSections = [
+  ...new Set(portfolioEntries.map(item => item.data.section)),
+].sort()
 
 const { page } = Astro.props
 const pageTitle =
@@ -30,7 +28,7 @@ const pageTitle =
   title={pageTitle}
   description={`Here is a bunch of stuff I have created.`}
 >
-<PageHeader
+  <PageHeader
     title={pageTitle}
     intro={`Here is a bunch of stuff I have created.`}
   />
@@ -40,23 +38,20 @@ const pageTitle =
     <DropdownFilter title={`Portfolio Skills`} items={[...allSkills]} />
   </div>
 
-
   <ul
     class="portfolio-grid container pt-12 pb-8 mx-auto flex flex-wrap -m-4 not-prose list-none p-0"
   >
     {
-      page.data.map(
-        (item: any) => (
-          <PortfolioItem
-            title={item.data.title}
-            section={item.data.section}
-            introparagraph={item.data.introparagraph}
-            coverimage={item.data.coverimage}
-            demoUrl={item.data.demourl}
-            gitUrl={item.data.githuburl}
-          />
-        )
-      )
+      page.data.map((item: any) => (
+        <PortfolioItem
+          title={item.data.title}
+          section={item.data.section}
+          introparagraph={item.data.introparagraph}
+          coverimage={item.data.coverimage}
+          demoUrl={item.data.demourl}
+          gitUrl={item.data.githuburl}
+        />
+      ))
     }
   </ul>
   <nav class="bg-white px-4 py-3 flex items-center sm:px-6 pagination">

@@ -1,27 +1,32 @@
 ---
-import { getCollection } from 'astro:content';
-import DropdownFilter from '../../components/DropdownFilter.astro';
+import { getCollection } from "astro:content"
+import DropdownFilter from "../../components/DropdownFilter.astro"
 import Layout from "../../layouts/Layout.astro"
 import PageHeader from "../../components/PageHeader.astro"
 import PortfolioItem from "../../components/PortfolioItem.astro"
 import { slugify } from "../../helpers/slugify"
 
 export async function getStaticPaths() {
-  const portfolioEntries = await getCollection('portfolio');
+  const portfolioEntries = await getCollection("portfolio")
   const allSkills = [
     ...new Set(portfolioEntries.map(item => item.data.skills).flat()),
-  ]
+  ].sort()
   const allSections = [
     ...new Set(portfolioEntries.map(item => item.data.section)),
-  ]
+  ].sort()
 
   return allSkills.map(skill => {
     const filteredItems = portfolioEntries.filter(item =>
-      item.data.skills.includes(skill)
+      item.data.skills.includes(skill),
     )
     return {
       params: { skill: slugify(skill) },
-      props: { items: filteredItems, skillTitle: skill, allSkills, allSections },
+      props: {
+        items: filteredItems,
+        skillTitle: skill,
+        allSkills,
+        allSections,
+      },
     }
   })
 }
@@ -35,14 +40,19 @@ const { items, skillTitle, allSkills, allSections } = Astro.props
   />
   <div class="portfolio-filters flex justify-between">
     <DropdownFilter title={`Portfolio Sections`} items={[...allSections]} />
-    <DropdownFilter title={`Portfolio Skills`} items={[...allSkills]} currentItem={skillTitle}/>
+    <DropdownFilter
+      title={`Portfolio Skills`}
+      items={[...allSkills]}
+      currentItem={skillTitle}
+    />
   </div>
   <ul
     class="portfolio-grid container pt-12 pb-8 mx-auto flex flex-wrap -m-4 not-prose list-none p-0"
   >
     {
-      items.reverse().map(
-      (item: any) => (
+      items
+        .reverse()
+        .map((item: any) => (
           <PortfolioItem
             title={item.data.title}
             section={item.data.section}
@@ -51,8 +61,7 @@ const { items, skillTitle, allSkills, allSections } = Astro.props
             demoUrl={item.data.demourl}
             gitUrl={item.data.githuburl}
           />
-        ) 
-      )
+        ))
     }
   </ul>
 </Layout>
