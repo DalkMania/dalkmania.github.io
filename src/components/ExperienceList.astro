@@ -8,7 +8,7 @@ const experienceItems = await getCollection("experience")
   <h3 class="font-display experience-title font-extrabold">Experience</h3>
   <ul class="experience-items">
     {
-      experienceItems.map(item => (
+      experienceItems.map((item: any) => (
         <ExperienceItem
           title={item.data.title}
           company={item.data.company}

@@ -8,7 +8,7 @@ const educationItems = await getCollection("education")
   <h3 class="font-display education-title font-extrabold">Education</h3>
   <ul class="education-items">
     {
-      educationItems.map(item => (
+      educationItems.map((item: any) => (
         <EducationItem
           title={item.data.title}
           school={item.data.school}
