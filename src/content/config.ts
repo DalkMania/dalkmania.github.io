@@ -1,4 +1,4 @@
-import { z, defineCollection } from "astro:content";
+import { z, defineCollection } from "astro:content"
 
 const portfolioCollection = defineCollection({
   type: "content",
@@ -12,7 +12,7 @@ const portfolioCollection = defineCollection({
       githuburl: z.string().optional(),
       demourl: z.string().optional(),
     }),
-});
+})
 
 const educationCollection = defineCollection({
   type: "content",
@@ -24,7 +24,7 @@ const educationCollection = defineCollection({
       years: z.string(),
       image: image(),
     }),
-});
+})
 
 const experienceCollection = defineCollection({
   type: "content",
@@ -36,10 +36,10 @@ const experienceCollection = defineCollection({
       years: z.string(),
       image: image(),
     }),
-});
+})
 
 export const collections = {
   education: educationCollection,
   experience: experienceCollection,
   portfolio: portfolioCollection,
-};
+}
