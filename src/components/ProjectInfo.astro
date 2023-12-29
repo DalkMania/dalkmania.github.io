@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon"
+import { Icon } from "astro-icon/components"
 
 export interface Props {
   githuburl?: string
@@ -19,7 +19,7 @@ const { githuburl, demourl } = Astro.props
           target="_blank"
           aria-label={`Link to the projects GitHub Repository`}
         >
-          <Icon pack="fa" name="github-square" class={"fill-current h-8 w-8"} />
+          <Icon name="fa:github-square" class={"fill-current h-8 w-8"} />
         </a>
       </li>
       <li>
@@ -29,11 +29,7 @@ const { githuburl, demourl } = Astro.props
           target="_blank"
           aria-label={`Link to the project Demo`}
         >
-          <Icon
-            pack="fa"
-            name="external-link-square"
-            class={"fill-current h-8 w-8"}
-          />
+          <Icon name="fa:external-link-square" class={"fill-current h-8 w-8"} />
         </a>
       </li>
     </ul>
@@ -50,7 +46,7 @@ const { githuburl, demourl } = Astro.props
           target="_blank"
           aria-label={`Link to the projects GitHub Repository`}
         >
-          <Icon pack="fa" name="github-square" class={"fill-current h-8 w-8"} />
+          <Icon name="fa:github-square" class={"fill-current h-8 w-8"} />
         </a>
       </li>
     </ul>
@@ -67,11 +63,7 @@ const { githuburl, demourl } = Astro.props
           target="_blank"
           aria-label={`Link to the project Demo`}
         >
-          <Icon
-            pack="fa"
-            name="external-link-square"
-            class={"fill-current h-8 w-8"}
-          />
+          <Icon name="fa:external-link-square" class={"fill-current h-8 w-8"} />
         </a>
       </li>
     </ul>

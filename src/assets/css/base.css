@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+#colophon [data-icon] {
+  width: 5rem;
+  height:5rem;
+}
+
+#colophon .astro-icon [data-icon] {
+  width: 2rem;
+  height:2rem;
+}
+
 .social-icons li.facebook a:hover svg {
   color: #3b5998;
 }
