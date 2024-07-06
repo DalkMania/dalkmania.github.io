@@ -4,6 +4,11 @@ import mdx from "@astrojs/mdx"
 
 // https://astro.build/config
 export default defineConfig({
+  markdown: {
+    shikiConfig: {
+      theme: "dracula",
+    },
+  },
   integrations: [
     icon({
       include: {
