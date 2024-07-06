@@ -1,22 +1,109 @@
 ---
-import type { MarkdownLayoutProps } from 'astro';
-import Layout from "./Layout.astro"
-import PageHeader from "../components/PageHeader.astro"
-import ProjectInfo from "../components/ProjectInfo.astro"
+import type { MarkdownLayoutProps } from "astro"
+import BaseLayout from "./BaseLayout.astro"
+import PageHeader from "@components/PageHeader.astro"
+import ProjectInfo from "@components/ProjectInfo.astro"
 
 type Props = MarkdownLayoutProps<{
   title: string
   introparagraph: string
   githuburl?: string
   demourl?: string
-}>;
+}>
 
-const { title, introparagraph, githuburl, demourl } =
-  Astro.props.frontmatter || Astro.props
+const {
+  frontmatter: { title, introparagraph, githuburl, demourl, url },
+} = Astro.props
+
+const showProjectInfo = url?.includes("/content/portfolio/")
 ---
 
-<Layout title={title} description={introparagraph}>
+<BaseLayout title={title} description={introparagraph}>
   <PageHeader title={title} intro={introparagraph} />
-  <ProjectInfo githuburl={githuburl} demourl={demourl} />
-  <slot />
-</Layout>
+  {showProjectInfo && <ProjectInfo githuburl={githuburl} demourl={demourl} />}
+  <section class="markdown">
+    <slot />
+  </section>
+</BaseLayout>
+
+<style>
+  .markdown {
+    h2 {
+      font-size: var(--fs-md);
+      line-height: calc(var(--fs-md) + 0.5rem);
+      margin-block-start: calc(var(--text-size-xl));
+      margin-block-end: calc(var(--text-size-xl) + 0.25rem);
+    }
+
+    h3 {
+      font-size: var(--fs-base);
+      line-height: calc(var(--fs-base) + 0.5rem);
+      margin-block-start: calc(var(--text-size-md));
+      margin-block-end: calc(var(--text-size-md) + 0.25rem);
+    }
+
+    > p {
+      padding-block: 0.625rem;
+    }
+
+    blockquote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      line-height: calc(var(--text-size-xl) + 1rem);
+      font-size: var(--text-size-xl);
+      letter-spacing: -0.025em;
+      margin-block: 2rem;
+    }
+
+    > ul {
+      list-style-type: disc;
+      padding-inline-start: 1.625em;
+
+      li {
+        padding-block: 0.5rem;
+        padding-inline-start: 0.375em;
+
+        &::marker {
+          color: var(--clr-regal-blue);
+        }
+      }
+    }
+
+    > ol {
+      padding-inline-start: 1.625em;
+
+      li {
+        padding-block: 0.5rem;
+        padding-inline-start: 0.375em;
+
+        &::marker {
+          color: var(--clr-regal-blue);
+        }
+      }
+    }
+
+    figure {
+      margin-block: 2rem;
+
+      figcaption {
+        color: var(--clr-dark-gray);
+        font-size: 0.875em;
+        line-height: 1.4285714;
+        margin-top: 0.8571429em;
+
+        &.figure--center {
+          margin-inline: auto;
+        }
+      }
+    }
+
+    a {
+      color: var(--clr-regal-blue);
+
+      &:hover,
+      &:active {
+        color: rgb(44, 82, 130);
+      }
+    }
+  }
+</style>

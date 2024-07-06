@@ -8,16 +8,48 @@ export interface Props {
 const { title, description } = Astro.props
 ---
 
-<section class="site-info bg-gray-100 p-6 relative border-t border-gray-300">
-  <div class="container mx-auto flex items-center flex-col justify-center">
-    <ul class="text-center pb-6">
-      <li class="font-display font-thin text-xl leading-loose site-name pb-3">
-        {title}
-      </li>
-      <li class="uppercase font-thin text-sm leading-loose pt-3">
-        {description}
-      </li>
-    </ul>
-    <SocialLinks />
-  </div>
+<section class="site-info">
+  <ul role="list">
+    <li>
+      {title}
+    </li>
+    <li>
+      {description}
+    </li>
+  </ul>
+  <SocialLinks />
 </section>
+
+<style>
+  .site-info {
+    background: rgb(243 244 246);
+    border-top: 1px solid rgb(209 213 219);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem;
+
+    ul {
+      text-align: center;
+      margin-inline: auto;
+    }
+
+    ul:first-child {
+      padding-bottom: 1.5rem;
+
+      li {
+        padding-bottom: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      li:first-child {
+        text-transform: initial;
+        font-family: var(--ff-display);
+        font-size: 1.25rem;
+        font-weight: 700;
+        line-height: 2;
+      }
+    }
+  }
+</style>

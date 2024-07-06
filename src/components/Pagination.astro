@@ -1,74 +1,71 @@
 ---
 export interface Props {
-  url?: string
-  total: string | number
-  current: string | number
-  start?: string | number
-  end?: string | number
-  middle?: string | number
-  before?: string | number
-  after?: string | number
-  index?: boolean
-  commas?: boolean
-  collapse?: boolean
+  length: number
+  currentUrl: string
+  currentPage: number
+  base: string
+  prevUrl?: string
+  nextUrl?: string
+  lastUrl: string
 }
-const {
-  url = "",
-  total,
-  current,
-  start = 2,
-  end = 2,
-  middle = 2,
-  before = middle,
-  after = middle,
-  index,
-  commas = true,
-  collapse = true,
-} = Astro.props as Props
 
-let slot: string
-
-function disabled(page: number) {
-  //Toggle collapsing
-  if (!collapse) return false
-  //Skip current page
-  else if (+current === page) return false
-  //Calc End Pages
-  else if (page <= +start || page >= +total - (+end - 1)) return false
-  //Calc before/after (middle) Pages
-  else if (page >= +current - +before && page <= +current + +after) return false
-  else return true
-}
+const { length, currentPage, base } = Astro.props
+const paginationList = Array.from({ length }, (_, i) => i + 1)
 ---
 
-{
-  Array.from({ length: +total }, (_, i) => i + 1).map(i => {
-    if (+current === i) slot = "active"
-    else if (i !== 1 && disabled(i) && !disabled(i - 1)) slot = "disabled"
-    else if (!disabled(i)) {
-      if (i === 1) slot = "first"
-      else if (i === +current - 1) slot = "before"
-      else if (i === +current + 1) slot = "after"
-      else if (i === +total) slot = "last"
-      else slot = "link"
+<nav aria-label="Porfolio pages" class="pagination">
+  <ul>
+    {
+      paginationList.map(num => (
+        <li>
+          <a
+            href={`${base}${num == 1 ? "" : "/" + num}`}
+            class={`pagination__link ${currentPage == num ? "disabled active" : ""}`}
+          >
+            {num}
+          </a>
+        </li>
+      ))
     }
+  </ul>
+</nav>
 
-    const param = {
-      number: commas ? Intl.NumberFormat("en-us").format(i) : i,
-      href: i === 1 ? (index ? `${url}/` : `${url}/${i}`) : `${url}/${i}`,
-      slot: slot,
-    }
+<style>
+  .pagination {
+    display: flex;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 
-    if (!!Object.keys(Astro.slots).length) {
-      if (Astro.slots.has("" + i))
-        return <Fragment set:html={Astro.slots.render("" + i, [param])} />
-      if (Astro.slots.has(slot))
-        return <Fragment set:html={Astro.slots.render(slot, [param])} />
-      if (slot)
-        return <Fragment set:html={Astro.slots.render("default", [param])} />
+    ul {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100%;
+      gap: 0.25rem;
+
+      a {
+        border: 1px solid rgb(209 213 219);
+        padding-inline: 1rem;
+        padding-block: 0.5rem;
+
+        &.disabled,
+        &.active {
+          border: 1px solid var(--clr-regal-blue);
+          background: var(--clr-regal-blue);
+          color: #fff;
+          pointer-events: none;
+          cursor: default;
+        }
+
+        &:hover {
+          border: 1px solid var(--clr-regal-blue);
+          background: var(--clr-regal-blue);
+          color: #fff;
+        }
+      }
     }
-    if (slot === "active") return <span class="active">{param.number}</span>
-    if (slot === "disabled") return <span class="disabled">...</span>
-    if (slot) return <a href={param.href}>{param.number}</a>
-  })
-}
+  }
+</style>

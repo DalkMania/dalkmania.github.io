@@ -1,0 +1,23 @@
+---
+import BaseLayout from "./BaseLayout.astro"
+import PageHeader from "@components/PageHeader.astro"
+import ProjectInfo from "@components/ProjectInfo.astro"
+import type { CollectionEntry } from "astro:content"
+
+export interface Props {
+  portfolioItem: CollectionEntry<"portfolio">
+}
+
+const { portfolioItem } = Astro.props
+
+const { title, introparagraph, githuburl, demourl } = portfolioItem.data
+const { Content } = await portfolioItem.render()
+
+console.log(portfolioItem)
+---
+
+<BaseLayout title={title} description={introparagraph ?? ""}>
+  <PageHeader title={title} intro={introparagraph ?? ""} />
+  <ProjectInfo githuburl={githuburl} demourl={demourl} />
+  <Content />
+</BaseLayout>

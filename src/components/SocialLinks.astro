@@ -3,25 +3,67 @@ import { Icon } from "astro-icon/components"
 import Social from "./Social.astro"
 ---
 
-<ul class="social-icons flex items-center justify-center space-x-3">
-  <li class="h-20 w-20 facebook">
+<ul class="social-icons" role="list">
+  <li class="facebook">
     <Social platform="facebook" username="ndahlqvist">
       <Icon name="fa:facebook-square" />
     </Social>
   </li>
-  <li class="h-20 w-20 twitter hover:">
+  <li class="twitter">
     <Social platform="twitter" username="DalkMania">
       <Icon name="fa:twitter-square" />
     </Social>
   </li>
-  <li class="h-20 w-20 github">
+  <li class="github">
     <Social platform="github" username="DalkMania">
       <Icon name="fa:github-square" />
     </Social>
   </li>
-  <li class="h-20 w-20 linkedin">
+  <li class="linkedin">
     <Social platform="linkedin" username="in/niklasdahlqvist">
       <Icon name="fa:linkedin-square" />
     </Social>
   </li>
 </ul>
+
+<style>
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      margin-inline: 0.75rem;
+
+      svg {
+        display: block;
+        width: 5rem;
+        height: 5rem;
+      }
+
+      &.facebook:hover {
+        svg {
+          color: #3b5998;
+        }
+      }
+
+      &.twitter:hover {
+        svg {
+          color: #55acee;
+        }
+      }
+
+      &.linkedin:hover {
+        svg {
+          color: #0077b5;
+        }
+      }
+
+      &.github:hover {
+        svg {
+          color: #4183c4;
+        }
+      }
+    }
+  }
+</style>

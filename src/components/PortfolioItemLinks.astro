@@ -8,42 +8,56 @@ export interface Props {
 const { demoUrl, gitUrl } = Astro.props
 ---
 
-<span
-  class="text-gray-300 inline-flex items-center ml-auto leading-none text-sm mr-3 h-8 w-8"
->
-  {
-    gitUrl ? (
-      <a
-        href={gitUrl}
-        class="text-black hover:text-regal-blue active:text-regal-blue"
-        target="_blank"
-        aria-label={`Link to the projects GitHub Repository`}
-      >
-        <Icon name="fa:github-square" class={"fill-current h-8 w-8"} />
-      </a>
-    ) : (
-      <Icon name="fa:github-square" class={"link-none fill-current h-8 w-8"} />
-    )
+<div>
+  <span>
+    {
+      gitUrl ? (
+        <a href={gitUrl} target="_blank" aria-label={`Link to the projects GitHub Repository`}>
+          <Icon name="fa:github-square" class={"fill-current h-8 w-8"} />
+        </a>
+      ) : (
+        <Icon name="fa:github-square" class="link-none" />
+      )
+    }
+  </span>
+  <span>
+    {
+      demoUrl ? (
+        <a href={demoUrl} target="_blank" aria-label={`Link to the project Demo`}>
+          <Icon name="fa:external-link-square" />
+        </a>
+      ) : (
+        <Icon name="fa:external-link-square" class="link-none" />
+      )
+    }
+  </span>
+</div>
+
+<style>
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    span {
+      display: inline-flex;
+      justify-self: center;
+      color: #222;
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      fill: currentColor;
+
+      &.link-none {
+        color: rgb(209 213 219);
+      }
+    }
+
+    a:hover {
+      color: var(--clr-regal-blue);
+    }
   }
-</span>
-<span
-  class="text-gray-300 inline-flex items-center leading-none text-sm h-8 w-8"
->
-  {
-    demoUrl ? (
-      <a
-        href={demoUrl}
-        class="text-black hover:text-regal-blue active:text-regal-blue"
-        target="_blank"
-        aria-label={`Link to the project Demo`}
-      >
-        <Icon name="fa:external-link-square" class={"fill-current h-8 w-8"} />
-      </a>
-    ) : (
-      <Icon
-        name="fa:external-link-square"
-        class={"link-none fill-current h-8 w-8"}
-      />
-    )
-  }
-</span>
+</style>

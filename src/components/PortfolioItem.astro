@@ -1,54 +1,110 @@
 ---
 import { Image } from "astro:assets"
-import { slugify } from "../helpers/slugify"
+import { slugify } from "@helpers/slugify"
 import PortfolioItemLinks from "./PortfolioItemLinks.astro"
+import type { CollectionEntry } from "astro:content"
 
 export interface Props {
-  title: string
-  section: string
-  introparagraph: string
-  coverimage: string
-  demoUrl?: string
-  gitUrl?: string
+  item: CollectionEntry<"portfolio">
+  eager: boolean
 }
-const { title, section, introparagraph, coverimage, demoUrl, gitUrl } =
-  Astro.props
+
+const {
+  item: {
+    data: { title, section, introparagraph, coverimage, demourl, githuburl },
+  },
+  eager,
+} = Astro.props
 const slug = `/portfolio/${slugify(section)}/${slugify(title)}/`
 ---
 
-<li class="portfolio-item p-4 md:w-1/2 lg:w-1/3">
-  <div
-    class="item-information flex flex-col h-full border-2 border-gray-200 rounded-lg overflow-hidden"
-  >
+<li class="portfolio-item">
+  <div class="item-information">
     <Image
       src={coverimage}
       alt={title}
       format={"webp"}
       width={570}
       height={250}
-      class="lg:h-48 md:h-36 w-full object-cover object-center no-border"
-      alt="Project Image"
+      alt={title}
+      loading={eager ? "eager" : "lazy"}
     />
-    <div class="p-6 flex flex-col flex-1">
-      <h4
-        class="font-display tracking-widest text-xs font-medium text-gray-500 mb-1"
-      >
+    <div class="item-description">
+      <h4 class="item-section">
         {section}
       </h4>
-      <h4 class="font-display text-lg font-bold text-gray-900 mb-3">
+      <h4 class="item-title">
         {title}
       </h4>
-      <p class="leading-relaxed mb-3 flex-1">
+      <p>
         {introparagraph}
       </p>
-      <div class="flex items-center flex-wrap">
-        <a
-          href={slug}
-          class="text-regal-blue inline-flex items-center md:mb-2 lg:mb-0"
-          aria-label={`More Project Details`}>More Project Details</a
-        >
-        <PortfolioItemLinks demoUrl={demoUrl} gitUrl={gitUrl} />
+      <div class="item-links">
+        <a href={slug} aria-label={`More Project Details`}>More Project Details</a>
+        <PortfolioItemLinks demoUrl={demourl} gitUrl={githuburl} />
       </div>
     </div>
   </div>
 </li>
+
+<style>
+  li {
+    height: 100%;
+
+    .item-information {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      height: 100%;
+      border: 2px solid var(--clr-gray);
+
+      img {
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+        height: 12rem;
+      }
+    }
+
+    .item-description {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .item-section {
+      color: rgb(107 114 128);
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+      font-size: var(--fs-sm);
+    }
+
+    .item-title {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      line-height: 1.625;
+      flex: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .item-links {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      > a {
+        color: var(--clr-regal-blue);
+        display: inline-flex;
+        align-items: center;
+      }
+    }
+  }
+</style>

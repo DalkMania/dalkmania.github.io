@@ -1,81 +1,38 @@
 ---
+import type { GetStaticPathsOptions, InferGetStaticPropsType } from "astro"
 import { getCollection } from "astro:content"
-import Layout from "../../layouts/Layout.astro"
-import PageHeader from "../../components/PageHeader.astro"
-import PortfolioItem from "../../components/PortfolioItem.astro"
-import Pagination from "../../components/Pagination.astro"
-import DropdownFilter from "../../components/DropdownFilter.astro"
+import BaseLayout from "@layouts/BaseLayout.astro"
+import PageHeader from "@components/PageHeader.astro"
+import PortfolioFilters from "@components/PortfolioFilters.astro"
+import PortfolioGrid from "@components/PortfolioGrid.astro"
+import Pagination from "@components/Pagination.astro"
 
-export async function getStaticPaths({ paginate }: any) {
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const portfolioEntries = await getCollection("portfolio")
   return paginate(portfolioEntries.reverse(), { pageSize: 12 })
 }
 
-const portfolioEntries = await getCollection("portfolio")
-const allSkills = [
-  ...new Set(portfolioEntries.map(item => item.data.skills).flat()),
-].sort()
-const allSections = [
-  ...new Set(portfolioEntries.map(item => item.data.section)),
-].sort()
+const currentUrlPath = Astro.url.pathname.replace(/\/+$/, "")
+const currentSection = currentUrlPath.split("/").slice(1)[0]
 
-const { page } = Astro.props
-const pageTitle =
-  page.currentPage > 1 ? `Portfolio Page ${page.currentPage}` : `Portfolio`
+const { page } = Astro.props as Props
+const pageTitle = page.currentPage > 1 ? `Portfolio Page ${page.currentPage}` : `Portfolio`
 ---
 
-<Layout
-  title={pageTitle}
-  description={`Here is a bunch of stuff I have created.`}
->
-  <PageHeader
-    title={pageTitle}
-    intro={`Here is a bunch of stuff I have created.`}
+<BaseLayout title={pageTitle} description={`Here is a bunch of stuff I have created.`}>
+  <PageHeader title={pageTitle} intro={`Here is a bunch of stuff I have created.`} />
+
+  <PortfolioFilters currentSelection={currentSection} />
+  <PortfolioGrid portfolioItems={page.data} />
+  <Pagination
+    length={page.lastPage}
+    currentUrl={page.url.current}
+    currentPage={page.currentPage}
+    base={`/portfolio`}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    lastUrl={`/portfolio/${page.lastPage}`}
   />
-
-  <div class="portfolio-filters flex justify-between">
-    <DropdownFilter title={`Portfolio Sections`} items={[...allSections]} />
-    <DropdownFilter title={`Portfolio Skills`} items={[...allSkills]} />
-  </div>
-
-  <ul
-    class="portfolio-grid container pt-12 pb-8 mx-auto flex flex-wrap -m-4 not-prose list-none p-0"
-  >
-    {
-      page.data.map((item: any) => (
-        <PortfolioItem
-          title={item.data.title}
-          section={item.data.section}
-          introparagraph={item.data.introparagraph}
-          coverimage={item.data.coverimage}
-          demoUrl={item.data.demourl}
-          gitUrl={item.data.githuburl}
-        />
-      ))
-    }
-  </ul>
-  <nav class="bg-white px-4 py-3 flex items-center sm:px-6 pagination">
-    <ul class="relative z-0 inline-flex items-center w-full justify-center">
-      <Pagination
-        url="/portfolio"
-        index={true}
-        start={2}
-        total={Math.ceil(page.total / page.size)}
-        current={page.currentPage}
-      >
-        {
-          (page: any) => (
-            <a
-              class={`-ml-px relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm leading-5 font-medium text-gray-700 hover:text-gray-500 focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150 pagination-link ${
-                page.current ? "is-current" : ""
-              }`}
-              href={page.href}
-            >
-              {page.number}
-            </a>
-          )
-        }
-      </Pagination>
-    </ul>
-  </nav>
-</Layout>
+</BaseLayout>

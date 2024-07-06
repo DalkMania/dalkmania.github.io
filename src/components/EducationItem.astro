@@ -1,31 +1,48 @@
 ---
 import { Image } from "astro:assets"
+import type { CollectionEntry } from "astro:content"
 
 export interface Props {
-  title: string
-  school: string
-  location: string
-  years: string
-  image: string
+  item: CollectionEntry<"education">
 }
-const { title, school, location, years, image } = Astro.props
+
+const {
+  item: {
+    data: { title, school, location, years, image },
+  },
+} = Astro.props
 ---
 
-<li class="bg-white shadow overflow-hidden sm:rounded-lg my-8">
-  <div class="education-item flex justify-between px-4 py-5 sm:px-6">
+<li>
+  <div class="education-item">
     <div class="education-information">
-      <h4 class="font-display school-name font-extrabold">{school}</h4>
+      <h4 class="school-name">{school}</h4>
       <h4 class="program-name">{title}</h4>
       <p>{years} | {location}</p>
     </div>
-    <Image
-      src={image}
-      format={"webp"}
-      alt={title}
-      width={100}
-      height={100}
-      class={"no-border"}
-    />
+    <Image src={image} format={"webp"} alt={title} width={100} height={100} class={"no-border"} />
   </div>
-  <div class="px-4 pt-0 pb-5 sm:px-6"><slot /></div>
 </li>
+
+<style>
+  li {
+    background: #fff;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    margin-block: 2rem;
+
+    --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+    &:first-child {
+      padding-top: 1.25rem;
+    }
+  }
+
+  .education-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.25rem;
+  }
+</style>

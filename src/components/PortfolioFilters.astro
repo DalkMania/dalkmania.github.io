@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content"
+import DropdownFilter from "./DropdownFilter.astro"
+
+export interface Props {
+  currentSelection?: string
+}
+
+const portfolioEntries = await getCollection("portfolio")
+const allSkills = [...new Set(portfolioEntries.map(item => item.data.skills).flat())].sort()
+const allSections = [...new Set(portfolioEntries.map(item => item.data.section))].sort()
+
+const { currentSelection } = Astro.props
+---
+
+<div class="portfolio-filters">
+  <DropdownFilter title={`Portfolio Sections`} items={[...allSections]} currentItem={currentSelection} />
+  <DropdownFilter title={`Portfolio Skills`} items={[...allSkills]} currentItem={currentSelection} />
+</div>
+
+<style>
+  .portfolio-filters {
+    display: flex;
+    justify-content: space-between;
+    gap: 0 1rem;
+    padding-bottom: 3rem;
+  }
+</style>

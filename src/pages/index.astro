@@ -1,15 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import PageHeader from "../components/PageHeader.astro";
+import BaseLayout from "@layouts/BaseLayout.astro"
+import PageHeader from "@components/PageHeader.astro"
 ---
 
-<Layout
-    title="Home"
-    description="I am a Web Developer originally from Southern Sweden, but now call the Bay Area home. I love music, art, and winegums. This site is a hub of stuff I have done or like. I focus on creating compelling, beautiful websites that reflect your company values."
+<BaseLayout
+  title="Home"
+  description="I am a Web Developer originally from Southern Sweden, but now call the Bay Area home. I love music, art, and winegums. This site is a hub of stuff I have done or like. I focus on creating compelling, beautiful websites that reflect your company values."
 >
-    <PageHeader
-        title="Hi There ..."
-        intro="I am a Web Developer originally from Southern Sweden, but now call the Bay Area home. I love music, art, and winegums. This site is a hub of stuff I have done or like. I focus on creating compelling, beautiful websites that reflect your company values."
-        fancyTitle={true}
-    />
-</Layout>
+  <PageHeader
+    title="Hi There ..."
+    intro="I am a Web Developer originally from Southern Sweden, but now call the Bay Area home. I love music, art, and winegums. This site is a hub of stuff I have done or like. I focus on creating compelling, beautiful websites that reflect your company values."
+    fancyTitle={true}
+  />
+</BaseLayout>

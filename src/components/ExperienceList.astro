@@ -4,19 +4,15 @@ import ExperienceItem from "./ExperienceItem.astro"
 const experienceItems = await getCollection("experience")
 ---
 
-<div class="experience pt-5 pb-0 not-prose">
-  <h3 class="font-display experience-title font-extrabold">Experience</h3>
-  <ul class="experience-items">
-    {
-      experienceItems.map((item: any) => (
-        <ExperienceItem
-          title={item.data.title}
-          company={item.data.company}
-          location={item.data.location}
-          years={item.data.years}
-          image={item.data.image}
-        />
-      ))
-    }
+<div class="experience">
+  <h3 class="experience-title">Experience</h3>
+  <ul class="experience-items" role="list">
+    {experienceItems.map(item => <ExperienceItem item={item} />)}
   </ul>
 </div>
+
+<style>
+  .experience {
+    padding-top: 1.25rem;
+  }
+</style>

@@ -8,24 +8,55 @@ export interface Props {
 const { title, intro, fancyTitle = false } = Astro.props
 ---
 
-<div class="text-center py-12">
+<section class="page-header">
   {
     fancyTitle ? (
       <>
-        <h1 class="text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
-          {title}
-        </h1>
+        <h1>{title}</h1>
         <blockquote>{intro}</blockquote>
       </>
     ) : (
       <>
-        <p class="text-base leading-6 text-regal-blue font-semibold tracking-wide uppercase">
-          {title}
-        </p>
-        <h3 class="font-display mt-2 text-2xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-2xl sm:leading-10">
-          {intro}
-        </h3>
+        <h3>{title}</h3>
+        <p>{intro}</p>
       </>
     )
   }
-</div>
+</section>
+
+<style>
+  .page-header {
+    padding-block: 3.5rem 1.5rem;
+    text-align: center;
+
+    h1 {
+      font-size: var(--text-size-4xl);
+      font-weight: 700;
+    }
+
+    h3 {
+      color: var(--clr-regal-blue);
+      font-family: var(--ff-body);
+      font-size: var(--text-size-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    blockquote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      line-height: calc(var(--text-size-xl) + 1rem);
+      font-size: var(--text-size-xl);
+      letter-spacing: -0.025em;
+      margin-block: 2rem;
+    }
+
+    p {
+      font-family: var(--ff-display);
+      line-height: 2.5rem;
+      font-size: 1.5rem;
+      letter-spacing: -0.025em;
+      margin-block: 2rem;
+    }
+  }
+</style>

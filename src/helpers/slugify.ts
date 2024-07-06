@@ -9,6 +9,6 @@ export const slugify = (text: string | undefined) => {
       .replace(/[^\w\\-]+/g, "")
       .replace(/\\-\\-+/g, "-")
       .replace(/^-+/, "")
-      .replace(/-+$/, "");
+      .replace(/-+$/, "")
   }
-};
+}

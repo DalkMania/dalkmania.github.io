@@ -4,19 +4,15 @@ import EducationItem from "./EducationItem.astro"
 const educationItems = await getCollection("education")
 ---
 
-<div class="education pt-5 pb-0 not-prose">
-  <h3 class="font-display education-title font-extrabold">Education</h3>
-  <ul class="education-items">
-    {
-      educationItems.map((item: any) => (
-        <EducationItem
-          title={item.data.title}
-          school={item.data.school}
-          location={item.data.location}
-          years={item.data.years}
-          image={item.data.image}
-        />
-      ))
-    }
+<div class="education">
+  <h3 class="education-title">Education</h3>
+  <ul class="education-items" role="list">
+    {educationItems.map(item => <EducationItem item={item} />)}
   </ul>
 </div>
+
+<style>
+  .education {
+    padding-top: 1.25rem;
+  }
+</style>

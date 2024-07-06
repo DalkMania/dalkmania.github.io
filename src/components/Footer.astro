@@ -1,45 +1,40 @@
 ---
 import { Icon } from "astro-icon/components"
-import SiteInfo from "./SiteInfo.astro"
 ---
 
-<footer id="colophon" class="bg-gray-900" role="contentinfo">
-  <SiteInfo
-    title={"Niklas Dahlqvist's Portfolio"}
-    description={"Just Another Portfolio"}
-  />
-  <div
-    class="container mx-auto flex items-center justify-between text-white p-3 relative"
-  >
-    <p class="copyright flex-1 leading-loose">
-      © {new Date().getFullYear()}
-      {` `}
-      <a href="/" aria-label={`Niklas Dahlqvist`}>Niklas Dahlqvist</a>
-    </p>
-    <p class="w-24 leading-loose flex items-center">
-      <a
-        aria-label={`Built with Astro`}
-        class="w-8 h-8 astro-icon"
-        href="https://www.astro.build"
-        target="_blank"
-      >
-        <Icon name="simple-icons:astro" />
-      </a>
-    </p>
-  </div>
+<footer id="colophon" role="contentinfo">
+  <p class="copyright">
+    © {new Date().getFullYear()}
+    {` `}
+    <a href="/" aria-label={`Niklas Dahlqvist`}>Niklas Dahlqvist</a>
+  </p>
+  <p class="astro-credit">
+    <a aria-label={`Built with Astro`} class="astro-icon" href="https://www.astro.build" target="_blank">
+      <Icon name="simple-icons:astro" />
+    </a>
+  </p>
 </footer>
 
 <style>
-  .social-icons li.facebook a:hover svg {
-    color: #3b5998;
+  #colophon {
+    background: rgb(17, 24, 39);
+    color: white;
+    display: grid;
+    grid-template-columns: auto minmax(auto, 48rem) minmax(auto, 48rem) auto;
+    padding: 0.75rem;
+
+    .astro-icon [data-icon] {
+      width: 2rem;
+      height: 2rem;
+    }
   }
-  .social-icons li.twitter a:hover svg {
-    color: #55acee;
+
+  .copyright {
+    grid-column: 2;
   }
-  .social-icons li.linkedin a:hover svg {
-    color: #0077b5;
-  }
-  .social-icons li.github a:hover svg {
-    color: #4183c4;
+
+  .astro-credit {
+    grid-column: 3;
+    justify-self: flex-end;
   }
 </style>

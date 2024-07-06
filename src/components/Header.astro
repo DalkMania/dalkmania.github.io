@@ -2,20 +2,36 @@
 import Navigation from "./Navigation.astro"
 ---
 
-<header
-  id="masthead"
-  class="site-header border-t-4 border-t-regal-blue border-b border-b-gray-300"
-  role="banner"
->
-  <nav
-    class="header-navigation container mx-auto flex items-center justify-between flex-wrap p-3 relative"
-    role="navigation"
-  >
-    <div class="flex items-center flex-shrink-0 text-black">
-      <h1 class="text-2xl font-display">
-        <a href="/" aria-label={`Niklas Dahlqvist`}>Niklas Dahlqvist</a>
-      </h1>
-    </div>
+<header id="masthead" class="site-header" role="banner">
+  <nav class="header-navigation" role="navigation">
+    <h1 class="site-title">
+      <a href="/" aria-label={`Niklas Dahlqvist`}>Niklas Dahlqvist</a>
+    </h1>
     <Navigation />
   </nav>
 </header>
+
+<style>
+  .site-header {
+    border-top: 5px solid var(--clr-regal-blue);
+    border-bottom: 1px solid var(--clr-gray);
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
+
+    .header-navigation {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0.75rem;
+      position: relative;
+      justify-content: space-between;
+      margin-inline: auto;
+      max-width: 96rem;
+    }
+
+    .site-title {
+      flex: 1;
+    }
+  }
+</style>

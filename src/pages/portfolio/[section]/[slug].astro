@@ -1,22 +1,27 @@
 ---
-import { slugify } from "../../../helpers/slugify"
+import { type CollectionEntry, getCollection } from "astro:content"
+import { slugify } from "@helpers/slugify"
+
+export interface Props {
+  portfolioItem: CollectionEntry<"portfolio">
+}
 
 export async function getStaticPaths() {
-  const portfolioItems = await Astro.glob("../../../content/portfolio/*.mdx")
+  const portfolioItems = await getCollection("portfolio")
+
   return portfolioItems.map(item => {
     return {
       params: {
-        section: slugify(item.frontmatter.section),
-        slug: slugify(item.frontmatter.title),
+        section: slugify(item.data.section),
+        slug: slugify(item.data.title),
       },
-      props: { item },
+      props: { portfolioItem: item },
     }
   })
 }
 
-const {
-  item: { Content },
-} = Astro.props
+const { portfolioItem } = Astro.props
+const { Content } = await portfolioItem.render()
 ---
 
 <Content />
