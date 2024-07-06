@@ -2,14 +2,15 @@ import { defineConfig } from "astro/config"
 import icon from "astro-icon"
 import mdx from "@astrojs/mdx"
 
+import expressiveCode from "astro-expressive-code"
+
 // https://astro.build/config
 export default defineConfig({
-  markdown: {
-    shikiConfig: {
-      theme: "dracula",
-    },
-  },
+  site: "https://www.niklasdahlqvist.com",
   integrations: [
+    expressiveCode({
+      themes: ["dracula"],
+    }),
     icon({
       include: {
         fa: [
@@ -24,5 +25,4 @@ export default defineConfig({
     }),
     mdx(),
   ],
-  plugins: ["prettier-plugin-astro"],
 })

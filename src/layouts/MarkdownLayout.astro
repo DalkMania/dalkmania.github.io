@@ -82,7 +82,7 @@ const showProjectInfo = url?.includes("/content/portfolio/")
       }
     }
 
-    figure {
+    figure:not(.frame) {
       margin-block: 2rem;
 
       figcaption {
@@ -104,11 +104,6 @@ const showProjectInfo = url?.includes("/content/portfolio/")
       &:active {
         color: rgb(44, 82, 130);
       }
-    }
-
-    .astro-code {
-      padding: 1.5rem;
-      border-radius: 0.5rem;
     }
   }
 </style>

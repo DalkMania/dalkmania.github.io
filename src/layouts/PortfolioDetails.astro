@@ -12,8 +12,6 @@ const { portfolioItem } = Astro.props
 
 const { title, introparagraph, githuburl, demourl } = portfolioItem.data
 const { Content } = await portfolioItem.render()
-
-console.log(portfolioItem)
 ---
 
 <BaseLayout title={title} description={introparagraph ?? ""}>
