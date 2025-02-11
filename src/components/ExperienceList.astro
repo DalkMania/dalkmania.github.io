@@ -1,15 +1,14 @@
 ---
 import { getCollection } from "astro:content"
 import ExperienceItem from "./ExperienceItem.astro"
-const experienceItems = await getCollection("experience", ({ id }) => {
-  return id
-})
+const experienceItems = await getCollection("experience")
+const sortedItems = experienceItems.sort((a, b) => parseInt(a.id.slice(0, 2)) - parseInt(b.id.slice(0, 2)))
 ---
 
 <div class="experience">
   <h3 class="experience-title">Experience</h3>
   <ul class="experience-items" role="list">
-    {experienceItems.map(item => <ExperienceItem item={item} />)}
+    {sortedItems.map(item => <ExperienceItem item={item} />)}
   </ul>
 </div>
 
