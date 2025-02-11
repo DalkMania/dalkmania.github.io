@@ -1,7 +1,9 @@
 ---
 import { getCollection } from "astro:content"
 import ExperienceItem from "./ExperienceItem.astro"
-const experienceItems = await getCollection("experience")
+const experienceItems = await getCollection("experience", ({ id }) => {
+  return id
+})
 ---
 
 <div class="experience">
