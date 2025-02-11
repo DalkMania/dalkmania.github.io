@@ -11,19 +11,19 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/mdx": "^4.0.1",
+    "@astrojs/mdx": "^4.0.8",
     "@astrolib/analytics": "^0.6.1",
-    "@fontsource-variable/raleway": "^5.1.0",
-    "@fontsource/merriweather": "^5.1.0",
-    "@iconify-json/fa": "^1.2.0",
-    "@iconify-json/simple-icons": "^1.2.14",
-    "astro": "^5.0.3",
-    "astro-expressive-code": "^0.38.3",
-    "astro-icon": "^1.1.4",
+    "@fontsource-variable/raleway": "^5.1.1",
+    "@fontsource/merriweather": "^5.1.1",
+    "@iconify-json/fa": "^1.2.1",
+    "@iconify-json/simple-icons": "^1.2.24",
+    "astro": "^5.2.5",
+    "astro-expressive-code": "^0.40.1",
+    "astro-icon": "^1.1.5",
     "astro-seo": "^0.8.4",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.3"
   },
   "devDependencies": {
-    "prettier": "^3.4.2"
+    "prettier": "^3.5.0"
   }
 }
