@@ -21,7 +21,10 @@ const {
 } = Astro.props as Props;
 ---
 
-<BaseLayout title="Projects" description="Showcasing some of my best projects and technical achievements">
+<BaseLayout
+  title={`Projects ${currentPage > 1 ? `Page ${currentPage}` : ``}`}
+  description="Showcasing some of my best projects and technical achievements"
+>
   <PageHeader
     badgeTitle="Projects"
     title="Featured Work"
