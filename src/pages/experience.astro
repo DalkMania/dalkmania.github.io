@@ -10,7 +10,7 @@ const experienceItems = await getCollection("experience");
 const sortedItems = experienceItems.sort((a, b) => parseInt(a.id.slice(0, 2)) - parseInt(b.id.slice(0, 2)));
 ---
 
-<BaseLayout>
+<BaseLayout title="Experience" description="A timeline of my professional growth and key achievements">
   <PageHeader
     badgeTitle="Experience"
     title="Professional Journey"

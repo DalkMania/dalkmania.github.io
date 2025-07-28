@@ -32,7 +32,7 @@ if (!project) {
 const { Content } = await render(project);
 ---
 
-<BaseLayout>
+<BaseLayout title={project.data.title} description={project.data.description}>
   <PageHeader badgeTitle="Projects" title={project.data.title} description={project.data.description} />
   <Section id={slugify(project.data.title) || project.data.title}>
     <Container class="max-w-screen-lg mx-auto mt-16 mb-12 prose">
