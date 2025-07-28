@@ -1,0 +1,66 @@
+---
+import InstagramIcon from "./InstagramIcon.astro";
+import GithubIcon from "./GithubIcon.astro";
+import Social from "./Social.astro";
+import FacebookIcon from "./FacebookIcon.astro";
+import LinkedInIcon from "./LinkedInIcon.astro";
+---
+
+<ul class="social-icons" role="list">
+  <li class="facebook">
+    <Social platform="instagram" username="DalkMania">
+      <FacebookIcon />
+    </Social>
+  </li>
+  <li class="instagram">
+    <Social platform="instagram" username="DalkMania">
+      <InstagramIcon />
+    </Social>
+  </li>
+  <li class="github">
+    <Social platform="github" username="DalkMania">
+      <GithubIcon />
+    </Social>
+  </li>
+  <li class="linkedin">
+    <Social platform="linkedin" username="in/niklasdahlqvist">
+      <LinkedInIcon />
+    </Social>
+  </li>
+</ul>
+
+<style>
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      margin-inline: 0.75rem;
+
+      &.facebook:hover {
+        svg {
+          color: #3b5998;
+        }
+      }
+
+      &.instagram:hover {
+        svg {
+          color: #ff0069;
+        }
+      }
+
+      &.linkedin:hover {
+        svg {
+          color: #0077b5;
+        }
+      }
+
+      &.github:hover {
+        svg {
+          color: #4183c4;
+        }
+      }
+    }
+  }
+</style>

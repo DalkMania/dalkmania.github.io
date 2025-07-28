@@ -1,0 +1,61 @@
+---
+import Container from "./Container.astro";
+import Logo from "./Logo.astro";
+import Navigation from "./Navigation.astro";
+---
+
+<header
+  id="masthead"
+  class={`py-4 border-transparent sticky top-0 z-50 w-full border-b backdrop-blur bg-background/50 `}
+  role="banner"
+>
+  <Container>
+    <nav class="header-navigation flex" role="navigation">
+      <Logo />
+      <Navigation />
+    </nav>
+  </Container>
+</header>
+
+<script is:inline>
+  const scrollY = 50;
+  const defaultClasses = "py-4 border-transparent";
+  const stickyClasses = "py-3";
+  const headers = document.querySelectorAll(".sticky");
+
+  const classArray = stickyClasses.split(" ");
+  const replaceArray = defaultClasses.split(" ");
+
+  let scrollPos = 0;
+  let ticking = false;
+
+  function OnScroll(scrollPos, headers) {
+    headers.forEach((header) => {
+      if (scrollPos > scrollY) {
+        header.classList.remove(...replaceArray);
+        header.classList.add("is-active", ...classArray);
+        header.setAttribute("active", "");
+      }
+      //reduce the scrollY to avoid flickering when scrolling up
+      if (scrollPos < Math.max(scrollY - 40, 10)) {
+        header.classList.remove("is-active", ...classArray);
+        header.classList.add(...replaceArray);
+        header.removeAttribute("active");
+      }
+    });
+  }
+
+  // Scroll event throttling as per MDN
+  // https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event
+  document.addEventListener("scroll", () => {
+    scrollPos = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        OnScroll(scrollPos, headers);
+        ticking = false;
+      });
+
+      ticking = true;
+    }
+  });
+</script>

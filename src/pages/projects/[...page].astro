@@ -1,0 +1,34 @@
+---
+import type { GetStaticPathsOptions, InferGetStaticPropsType } from "astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/layout/Container.astro";
+import PageHeader from "@/components/layout/PageHeader.astro";
+import ProjectCard from "@/components/ProjectCard.astro";
+import PaginationNumberless from "@/components/PaginationNumberless.astro";
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const projects = await getCollection("projects");
+  const sortedItems = projects.sort((a, b) => parseInt(a.id.slice(0, 2)) - parseInt(b.id.slice(0, 2)));
+
+  return paginate(sortedItems.reverse(), { pageSize: 6 });
+}
+
+const {
+  page: { data: projects, url, lastPage, currentPage },
+} = Astro.props as Props;
+---
+
+<BaseLayout>
+  <PageHeader
+    badgeTitle="Projects"
+    title="Featured Work"
+    description="Showcasing some of my best projects and technical achievements"
+  />
+  <Container class="max-w-screen-xl mx-auto mt-16 mb-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+    {projects.map(({ data }) => <ProjectCard {...data} />)}
+  </Container>
+  <PaginationNumberless length={lastPage} prevUrl={url.prev} nextUrl={url.next} currentPage={currentPage} />
+</BaseLayout>

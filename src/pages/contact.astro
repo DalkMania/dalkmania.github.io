@@ -1,0 +1,17 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Container from "@/components/layout/Container.astro";
+import PageHeader from "@/components/layout/PageHeader.astro";
+import ContactForm from "@/components/ContactForm.astro";
+---
+
+<BaseLayout>
+  <Container>
+    <PageHeader
+      badgeTitle="Contact"
+      title="Would you like to discuss a potential project?"
+      description="Or simply want to say hi? Contact me via the form below."
+    />
+    <ContactForm />
+  </Container>
+</BaseLayout>

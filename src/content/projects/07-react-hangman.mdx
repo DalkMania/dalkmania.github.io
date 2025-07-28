@@ -1,0 +1,37 @@
+---
+title: "React Hangman Game"
+technologies: ["HTML5", "CSS3", "TypeScript", "React", "Game", "API"]
+description: "A simple React Hangman game. Driven by the Free Dictionary API."
+image: "../../assets/images/react-hangman.png"
+githubUrl: "https://github.com/DalkMania/react-hangman"
+liveUrl: "https://hangman-dalkmania.netlify.app"
+---
+
+import { Image } from "astro:assets";
+import FirstImage from "@/assets/images/react-hangman.png";
+
+A simple React HangMan game made with React and TypeScript. This was a learning exercise for me to get into and
+play around with React, React Hooks and TypeScript.
+
+<figure class="figure figure--center">
+  <Image
+    src={FirstImage}
+    alt="The Game"
+    width={FirstImage.width}
+    format={"webp"}
+    aspectRatio={FirstImage.width / FirstImage.height}
+  />
+  <figcaption class="text-muted-foreground">A simple React Hangman game.</figcaption>
+</figure>
+
+It is based on a tutorial from the [Traversy Media YouTube channel](https://www.youtube.com/c/TraversyMedia).
+
+But I extended it a bit, by adding a [random word generator](https://www.npmjs.com/package/random-words) and the [Free Dictionary API](https://dictionaryapi.dev/) for word lookups. The API enabled me to extend this relatively simple game, with other functionalty like hints and various other things.
+
+## Installation
+
+- `git clone git@github.com:DalkMania/react-hangman.git`
+- `cd react-hangman`
+- `npm install or yarn`
+- `npm run dev or yarn dev`
+- Visit http://localhost:5173/

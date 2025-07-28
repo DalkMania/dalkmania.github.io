@@ -1,0 +1,42 @@
+---
+import Section from "@/components/layout/Section.astro";
+import Container from "@/components/layout/Container.astro";
+import PageHeader from "@/components/layout/PageHeader.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { slugify } from "@/lib/utils";
+import { type CollectionEntry, getCollection, render } from "astro:content";
+
+export interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+export async function getStaticPaths() {
+  const projectItems = await getCollection("projects");
+
+  return projectItems.map((item) => {
+    return {
+      params: {
+        slug: slugify(item.data.title),
+      },
+      props: { project: item },
+    };
+  });
+}
+
+const { project } = Astro.props;
+
+if (!project) {
+  return Astro.redirect("/404"); // Handle case where project is not found
+}
+
+const { Content } = await render(project);
+---
+
+<BaseLayout>
+  <PageHeader badgeTitle="Projects" title={project.data.title} description={project.data.description} />
+  <Section id={slugify(project.data.title) || project.data.title}>
+    <Container class="max-w-screen-lg mx-auto mt-16 mb-12 prose">
+      <Content />
+    </Container>
+  </Section>
+</BaseLayout>

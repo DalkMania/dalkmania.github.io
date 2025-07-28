@@ -1,0 +1,41 @@
+---
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+interface Props {
+  length: number;
+  currentPage: number;
+  prevUrl?: string;
+  nextUrl?: string;
+}
+const { length, currentPage, prevUrl, nextUrl } = Astro.props;
+---
+
+<div class="w-full mx-auto max-w-xs py-4">
+  <Pagination className="w-full">
+    <PaginationContent className="w-full justify-between">
+      <PaginationItem>
+        <PaginationPrevious
+          href={prevUrl ? `${prevUrl}/` : "#"}
+          className={currentPage <= 1 ? "pointer-events-none opacity-50" : "border"}
+          aria-disabled={currentPage < length}
+        />
+      </PaginationItem>
+      <PaginationItem>
+        <span class="text-sm text-muted-foreground">{`Page ${currentPage} of ${length}`}</span>
+      </PaginationItem>
+      <PaginationItem>
+        <PaginationNext
+          href={nextUrl ? `${nextUrl}/` : "#"}
+          className={currentPage === length ? "pointer-events-none opacity-50" : "border"}
+          aria-disabled={currentPage === length}
+        />
+      </PaginationItem>
+    </PaginationContent>
+  </Pagination>
+</div>

@@ -1,14 +1,24 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
+import expressiveCode from "astro-expressive-code";
 
-import react from '@astrojs/react';
+import react from "@astrojs/react";
+
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
-      plugins: [tailwindcss()]
-	},
+    // @ts-expect-error
+    plugins: [tailwindcss()],
+  },
 
-  integrations: [react()]
+  integrations: [
+    react(),
+    expressiveCode({
+      themes: ["dracula"],
+    }),
+    mdx(),
+  ],
 });

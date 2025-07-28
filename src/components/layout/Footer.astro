@@ -1,0 +1,13 @@
+---
+import Container from "./Container.astro";
+import SocialLinks from "../SocialLinks.astro";
+
+const date = new Date().getFullYear();
+---
+
+<footer id="colophon" role="contentinfo" class="py-6 border-t mt-auto">
+  <Container class="flex justify-between">
+    <p>&copy; {date} <a href="/">Niklas Dahlqvist</a></p>
+    <SocialLinks />
+  </Container>
+</footer>

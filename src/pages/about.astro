@@ -1,0 +1,39 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/layout/Section.astro";
+import Container from "@/components/layout/Container.astro";
+import PageHeader from "@/components/layout/PageHeader.astro";
+---
+
+<BaseLayout>
+  <PageHeader
+    badgeTitle="About"
+    title="Learn a little about who I am."
+    description="A brief introduction to me as a person"
+  />
+  <Section id="about">
+    <Container class="max-w-screen-lg mx-auto mt-16 mb-12">
+      <p class="text-foreground mt-6 text-[17px] md:text-lg">
+        With over 15 years of experience in web development and digital design, I bring a strong foundation in CSS,
+        HTML, PHP, SQL, and JavaScript/Typescript, paired with skills in Adobe Creative Suite, other design tools such
+        as Figma and a variety of content management systems including WordPress, Contentful, Sanity and other PHP- and
+        MVC-based platforms. My skill set has grown alongside the evolving web landscape, and in recent years I've
+        focused heavily on the JAMstack architecture, building modern, performant web experiences using React, Node.js,
+        APIs, and headless CMS solutions.
+      </p>
+      <p class="text-foreground mt-6 text-[17px] md:text-lg">
+        I thrive in both collaborative and independent environments, and am known for being detail-oriented, focused,
+        and adaptable. Creativity continues to be a driving force in my work, fueled by inspiration from music, art,
+        human connection, and the world at large. I find energy in interaction, whether it's with teammates, clients, or
+        through the digital experiences I help create.
+      </p>
+      <p class="text-foreground mt-6 text-[17px] md:text-lg">
+        I'm committed to lifelong learning and constantly expanding my capabilities, both technically and personally. I
+        value opportunities that push me to grow, take on new challenges, and step outside of my comfort zone. Educated
+        in Sweden, I bring an international perspective, a strong work ethic, and a good sense of humor. I believe
+        professionalism and playfulness can and should coexist in the workplace. I'm always up for trying something new,
+        and I welcome opportunities that allow me to take initiative and grow.
+      </p>
+    </Container>
+  </Section>
+</BaseLayout>
