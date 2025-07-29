@@ -7,7 +7,7 @@ export const NavigationSheet = () => {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline" size="icon" className="rounded-full">
+        <Button variant="outline" size="icon" className="rounded-full" aria-label={`Menu Button`}>
           <Menu />
         </Button>
       </SheetTrigger>

@@ -3,6 +3,9 @@ import "@fontsource-variable/merriweather";
 import "@fontsource-variable/raleway";
 import "../styles/global.css";
 
+import ralewayWoff2 from "@fontsource-variable/raleway/files/raleway-latin-wght-normal.woff2?url";
+import merriweatherWoff2 from "@fontsource-variable/merriweather/files/merriweather-latin-wght-normal.woff2?url";
+
 import { GoogleAnalytics } from "@astrolib/analytics";
 import { SEO } from "astro-seo";
 import Header from "@/components/layout/Header.astro";
@@ -22,6 +25,8 @@ const { title, description } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title} | Niklas Dahlqvist's Portfolio</title>
+    <link rel="preload" as="font" type="font/woff2" href={ralewayWoff2} crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href={merriweatherWoff2} crossorigin />
     <SEO title={title} description={description} />
     <GoogleAnalytics id="G-L1JLG7M0LF" />
   </head>
