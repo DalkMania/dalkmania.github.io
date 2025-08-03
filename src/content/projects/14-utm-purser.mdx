@@ -1,0 +1,26 @@
+---
+title: "UTM Purser"
+technologies: ["JavaScript", "UTM", "Local Storage", "Forms", "Jest"]
+description: "This is a library that allows you to save user data from first website visit to signup of to local storage."
+image: "../../assets/images/utm-params-cover-image.png"
+githubUrl: "https://github.com/DalkMania/utm-purser"
+liveUrl: ""
+---
+
+Heavily inpired by [UTM params saver](https://github.com/szymansd/utm-params) and [Purser](https://github.com/bilbof/purser). This is a combination based on those projects. During my time at Talend, we use this little library/tool quite heavily.
+
+## Usage
+
+```javascript
+import UTMPurser from "utm-purser";
+
+UTMPurser.init(); // this will init the purser
+
+UTMPurser.get(); // this will return all params from localStorage
+
+const addPurserValuesToMarketoForms = (form) => {
+  // Add UTMPurser values to form submissions
+  ...
+  ...
+}
+```
