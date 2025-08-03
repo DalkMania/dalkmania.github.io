@@ -6,8 +6,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: "Raleway Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    "Raleway Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
   --font-serif: "Merriweather Variable", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
@@ -127,6 +128,10 @@ h6,
 
   p {
     @apply mt-6 text-[17px] md:text-lg;
+  }
+
+  blockquote {
+    @apply text-muted-foreground;
   }
 
   a {
