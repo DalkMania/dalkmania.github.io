@@ -19,3 +19,10 @@ export const slugify = (text: string | undefined) => {
       .replace(/-+$/, "");
   }
 };
+
+export const links = [
+  { href: "/about/", label: "About" },
+  { href: "/projects/", label: "Projects" },
+  { href: "/experience/", label: "Experience" },
+  { href: "/contact/", label: "Contact" },
+];

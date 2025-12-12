@@ -1,7 +1,7 @@
 import { Menu } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
-import { links } from "./Navigation.astro";
+import { links } from "@/lib/utils";
 
 export const NavigationSheet = () => {
   return (
