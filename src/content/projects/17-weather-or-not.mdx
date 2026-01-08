@@ -1,0 +1,54 @@
+---
+title: "Weather or Not?"
+technologies: ["HTML", "CSS", "React", "TypeScript", "TanStack", "Netlify"]
+description: "This is a weather app using TanStack and Open-Meteo API"
+image: "../../assets/images/weather-or-not-cover-image.jpg"
+githubUrl: "https://github.com/DalkMania/weather-or-not"
+liveUrl: "https://weather-or-not-tanstack.netlify.app/"
+---
+
+import { Image } from "astro:assets";
+import FirstImage from "@/assets/images/weather-screenshot-1.png";
+import SecondImage from "@/assets/images/weather-screenshot-2.png";
+
+This project is built using React, TypeScript, TanStack Router, TanStack DB, TanStack Query and Tailwind CSS. It uses the Open-Meteo API to pull various weather Information based on location search.
+
+<figure class="figure figure--center">
+  <Image
+    src={FirstImage}
+    alt="Location Search"
+    width={FirstImage.width}
+    height={FirstImage.height}
+    format={"webp"}
+    aspectRatio={FirstImage.width / FirstImage.height}
+  />
+  <figcaption class="figure__caption">Location Search</figcaption>
+</figure>
+
+## Features
+
+- Smart Search: Location autocomplete with favorites support
+- Metric and Imperial Unit support
+- Theme (light / dark mode) support
+- Responsive Design: Works on desktop, tablet, and mobile devices
+- Real-time Weather: Current conditions, hourly forecast, and 10-day outlook
+- Detailed Metrics: Temperature, wind, sunrise / sunset and more
+
+<figure class="figure figure--center">
+  <Image
+    src={SecondImage}
+    alt="Weather Information"
+    width={SecondImage.width}
+    height={SecondImage.height}
+    format={"webp"}
+    aspectRatio={SecondImage.width / SecondImage.height}
+  />
+  <figcaption class="figure__caption">Weather Information for Loaction</figcaption>
+</figure>
+
+## Built with
+
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TanStack](https://tanstack.com/)
+- [Netlify](https://netlify.com/)
