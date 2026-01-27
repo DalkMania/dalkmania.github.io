@@ -8,7 +8,7 @@ githubUrl: "https://github.com/DalkMania/tan-stack-codebreaker"
 liveUrl: "https://tan-stack-codebreaker.netlify.app/"
 ---
 
-import { Image } from "astro:assets";
+import Figure from "@/components/Figure.astro";
 import FirstImage from "@/assets/images/CodeBreaker-Dark-1.png";
 import SecondImage from "@/assets/images/CodeBreaker-Light-1.png";
 import ThirdImage from "@/assets/images/CodeBreaker-Secret-Message.png";
@@ -16,55 +16,17 @@ import FourthImage from "@/assets/images/CodeBreaker-Print-Secret-Message.png";
 
 A simple Code-Breaking Game. Basically an automated way to create little "code-breaking" worksheets where each letter in a secret message is represented as a symbol. Kids can then refer to an alphabet lookup table, and perform the translation.
 
-<figure class="figure figure--center">
-  <Image
-    src={FirstImage}
-    alt="Dark Mode"
-    width={FirstImage.width}
-    height={FirstImage.height}
-    format={"webp"}
-    aspectRatio={FirstImage.width / FirstImage.height}
-  />
-  <figcaption class="figure__caption">Dark Mode?</figcaption>
-</figure>
-
-<figure class="figure figure--center">
-  <Image
-    src={SecondImage}
-    alt="Light Mode"
-    width={SecondImage.width}
-    height={SecondImage.height}
-    format={"webp"}
-    aspectRatio={SecondImage.width / SecondImage.height}
-  />
-  <figcaption class="figure__caption">Or maybe Light Mode?</figcaption>
-</figure>
+<Figure image={FirstImage} alt="Dark Mode?" caption="Dark Mode?" />
+<Figure image={SecondImage} alt="Light Mode?" caption="Or maybe Light Mode?" />
 
 This project is built using React, TypeScript, TanStack Router, TanStack DB and Tailwind CSS. It serves as a demonstration of how to use these technologies together to create an interactive web application. Also a way for me to experiment with TanStack.
 
-<figure class="figure figure--center">
-  <Image
-    src={ThirdImage}
-    alt="Enter a Message"
-    width={ThirdImage.width}
-    height={ThirdImage.height}
-    format={"webp"}
-    aspectRatio={ThirdImage.width / ThirdImage.height}
-  />
-  <figcaption class="figure__caption">Enter a "secret message"</figcaption>
-</figure>
-
-<figure class="figure figure--center">
-  <Image
-    src={FourthImage}
-    alt="Print the Coded Message"
-    width={FourthImage.width}
-    height={FourthImage.height}
-    format={"webp"}
-    aspectRatio={FourthImage.width / FourthImage.height}
-  />
-  <figcaption class="figure__caption">Print the Coded Message and hand it to the kids to keep them busy</figcaption>
-</figure>
+<Figure image={ThirdImage} alt="Enter a Message" caption={`Enter a "secret message"`} />
+<Figure
+  image={FourthImage}
+  alt="Print the Coded Message"
+  caption={`Print the Coded Message and hand it to the kids to keep them busy`}
+/>
 
 ## Built with
 

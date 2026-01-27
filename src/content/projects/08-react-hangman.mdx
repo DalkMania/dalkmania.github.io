@@ -7,22 +7,13 @@ githubUrl: "https://github.com/DalkMania/react-hangman"
 liveUrl: "https://hangman-dalkmania.netlify.app"
 ---
 
-import { Image } from "astro:assets";
+import Figure from "@/components/Figure.astro";
 import FirstImage from "@/assets/images/react-hangman.png";
 
 A simple React HangMan game made with React and TypeScript. This was a learning exercise for me to get into and
 play around with React, React Hooks and TypeScript.
 
-<figure class="figure figure--center">
-  <Image
-    src={FirstImage}
-    alt="The Game"
-    width={FirstImage.width}
-    format={"webp"}
-    aspectRatio={FirstImage.width / FirstImage.height}
-  />
-  <figcaption class="text-muted-foreground">A simple React Hangman game.</figcaption>
-</figure>
+<Figure image={FirstImage} alt="The Game" caption="A simple React Hangman game." />
 
 It is based on a tutorial from the [Traversy Media YouTube channel](https://www.youtube.com/c/TraversyMedia).
 

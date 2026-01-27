@@ -7,48 +7,16 @@ githubUrl: "https://github.com/DalkMania/chuck-norris-tanstack"
 liveUrl: "https://chuck-norris-tanstack.netlify.app/"
 ---
 
-import { Image } from "astro:assets";
+import Figure from "@/components/Figure.astro";
 import FirstImage from "@/assets/images/chuck-screenshot-1.png";
 import SecondImage from "@/assets/images/chuck-screenshot-2.png";
 import ThirdImage from "@/assets/images/chuck-screenshot-3.png";
 
 This project is built using React, TypeScript, TanStack Router, TanStack DB and Tailwind CSS. It uses the Chuck Norris Joke API and the Movie Database API.
 
-<figure class="figure figure--center">
-  <Image
-    src={FirstImage}
-    alt="Chuck Joke"
-    width={FirstImage.width}
-    height={FirstImage.height}
-    format={"webp"}
-    aspectRatio={FirstImage.width / FirstImage.height}
-  />
-  <figcaption class="figure__caption">Chuck Norries Joke?</figcaption>
-</figure>
-
-<figure class="figure figure--center">
-  <Image
-    src={SecondImage}
-    alt="Chuck Norries Movies"
-    width={SecondImage.width}
-    height={SecondImage.height}
-    format={"webp"}
-    aspectRatio={SecondImage.width / SecondImage.height}
-  />
-  <figcaption class="figure__caption">Chuck Norries Movies</figcaption>
-</figure>
-
-<figure class="figure figure--center">
-  <Image
-    src={ThirdImage}
-    alt="Movie Information"
-    width={ThirdImage.width}
-    height={ThirdImage.height}
-    format={"webp"}
-    aspectRatio={ThirdImage.width / ThirdImage.height}
-  />
-  <figcaption class="figure__caption">Movie Information</figcaption>
-</figure>
+<Figure image={FirstImage} alt="Chuck Joke" caption="Chuck Norries Joke?" />
+<Figure image={SecondImage} alt="Chuck Norries Movies" caption="Chuck Norries Movies" />
+<Figure image={ThirdImage} alt="Movie Information" caption="Movie Information" />
 
 ## Built with
 
