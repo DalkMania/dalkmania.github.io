@@ -1,0 +1,36 @@
+---
+title: "Who's in Space"
+technologies: ["HTML", "CSS", "React", "TypeScript", "TanStack", "Netlify"]
+description: "A website about Space, using the Tanstack Libraries and differtent APIs."
+image: "../../assets/images/who-is-in-space-cover-image.jpg"
+githubUrl: "https://github.com/DalkMania/who-is-in-space"
+liveUrl: "https://who-is-in-space.netlify.app/"
+---
+
+import Figure from "@/components/Figure.astro";
+import FirstImage from "@/assets/images/who-is-in-space-screenshot-1.jpg";
+import SecondImage from "@/assets/images/who-is-in-space-screenshot-2.jpg";
+import ThirdImage from "@/assets/images/who-is-in-space-screenshot-3.jpg";
+
+The International Space Station (ISS) and who is currently up there. The station's mission is to serve as a unique microgravity laboratory for scientific research, enabling long-term human space exploration and providing benefits to Earth.
+
+This project is built using React, TypeScript, TanStack Router, TanStack Query and Tailwind CSS. It uses differtent APIs to pull various information.
+
+<Figure image={FirstImage} alt="Front Page" caption="Front Page" />
+
+## Features
+
+- ISS Tracker powered by the [WTIA API](https://wheretheiss.at/w/developer) and [Leaflet](https://leafletjs.com/)
+- Astronaut Information provied by [The Space Devs](https://thespacedevs.com/) and their [Launch Library 2 API](https://thespacedevs.com/llapi) and the [Wiklpedia API](https://www.wikipedia.org/) for more details about the astronauts
+- NASA News Feed provied by [The Space Devs](https://thespacedevs.com/) and their [Spaceflight News API](https://thespacedevs.com/snapi)
+
+<Figure image={SecondImage} alt="Live ISS Tracker" caption="Live ISS Tracker" />
+
+<Figure image={ThirdImage} alt="Astronauts currently in Space" caption="Astronauts currently in Space" />
+
+## Built with
+
+- [React](https://reactjs.org/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TanStack](https://tanstack.com/)
+- [Netlify](https://netlify.com/)
