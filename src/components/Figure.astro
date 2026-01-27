@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  image: ImageMetadata;
+  alt: string;
+  caption: string;
+}
+
+const { image, alt, caption } = Astro.props;
+---
+
+<figure class="figure figure--center">
+  <Image
+    src={image}
+    alt={alt}
+    width={image.width}
+    height={image.height}
+    format={"webp"}
+    class={`rounded-lg border border-muted`}
+  />
+  <figcaption class="figure__caption">{caption}</figcaption>
+</figure>
