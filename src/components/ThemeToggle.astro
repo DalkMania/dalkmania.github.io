@@ -46,12 +46,6 @@ import { Button } from "@/components/ui/button";
   const themeToggle = document.querySelector("#themeToggle");
   const html = document.documentElement;
 
-  (function () {
-    const saved = localStorage.getItem("theme");
-    const theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    html.classList.add(theme);
-  })();
-
   // Check for saved theme or system preference
   function getPreferredTheme() {
     const saved = localStorage.getItem("theme");
