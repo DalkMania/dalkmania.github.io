@@ -28,7 +28,7 @@
     }
   }
   html {
-    &.dark {
+    &[data-theme="dark"] {
       #themeToggle .sun-icon {
         display: block;
       }
@@ -36,7 +36,7 @@
         display: none;
       }
     }
-    &.light {
+    &[data-theme="light"] {
       #themeToggle .sun-icon {
         display: none;
       }
@@ -48,35 +48,29 @@
 </style>
 
 <script is:inline>
-  // Theme toggle functionality
-  const themeToggle = document.querySelector("#themeToggle");
+  const themeToggle = document.getElementById("themeToggle");
   const html = document.documentElement;
 
-  // Check for saved theme or system preference
   function getPreferredTheme() {
-    const saved = localStorage.getItem("theme");
-    if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    var stored = localStorage.getItem("theme");
+    if (stored) return stored;
+    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   }
 
   function setTheme(theme) {
-    html.removeAttribute("class");
-    html.classList.add(theme);
+    html.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
   }
 
-  // Initialize theme
   setTheme(getPreferredTheme());
 
-  // Toggle theme on button click
-  themeToggle.addEventListener("click", () => {
-    const isDark = html.classList.contains("dark");
-    setTheme(isDark ? "light" : "dark");
+  themeToggle.addEventListener("click", function () {
+    var current = html.getAttribute("data-theme");
+    setTheme(current === "dark" ? "light" : "dark");
   });
 
-  // Listen for system theme changes
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", (e) => {
-    if (!localStorage.getItem("theme")) {
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+    if (!localStorage.getItem("conductor-theme")) {
       setTheme(e.matches ? "dark" : "light");
     }
   });

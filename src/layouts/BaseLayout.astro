@@ -38,11 +38,3 @@ const { title, description } = Astro.props;
     <Footer />
   </body>
 </html>
-
-<script>
-  (function () {
-    const saved = localStorage.getItem("theme");
-    const theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    document.documentElement.classList.add(theme);
-  })();
-</script>
