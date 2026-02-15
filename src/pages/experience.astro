@@ -5,6 +5,8 @@ import Container from "@/components/layout/Container.astro";
 import PageHeader from "@/components/layout/PageHeader.astro";
 import ExperienceItem from "@/components/ExperienceItem.astro";
 import { getCollection } from "astro:content";
+import { Button } from "@/components/ui/button";
+import { DownloadIcon } from "lucide-react";
 
 const experienceItems = await getCollection("experience");
 const sortedItems = experienceItems.sort((a, b) => parseInt(a.id.slice(0, 2)) - parseInt(b.id.slice(0, 2)));
@@ -16,8 +18,13 @@ const sortedItems = experienceItems.sort((a, b) => parseInt(a.id.slice(0, 2)) - 
     title="Professional Journey"
     description="A timeline of my professional growth and key achievements"
   />
+  <a href="/NiklasDahlqvist-FrontendEngineer-Resume.pdf" target="_blank" class="mx-auto block w-max pb-8">
+    <Button variant="outline" size="lg" className="rounded-full text-base shadow-none hover:cursor-pointer">
+      Download Resume <DownloadIcon className="h-5! w-5!" />
+    </Button>
+  </a>
   <Section id="experience" class="relative pt-4 pb-16 px-6">
-    <Container class="max-w-screen-md mx-auto">
+    <Container class="max-w-3xl mx-auto">
       <div class="relative">
         {sortedItems.map(({ data }) => <ExperienceItem {...data} />)}
       </div>
