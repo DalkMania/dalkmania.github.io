@@ -30,7 +30,7 @@ const {
     title="Featured Work"
     description="Showcasing some of my best projects and technical achievements"
   />
-  <Container class="max-w-screen-xl mx-auto mt-16 mb-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+  <Container class="max-w-7xl mx-auto mt-16 mb-12 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
     {projects.map(({ data }) => <ProjectCard {...data} />)}
   </Container>
   <PaginationNumberless length={lastPage} prevUrl={url.prev} nextUrl={url.next} currentPage={currentPage} />

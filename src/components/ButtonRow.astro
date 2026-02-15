@@ -1,0 +1,31 @@
+---
+import { Button } from "./ui/button";
+
+interface Props {
+  liveUrl?: string;
+  githubUrl?: string;
+}
+
+const { liveUrl, githubUrl } = Astro.props;
+---
+
+<div class="flex gap-4 mx-auto w-max -mt-4">
+  {
+    liveUrl && (
+      <Button variant="default" className="rounded-full">
+        <a href={liveUrl} target="_blank" rel="noopener noreferrer">
+          Live Demo
+        </a>
+      </Button>
+    )
+  }
+  {
+    githubUrl && (
+      <Button variant="outline" className="rounded-full shadow-none">
+        <a href={githubUrl} target="_blank" rel="noopener noreferrer">
+          View Code
+        </a>
+      </Button>
+    )
+  }
+</div>

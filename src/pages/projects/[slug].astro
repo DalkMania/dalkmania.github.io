@@ -5,6 +5,7 @@ import PageHeader from "@/components/layout/PageHeader.astro";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import { slugify } from "@/lib/utils";
 import { type CollectionEntry, getCollection, render } from "astro:content";
+import ButtonRow from "@/components/ButtonRow.astro";
 
 export interface Props {
   project: CollectionEntry<"projects">;
@@ -35,7 +36,8 @@ const { Content } = await render(project);
 <BaseLayout title={project.data.title} description={project.data.description}>
   <PageHeader badgeTitle="Projects" title={project.data.title} description={project.data.description} />
   <Section id={slugify(project.data.title) || project.data.title}>
-    <Container class="max-w-screen-lg mx-auto mt-16 mb-12 prose">
+    <ButtonRow githubUrl={project.data.githubUrl} liveUrl={project.data.liveUrl} />
+    <Container class="max-w-5xl mx-auto mt-8 mb-12 prose">
       <Content />
     </Container>
   </Section>
