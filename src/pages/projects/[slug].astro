@@ -6,6 +6,7 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { slugify } from "@/lib/utils";
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import ButtonRow from "@/components/ButtonRow.astro";
+import PaginationPrevNext from "@/components/PaginationPrevNext.astro";
 
 export interface Props {
   project: CollectionEntry<"projects">;
@@ -41,4 +42,5 @@ const { Content } = await render(project);
       <Content />
     </Container>
   </Section>
+  <PaginationPrevNext colection="projects" colectionPrefix="/projects/" />
 </BaseLayout>

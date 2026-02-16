@@ -1,0 +1,60 @@
+---
+import { getCollection, type AnyEntryMap } from "astro:content";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { slugify, capitalizeFirstLetter } from "@/lib/utils";
+
+interface Props {
+  colection: keyof AnyEntryMap;
+  colectionPrefix?: string;
+}
+const { colection, colectionPrefix } = Astro.props;
+
+const items = (await getCollection(colection))
+  .sort((a, b) => parseInt(a.id.slice(0, 2)) - parseInt(b.id.slice(0, 2)))
+  .reverse();
+const currentItemIndex = items.findIndex((item) => slugify(item.data.title) == Astro.params.slug);
+const previousItem = currentItemIndex + 1 === items.length ? undefined : items[currentItemIndex + 1];
+const nextItem = currentItemIndex === 0 ? undefined : items[currentItemIndex - 1];
+const previousSlug = colectionPrefix
+  ? `${colectionPrefix}${slugify(previousItem?.data.title)}/`
+  : `/${slugify(previousItem?.data.title)}/`;
+const nextSlug = colectionPrefix
+  ? `${colectionPrefix}${slugify(nextItem?.data.title)}/`
+  : `/${slugify(nextItem?.data.title)}/`;
+---
+
+{
+  (previousItem || nextItem) && (
+    <div class="w-full mx-auto max-w-sm py-4">
+      <Pagination className="w-full">
+        <PaginationContent className="w-full justify-between">
+          <PaginationItem>
+            <PaginationPrevious
+              href={previousItem && previousSlug ? previousSlug : "#"}
+              className={!previousItem ? "pointer-events-none opacity-50" : "border"}
+              aria-disabled={!previousItem}
+            />
+          </PaginationItem>
+          <PaginationItem>
+            <span class="text-sm text-muted-foreground">
+              <a href={colectionPrefix ? `${colectionPrefix}` : `/`}>{`Back to ${capitalizeFirstLetter(colection)}`}</a>
+            </span>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext
+              href={nextItem && nextSlug ? nextSlug : "#"}
+              className={!nextItem ? "pointer-events-none opacity-50" : "border"}
+              aria-disabled={!nextItem}
+            />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
+    </div>
+  )
+}
