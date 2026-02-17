@@ -10,7 +10,6 @@ export const PageHero = () => {
         numSquares={30}
         maxOpacity={0.1}
         duration={3}
-        repeatDelay={1}
         className={cn("mask-[radial-gradient(500px_circle_at_center,white,transparent)]", "inset-x-0 h-full skew-y-12")}
       />
       <div className="relative z-10 text-center max-w-3xl">
