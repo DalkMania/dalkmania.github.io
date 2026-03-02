@@ -2,7 +2,6 @@
 @import "@fontsource-variable/raleway";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
-@config "../../tailwind.config.ts";
 @import "tw-animate-css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
