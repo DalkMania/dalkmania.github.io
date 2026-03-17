@@ -10,7 +10,6 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   site: "https://www.niklasdahlqvist.com/",
   vite: {
-    // @ts-expect-error
     plugins: [tailwindcss()],
   },
 
