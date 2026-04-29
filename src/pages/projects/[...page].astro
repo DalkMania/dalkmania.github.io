@@ -19,6 +19,8 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 const {
   page: { data: projects, url, lastPage, currentPage },
 } = Astro.props as Props;
+
+export const prerender = true;
 ---
 
 <BaseLayout

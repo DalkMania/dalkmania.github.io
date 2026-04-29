@@ -1,5 +1,3 @@
-@import "@fontsource-variable/merriweather";
-@import "@fontsource-variable/raleway";
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
@@ -8,9 +6,9 @@
 
 @theme {
   --font-sans:
-    "Raleway Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    var(--font-raleway), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
-  --font-serif: "Merriweather Variable", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-serif: var(--font-merriweather), ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 :root {

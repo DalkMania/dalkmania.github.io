@@ -47,31 +47,41 @@
   }
 </style>
 
-<script is:inline>
-  const themeToggle = document.getElementById("themeToggle");
-  const html = document.documentElement;
+<script>
+  function initThemeToggle() {
+    const themeToggle = document.getElementById("themeToggle");
+    const html = document.documentElement;
 
-  function getPreferredTheme() {
-    var stored = localStorage.getItem("theme");
-    if (stored) return stored;
-    return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-  }
+    if (!themeToggle) return;
 
-  function setTheme(theme) {
-    html.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }
-
-  setTheme(getPreferredTheme());
-
-  themeToggle.addEventListener("click", function () {
-    var current = html.getAttribute("data-theme");
-    setTheme(current === "dark" ? "light" : "dark");
-  });
-
-  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
-    if (!localStorage.getItem("conductor-theme")) {
-      setTheme(e.matches ? "dark" : "light");
+    function getPreferredTheme() {
+      var stored = localStorage.getItem("theme");
+      if (stored) return stored;
+      return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
     }
-  });
+
+    function setTheme(theme: string) {
+      html.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+
+    setTheme(getPreferredTheme());
+
+    themeToggle.addEventListener("click", function () {
+      var current = html.getAttribute("data-theme");
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+      if (!localStorage.getItem("conductor-theme")) {
+        setTheme(e.matches ? "dark" : "light");
+      }
+    });
+  }
+
+  // Run on initial load
+  initThemeToggle();
+
+  // Re-run after Astro page transitions
+  document.addEventListener("astro:after-swap", initThemeToggle);
 </script>

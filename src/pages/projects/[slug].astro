@@ -32,6 +32,7 @@ if (!project) {
 }
 
 const { Content } = await render(project);
+export const prerender = true;
 ---
 
 <BaseLayout title={project.data.title} description={project.data.description}>

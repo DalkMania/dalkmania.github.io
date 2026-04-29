@@ -1,13 +1,11 @@
 ---
 import "../styles/global.css";
-
-import ralewayWoff2 from "@fontsource-variable/raleway/files/raleway-latin-wght-normal.woff2?url";
-import merriweatherWoff2 from "@fontsource-variable/merriweather/files/merriweather-latin-wght-normal.woff2?url";
-
+import { ClientRouter } from "astro:transitions";
 import { GoogleAnalytics } from "@astrolib/analytics";
 import { SEO } from "astro-seo";
 import Header from "@/components/layout/Header.astro";
 import Footer from "@/components/layout/Footer.astro";
+import { Font } from "astro:assets";
 
 export interface Props {
   title: string;
@@ -17,15 +15,16 @@ export interface Props {
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <title>{title} | Niklas Dahlqvist's Portfolio</title>
-    <link rel="preload" as="font" type="font/woff2" href={ralewayWoff2} crossorigin />
-    <link rel="preload" as="font" type="font/woff2" href={merriweatherWoff2} crossorigin />
+    <Font cssVariable="--font-raleway" preload={[{ weight: "100 900" }]} />
+    <Font cssVariable="--font-merriweather" preload={[{ weight: "100 900" }]} />
     <SEO title={title} description={description} />
+    <ClientRouter />
     <GoogleAnalytics id="G-L1JLG7M0LF" />
   </head>
   <body class="font-sans grid grid-rows-[auto_1fr_auto] min-h-screen">

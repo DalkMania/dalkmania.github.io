@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 
@@ -12,7 +12,24 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
+  fonts: [
+    {
+      provider: fontProviders.fontsource(),
+      name: "Raleway",
+      cssVariable: "--font-raleway",
+      weights: ["100 900"],
+      subsets: ["latin"],
+      styles: ["normal", "italic"],
+    },
+    {
+      provider: fontProviders.fontsource(),
+      name: "Merriweather",
+      cssVariable: "--font-merriweather",
+      weights: ["100 900"],
+      subsets: ["latin"],
+      styles: ["normal", "italic"],
+    },
+  ],
   integrations: [
     react(),
     expressiveCode({
