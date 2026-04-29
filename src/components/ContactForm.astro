@@ -87,39 +87,44 @@ import { Button } from "@/components/ui/button";
 </style>
 
 <script is:inline define:vars={{ pathName: Astro.originPathname }}>
-  const form = document.getElementById("form");
-  const result = document.getElementById("result");
+  function initContactForm() {
+    const form = document.getElementById("form");
+    const result = document.getElementById("result");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    form.classList.add("was-validated");
-    if (!form.checkValidity()) {
-      form.querySelectorAll(":invalid")[0].focus();
-      return;
-    }
-    const formData = new FormData(form);
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      form.classList.add("was-validated");
+      if (!form.checkValidity()) {
+        form.querySelectorAll(":invalid")[0].focus();
+        return;
+      }
+      const formData = new FormData(form);
 
-    result.innerHTML = "Sending...";
+      result.innerHTML = "Sending...";
 
-    fetch(pathName, {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(formData).toString(),
-    })
-      .then(() => {
-        result.classList.add("text-green-500");
-        result.innerText = "Form Submitted Successfully";
-
-        form.reset();
-        form.classList.remove("was-validated");
-        setTimeout(() => {
-          result.style.display = "none";
-        }, 5000);
+      fetch(pathName, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString(),
       })
-      .catch((error) => {
-        console.log(error);
-        result.classList.add("text-red-500");
-        result.innerHTML = "Something went wrong!";
-      });
-  });
+        .then(() => {
+          result.classList.add("text-green-500");
+          result.innerText = "Form Submitted Successfully";
+
+          form.reset();
+          form.classList.remove("was-validated");
+          setTimeout(() => {
+            result.style.display = "none";
+          }, 5000);
+        })
+        .catch((error) => {
+          console.log(error);
+          result.classList.add("text-red-500");
+          result.innerHTML = "Something went wrong!";
+        });
+    });
+  }
+
+  initContactForm();
+  document.addEventListener("astro:after-swap", initContactForm);
 </script>
