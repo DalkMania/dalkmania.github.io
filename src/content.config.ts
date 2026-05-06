@@ -1,4 +1,5 @@
-import { z, defineCollection } from "astro:content";
+import { defineCollection } from "astro:content";
+import { z } from "astro/zod";
 import { glob } from "astro/loaders";
 
 const projectCollection = defineCollection({
@@ -22,7 +23,6 @@ const experienceCollection = defineCollection({
       company: z.string(),
       period: z.string(),
       location: z.string(),
-      description: z.string(),
       technologies: z.array(z.string()),
     }),
 });

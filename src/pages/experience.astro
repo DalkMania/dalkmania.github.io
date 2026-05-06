@@ -26,7 +26,7 @@ const sortedItems = experienceItems.sort((a, b) => parseInt(a.id.slice(0, 2)) - 
   <Section id="experience" class="relative pt-4 pb-16 px-6">
     <Container class="max-w-3xl mx-auto">
       <div class="relative">
-        {sortedItems.map(({ data }) => <ExperienceItem {...data} />)}
+        {sortedItems.map((experienceItem) => <ExperienceItem experience={experienceItem} />)}
       </div>
     </Container>
   </Section>

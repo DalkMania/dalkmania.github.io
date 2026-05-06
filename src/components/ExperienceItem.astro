@@ -1,17 +1,15 @@
 ---
 import { Badge } from "@/components/ui/badge";
+import { render, type CollectionEntry } from "astro:content";
 import { Building2, Calendar, MapPin } from "lucide-react";
 
 interface Props {
-  title: string;
-  company: string;
-  period: string;
-  location: string;
-  description: string;
-  technologies: string[];
+  experience: CollectionEntry<"experience">;
 }
 
-const { title, company, period, location, description, technologies } = Astro.props;
+const { experience } = Astro.props;
+
+const { Content } = await render(experience);
 ---
 
 <div class="relative pl-8 not-last:pb-12">
@@ -26,21 +24,21 @@ const { title, company, period, location, description, technologies } = Astro.pr
       <div class="shrink-0 size-9 bg-accent rounded-full flex items-center justify-center">
         <Building2 className="size-5 text-muted-foreground" />
       </div>
-      <span class="text-lg font-semibold">{company}</span>
+      <span class="text-lg font-semibold">{experience.data.company}</span>
     </div>
     <div>
-      <h2 class="text-xl font-medium">{title}</h2>
+      <h2 class="text-xl font-medium">{experience.data.title}</h2>
       <div class="flex items-center gap-2 mt-1 text-sm">
         <Calendar className="size-4" />
-        <span>{period}</span>
+        <span>{experience.data.period}</span>
         <MapPin className="size-4" />
-        <span>{location}</span>
+        <span>{experience.data.location}</span>
       </div>
     </div>
-    <p class="text-muted-foreground">{description}</p>
+    <div class="text-muted-foreground [&>p]:mb-4"><Content /></div>
     <div class="flex flex-wrap gap-2">
       {
-        technologies.map((tech) => (
+        experience.data.technologies.map((tech) => (
           <Badge key={tech} variant="secondary" className="rounded-full">
             {tech}
           </Badge>
