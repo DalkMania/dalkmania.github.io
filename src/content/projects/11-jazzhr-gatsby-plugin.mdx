@@ -8,8 +8,7 @@ githubUrl: "https://github.com/DalkMania/gatsby-source-jazzhr"
 
 JazzHR is an online software that helps companies post jobs online, manage applicants, and hire great employees.
 
-This is a Gatsby Source plugin for pulling data into [Gatsby](https://github.com/gatsbyjs) from
-[JazzHR](https://www.jazzhr.com). Heavily inspired by [gatsby-source-lever](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-lever).
+This is a Gatsby Source plugin for pulling data into [Gatsby](https://github.com/gatsbyjs) from [JazzHR](https://www.jazzhr.com). Heavily inspired by [gatsby-source-lever](https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-lever).
 
 ### Install
 
@@ -19,15 +18,9 @@ Using NPM
 npm install gatsby-source-jazzhr
 ```
 
-Using Yarn
-
-```shell
-yarn add gatsby-source-jazzhr
-```
-
 ### How to use
 
-```javascript
+```js
 // In your gatsby-config.js
 module.exports = {
   plugins: [
@@ -35,7 +28,8 @@ module.exports = {
       resolve: "gatsby-source-jazzhr",
       options: {
         apiKey: "YOUR_JAZZHR_API_KEY",
-        subDomain: "YOUR_JAZZHR_SUBDOMAIN", // https://company-name.applytojob.com
+        subDomain: "YOUR_JAZZHR_SUBDOMAIN",
+        // https://company-name.applytojob.com
         verboseOutput: false,
       },
     },
