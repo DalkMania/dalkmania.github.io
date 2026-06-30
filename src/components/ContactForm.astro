@@ -1,6 +1,7 @@
 ---
 import Container from "@/components/layout/Container.astro";
 import { Button } from "@/components/ui/button";
+const originalPath = Astro.originPathname;
 ---
 
 <Container>
@@ -86,7 +87,7 @@ import { Button } from "@/components/ui/button";
   }
 </style>
 
-<script is:inline define:vars={{ pathName: Astro.originPathname }}>
+<script is:inline define:vars={{ pathName: originalPath }}>
   function initContactForm() {
     const form = document.getElementById("form");
     const result = document.getElementById("result");
